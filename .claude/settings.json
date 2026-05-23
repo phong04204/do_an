@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx next *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/login)",
+      "Bash(start http://localhost:3000/login)",
+      "Bash(start http://localhost:3000/register)",
+      "Bash(start http://localhost:3000/gio-hang)",
+      "Bash(php artisan *)",
+      "Bash(ping -n 3 127.0.0.1)",
+      "PowerShell(Get-Command php -ErrorAction SilentlyContinue)",
+      "PowerShell(Start-Sleep -Seconds 2; try { $r = Invoke-WebRequest -Uri \"http://127.0.0.1:8000\" -TimeoutSec 3 -UseBasicParsing; \"Status: $\\($r.StatusCode\\)\" } catch { \"Error: $_\" })",
+      "Bash(npx tsc *)",
+      "PowerShell($body = '{\"email\":\"test@test.com\",\"password\":\"password\"}'; try { $r = Invoke-WebRequest -Uri \"http://127.0.0.1:8000/api/auth/login\" -Method POST -Body $body -ContentType \"application/json\" -UseBasicParsing -TimeoutSec 5; \"Status: $\\($r.StatusCode\\) - $\\($r.Content.Substring\\(0, [Math]::Min\\(200, $r.Content.Length\\)\\)\\)\" } catch { \"Response: $\\($_.Exception.Response.StatusCode\\) - $\\($_.ErrorDetails.Message\\)\" })",
+      "Bash(Get-ChildItem -Path \"d:\\\\test\\\\backend\\\\app\\\\Http\\\\Controllers\\\\\" | Select-Object -Property Name, FullName)"
+    ]
+  }
+}

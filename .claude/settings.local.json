@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem -Path \"d:\\\\test\\\\frontend\\\\src\\\\app\\\\\\(dashboard\\)\" -Recurse -Force | ForEach-Object { $_.FullName } | Sort-Object)",
+      "Bash(Get-ChildItem -Path \"d:\\\\test\\\\frontend\\\\src\\\\app\" -Recurse -Force)",
+      "Bash(Select-Object -Property FullName, PSIsContainer)",
+      "Bash(Format-Table -AutoSize)"
+    ]
+  }
+}
