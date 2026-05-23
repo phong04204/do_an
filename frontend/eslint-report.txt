@@ -1,0 +1,219 @@
+﻿
+D:\test\frontend\src\app\(dashboard)\admin\page.tsx
+     2:36   warning  'useEffect' is defined but never used                            @typescript-eslint/no-unused-vars
+     6:41   warning  'DollarSign' is defined but never used                           @typescript-eslint/no-unused-vars
+     6:53   warning  'AlertCircle' is defined but never used                          @typescript-eslint/no-unused-vars
+     7:3    warning  'Calendar' is defined but never used                             @typescript-eslint/no-unused-vars
+     7:41   warning  'TrendingDown' is defined but never used                         @typescript-eslint/no-unused-vars
+     8:44   warning  'Eye' is defined but never used                                  @typescript-eslint/no-unused-vars
+    11:10   warning  'formatCurrency' is defined but never used                       @typescript-eslint/no-unused-vars
+   124:14   warning  'err' is defined but never used                                  @typescript-eslint/no-unused-vars
+   136:16   warning  'err' is defined but never used                                  @typescript-eslint/no-unused-vars
+   149:14   warning  'err' is defined but never used                                  @typescript-eslint/no-unused-vars
+   201:14   warning  'err' is defined but never used                                  @typescript-eslint/no-unused-vars
+   213:16   warning  'err' is defined but never used                                  @typescript-eslint/no-unused-vars
+   225:14   warning  'err' is defined but never used                                  @typescript-eslint/no-unused-vars
+   236:14   warning  'err' is defined but never used                                  @typescript-eslint/no-unused-vars
+   340:43   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+   526:85   error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  1313:89   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  1327:91   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  1413:102  error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  1474:97   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+
+D:\test\frontend\src\app\(dashboard)\dashboard\layout.tsx
+  128:16  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+D:\test\frontend\src\app\(dashboard)\dashboard\layout.tsx:128:16
+  126 |           <div className="lg:hidden fixed inset-0 z-30 bg-black/60 backdrop-blur-sm" onClick={() => setSidebarOpen(false)}>
+  127 |             <div className="absolute left-0 top-16 bottom-0 w-72 p-4 overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+> 128 |               <Sidebar />
+      |                ^^^^^^^ This component is created during render
+  129 |             </div>
+  130 |           </div>
+  131 |         )}
+
+D:\test\frontend\src\app\(dashboard)\dashboard\layout.tsx:43:19
+   41 |   };
+   42 |
+>  43 |   const Sidebar = () => (
+      |                   ^^^^^^^
+>  44 |     <aside className="w-64 flex-shrink-0">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  45 |       <div className="sticky top-20 glass rounded-2xl border border-white/7 overflow-hidden">
+      ΓÇª
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 107 |     </aside>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 108 |   );
+      | ^^^^ The component is created during render here
+  109 |
+  110 |   return (
+  111 |     <div className="min-h-screen bg-[#0a0d10]">  react-hooks/static-components
+  138:16  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+D:\test\frontend\src\app\(dashboard)\dashboard\layout.tsx:138:16
+  136 |             {/* Desktop sidebar */}
+  137 |             <div className="hidden lg:block">
+> 138 |               <Sidebar />
+      |                ^^^^^^^ This component is created during render
+  139 |             </div>
+  140 |
+  141 |             {/* Content */}
+
+D:\test\frontend\src\app\(dashboard)\dashboard\layout.tsx:43:19
+   41 |   };
+   42 |
+>  43 |   const Sidebar = () => (
+      |                   ^^^^^^^
+>  44 |     <aside className="w-64 flex-shrink-0">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  45 |       <div className="sticky top-20 glass rounded-2xl border border-white/7 overflow-hidden">
+      ΓÇª
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 107 |     </aside>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 108 |   );
+      | ^^^^ The component is created during render here
+  109 |
+  110 |   return (
+  111 |     <div className="min-h-screen bg-[#0a0d10]">                                                                                                                                                                        react-hooks/static-components
+
+D:\test\frontend\src\app\(main)\checkout\page.tsx
+   41:5   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+D:\test\frontend\src\app\(main)\checkout\page.tsx:41:5
+  39 |
+  40 |   useEffect(() => {
+> 41 |     setMounted(true);
+     |     ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  42 |   }, []);
+  43 |
+  44 |   // Timer logic  react-hooks/set-state-in-effect
+  118:43  warning  'idx' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    @typescript-eslint/no-unused-vars
+  122:52  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+D:\test\frontend\src\app\(main)\checkout\page.tsx:122:52
+  120 |       name: item.name,
+  121 |       username: `account_game_${item.id}`,
+> 122 |       password: `gameacc@pass_${Math.floor(10000 + Math.random() * 90000)}`,
+      |                                                    ^^^^^^^^^^^^^ Cannot call impure function
+  123 |       email: `clean_acc${item.id}_owner@gmail.com`,
+  124 |       backupCode: `BACKUP-${Math.floor(100000 + Math.random() * 900000)}`
+  125 |     }));                                                                                                                              react-hooks/purity
+  124:49  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+D:\test\frontend\src\app\(main)\checkout\page.tsx:124:49
+  122 |       password: `gameacc@pass_${Math.floor(10000 + Math.random() * 90000)}`,
+  123 |       email: `clean_acc${item.id}_owner@gmail.com`,
+> 124 |       backupCode: `BACKUP-${Math.floor(100000 + Math.random() * 900000)}`
+      |                                                 ^^^^^^^^^^^^^ Cannot call impure function
+  125 |     }));
+  126 |
+  127 |     return (                                                                                                                                                                                      react-hooks/purity
+  520:21  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            @next/next/no-img-element
+
+D:\test\frontend\src\app\(main)\gio-hang\page.tsx
+   33:5   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+D:\test\frontend\src\app\(main)\gio-hang\page.tsx:33:5
+  31 |
+  32 |   useEffect(() => {
+> 33 |     setMounted(true);
+     |     ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  34 |   }, []);
+  35 |
+  36 |   if (!mounted) {  react-hooks/set-state-in-effect
+  163:19  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             @next/next/no-img-element
+
+D:\test\frontend\src\app\(main)\san-pham\[id]\page.tsx
+   13:3   warning  'Star' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              @typescript-eslint/no-unused-vars
+   40:42  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      @typescript-eslint/no-explicit-any
+   45:5   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+D:\test\frontend\src\app\(main)\san-pham\[id]\page.tsx:45:5
+  43 |     // In real app, fetch from API
+  44 |     const p = ALL_PRODUCTS.find(item => item.id === Number(id)) || ALL_PRODUCTS[0];
+> 45 |     setProduct(p);
+     |     ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  46 |   }, [id]);
+  47 |
+  48 |   if (!product) return <div style={{ padding: "10rem 0", textAlign: "center", color: "#9CA3AF" }}>─Éang tß║úi...</div>;  react-hooks/set-state-in-effect
+   94:15  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       @next/next/no-img-element
+  260:13  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       @next/next/no-img-element
+
+D:\test\frontend\src\app\(main)\san-pham\page.tsx
+   56:44  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+D:\test\frontend\src\app\(main)\san-pham\page.tsx:56:44
+  54 |   useEffect(() => {
+  55 |     const catParam = searchParams.get("cat");
+> 56 |     if (catParam && CAT_MAPPING[catParam]) setActiveCat(CAT_MAPPING[catParam]);
+     |                                            ^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  57 |     else setActiveCat("Tß║Ñt Cß║ú");
+  58 |     setPage(1);
+  59 |   }, [searchParams]);  react-hooks/set-state-in-effect
+  159:71  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         @typescript-eslint/no-explicit-any
+
+D:\test\frontend\src\components\home\HeroSection.tsx
+   5:18  warning  'ChevronRight' is defined but never used                                                                                                                                                                                                                                                 @typescript-eslint/no-unused-vars
+   9:7   warning  'FEATURED_GAMES' is assigned a value but never used                                                                                                                                                                                                                                      @typescript-eslint/no-unused-vars
+  45:11  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+D:\test\frontend\src\components\layout\Navbar.tsx
+   4:52  warning  'ChevronDown' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              @typescript-eslint/no-unused-vars
+  23:5   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+D:\test\frontend\src\components\layout\Navbar.tsx:23:5
+  21 |
+  22 |   useEffect(() => {
+> 23 |     setMounted(true);
+     |     ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  24 |     const fn = () => setScrolled(window.scrollY > 10);
+  25 |     window.addEventListener("scroll", fn);
+  26 |     return () => window.removeEventListener("scroll", fn);  react-hooks/set-state-in-effect
+
+D:\test\frontend\src\components\products\ProductCard.tsx
+  47:16  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+  57:11  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+Γ£û 43 problems (18 errors, 25 warnings)
+
