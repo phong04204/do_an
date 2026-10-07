@@ -1,3 +1,6 @@
+# Documentation & Reports
+docs/
+
 # Temporary & debug scripts
 *.ps1
 scratch/
