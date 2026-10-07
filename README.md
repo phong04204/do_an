@@ -28,9 +28,3 @@ npm install
 npm run dev
 ```
 > Frontend chạy tại: `http://localhost:3000`
-
----
-
-## 🔑 Tài khoản mẫu (Demo)
-- **Admin:** `admin@gameacc.vn` / `admin123`
-- **Khách hàng:** `buyer@gameacc.vn` / `buyer123`
