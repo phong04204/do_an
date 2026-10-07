@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 750" width="100%" height="100%">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#333333" />
+    </marker>
+    <filter id="shadow" x="-4%" y="-4%" width="110%" height="112%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="1" dy="1.5" stdDeviation="1.5" flood-color="#000000" flood-opacity="0.18" />
+    </filter>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#ffffff" />
+
+  <!-- TIÊU ĐỀ BIỂU ĐỒ -->
+  <text x="325" y="16" font-family="Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle" fill="#000000">
+    AD-UC03 - Tìm kiếm và Lọc sản phẩm
+  </text>
+
+  <!-- SWIMLANES -->
+  <line x1="25" y1="22" x2="25" y2="730" stroke="#999999" stroke-width="1" />
+  <line x1="270" y1="22" x2="270" y2="730" stroke="#999999" stroke-width="1" />
+  <line x1="625" y1="22" x2="625" y2="730" stroke="#999999" stroke-width="1" />
+
+  <text x="145" y="34" font-family="Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle" fill="#000000">Người dùng</text>
+  <text x="450" y="34" font-family="Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle" fill="#000000">Hệ thống</text>
+
+  <!-- Start Node -->
+  <circle cx="145" cy="52" r="7" fill="#000000" />
+  <line x1="145" y1="59" x2="145" y2="75" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+
+  <!-- Mở trang sản phẩm -->
+  <rect x="95" y="75" width="100" height="38" rx="8" ry="8" fill="#ffffff" stroke="#333333" stroke-width="0.9" filter="url(#shadow)" />
+  <text x="145" y="93" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#000000">
+    <tspan x="145" dy="0">Mở trang Sản phẩm</tspan>
+    <tspan x="145" dy="12">(/san-pham)</tspan>
+  </text>
+
+  <line x1="195" y1="94" x2="390" y2="94" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+
+  <!-- Tải dữ liệu mặc định -->
+  <rect x="390" y="75" width="120" height="38" rx="8" ry="8" fill="#ffffff" stroke="#333333" stroke-width="0.9" filter="url(#shadow)" />
+  <text x="450" y="93" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#000000">
+    <tspan x="450" dy="0">Tải danh mục &amp;</tspan>
+    <tspan x="450" dy="12">sản phẩm mặc định</tspan>
+  </text>
+
+  <path d="M 450 113 L 450 135 L 145 135 L 145 155" fill="none" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+
+  <!-- Decision: Phương thức tra cứu? -->
+  <polygon points="145,155 210,172 145,189 80,172" fill="#fff9db" stroke="#cc0000" stroke-width="0.9" />
+  <text x="145" y="175" font-family="Arial, sans-serif" font-size="8.5" font-weight="bold" text-anchor="middle" fill="#990000">Phương thức?</text>
+
+  <!-- Nhánh 1: Từ khóa -->
+  <text x="75" y="200" font-family="Arial, sans-serif" font-size="8" fill="#555555">Tìm từ khóa</text>
+  <path d="M 80 172 L 55 172 L 55 215 L 85 215" fill="none" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+  <rect x="85" y="200" width="85" height="32" rx="6" fill="#ffffff" stroke="#333333" stroke-width="0.9" filter="url(#shadow)" />
+  <text x="127" y="215" font-family="Arial, sans-serif" font-size="8.5" text-anchor="middle" fill="#000000">Nhập từ khóa</text>
+  <line x1="127" y1="232" x2="127" y2="252" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+  <rect x="85" y="252" width="85" height="32" rx="6" fill="#ffffff" stroke="#333333" stroke-width="0.9" filter="url(#shadow)" />
+  <text x="127" y="267" font-family="Arial, sans-serif" font-size="8.5" text-anchor="middle" fill="#000000">Nhấn Tìm kiếm</text>
+
+  <!-- Nhánh 2: Lọc -->
+  <text x="215" y="200" font-family="Arial, sans-serif" font-size="8" fill="#555555">Lọc đa tiêu chí</text>
+  <path d="M 210 172 L 235 172 L 235 215 L 205 215" fill="none" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+  <rect x="180" y="200" width="85" height="32" rx="6" fill="#ffffff" stroke="#333333" stroke-width="0.9" filter="url(#shadow)" />
+  <text x="222" y="215" font-family="Arial, sans-serif" font-size="8.5" text-anchor="middle" fill="#000000">Chọn bộ lọc Game/Giá</text>
+  <line x1="222" y1="232" x2="222" y2="252" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+  <rect x="180" y="252" width="85" height="32" rx="6" fill="#ffffff" stroke="#333333" stroke-width="0.9" filter="url(#shadow)" />
+  <text x="222" y="267" font-family="Arial, sans-serif" font-size="8.5" text-anchor="middle" fill="#000000">Chọn sắp xếp</text>
+
+  <!-- Gộp nhánh tra cứu -->
+  <polygon points="145,305 160,314 145,323 130,314" fill="#f8cecc" stroke="#b85450" stroke-width="0.8" />
+  <path d="M 127 284 L 127 314 L 130 314" fill="none" stroke="#333333" stroke-width="0.9" />
+  <path d="M 222 284 L 222 314 L 160 314" fill="none" stroke="#333333" stroke-width="0.9" />
+
+  <!-- Sang Hệ thống: Xử lý query -->
+  <line x1="160" y1="314" x2="380" y2="314" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+  <rect x="380" y="298" width="140" height="34" rx="6" fill="#ffffff" stroke="#333333" stroke-width="0.9" filter="url(#shadow)" />
+  <text x="450" y="318" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#000000">Thực thi query tìm kiếm/lọc</text>
+
+  <line x1="450" y1="332" x2="450" y2="360" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+
+  <!-- Decision: Có kết quả? -->
+  <polygon points="450,360 510,377 450,394 390,377" fill="#fff9db" stroke="#cc0000" stroke-width="0.9" />
+  <text x="450" y="380" font-family="Arial, sans-serif" font-size="8.5" font-weight="bold" text-anchor="middle" fill="#990000">Tìm thấy hàng?</text>
+
+  <!-- Không tìm thấy -->
+  <text x="520" y="372" font-family="Arial, sans-serif" font-size="8" fill="#cc0000">[Không]</text>
+  <path d="M 510 377 L 545 377 L 545 420 L 515 420" fill="none" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+  <rect x="400" y="405" width="115" height="34" rx="6" fill="#ffffff" stroke="#333333" stroke-width="0.9" filter="url(#shadow)" />
+  <text x="457" y="420" font-family="Arial, sans-serif" font-size="8.5" text-anchor="middle" fill="#000000">
+    <tspan x="457" dy="0">Báo không tìm thấy</tspan>
+    <tspan x="457" dy="11">&amp; gợi ý xóa lọc</tspan>
+  </text>
+
+  <!-- Có kết quả -->
+  <text x="360" y="390" font-family="Arial, sans-serif" font-size="8" fill="#008800">[Có]</text>
+  <line x1="450" y1="394" x2="450" y2="465" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+  <rect x="385" y="465" width="130" height="36" rx="6" fill="#ffffff" stroke="#333333" stroke-width="0.9" filter="url(#shadow)" />
+  <text x="450" y="482" font-family="Arial, sans-serif" font-size="8.5" text-anchor="middle" fill="#000000">
+    <tspan x="450" dy="0">Hiển thị danh sách</tspan>
+    <tspan x="450" dy="11">sản phẩm &amp; phân trang</tspan>
+  </text>
+
+  <!-- Sang Người dùng xem sản phẩm -->
+  <path d="M 385 483 L 195 483" fill="none" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+  <rect x="95" y="465" width="100" height="36" rx="6" fill="#ffffff" stroke="#333333" stroke-width="0.9" filter="url(#shadow)" />
+  <text x="145" y="482" font-family="Arial, sans-serif" font-size="8.5" text-anchor="middle" fill="#000000">
+    <tspan x="145" dy="0">Người dùng duyệt &amp;</tspan>
+    <tspan x="145" dy="11">xem chi tiết</tspan>
+  </text>
+
+  <!-- Gộp kết thúc -->
+  <polygon points="450,545 465,554 450,563 435,554" fill="#f8cecc" stroke="#b85450" stroke-width="0.8" />
+  <path d="M 457 439 L 457 554 L 465 554" fill="none" stroke="#333333" stroke-width="0.9" />
+  <path d="M 145 501 L 145 554 L 435 554" fill="none" stroke="#333333" stroke-width="0.9" />
+
+  <line x1="450" y1="563" x2="450" y2="600" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+
+  <!-- End Node -->
+  <circle cx="450" cy="610" r="10" fill="none" stroke="#000000" stroke-width="1.5" />
+  <circle cx="450" cy="610" r="6" fill="#000000" />
+</svg>

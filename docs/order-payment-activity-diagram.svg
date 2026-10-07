@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 850" width="100%" height="100%">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#333333" />
+    </marker>
+    <filter id="shadow" x="-4%" y="-4%" width="110%" height="112%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="1" dy="1.5" stdDeviation="1.5" flood-color="#000000" flood-opacity="0.18" />
+    </filter>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#ffffff" />
+
+  <!-- TIÊU ĐỀ -->
+  <text x="330" y="16" font-family="Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle" fill="#000000">
+    AD-UC05 - Đặt hàng và Thanh toán trực tuyến qua VNPay
+  </text>
+
+  <!-- 3 LÀN BƠI (SWIMLANES) -->
+  <line x1="20" y1="24" x2="20" y2="830" stroke="#999999" stroke-width="1" />
+  <line x1="220" y1="24" x2="220" y2="830" stroke="#999999" stroke-width="1" />
+  <line x1="440" y1="24" x2="440" y2="830" stroke="#999999" stroke-width="1" />
+  <line x1="640" y1="24" x2="640" y2="830" stroke="#999999" stroke-width="1" />
+
+  <text x="120" y="36" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#000000">Người mua</text>
+  <text x="330" y="36" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#000000">Hệ thống</text>
+  <text x="540" y="36" font-family="Arial, sans-serif" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#000000">Cổng VNPay</text>
+
+  <!-- Start Node -->
+  <circle cx="120" cy="52" r="7" fill="#000000" />
+  <line x1="120" y1="59" x2="120" y2="76" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+
+  <!-- Mở trang Checkout -->
+  <rect x="70" y="76" width="100" height="34" rx="6" fill="#ffffff" stroke="#333333" stroke-width="0.9" filter="url(#shadow)" />
+  <text x="120" y="97" font-family="Arial, sans-serif" font-size="8.5" text-anchor="middle" fill="#000000">Mở trang Checkout</text>
+
+  <line x1="120" y1="110" x2="120" y2="128" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+
+  <!-- Bấm thanh toán VNPay -->
+  <rect x="65" y="128" width="110" height="34" rx="6" fill="#ffffff" stroke="#333333" stroke-width="0.9" filter="url(#shadow)" />
+  <text x="120" y="149" font-family="Arial, sans-serif" font-size="8.5" text-anchor="middle" fill="#000000">Bấm 'Thanh toán VNPay'</text>
+
+  <line x1="175" y1="145" x2="270" y2="145" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+
+  <!-- Kiểm tra tồn kho -->
+  <rect x="270" y="128" width="120" height="34" rx="6" fill="#ffffff" stroke="#333333" stroke-width="0.9" filter="url(#shadow)" />
+  <text x="330" y="149" font-family="Arial, sans-serif" font-size="8.5" text-anchor="middle" fill="#000000">Kiểm tra trạng thái hàng</text>
+
+  <line x1="330" y1="162" x2="330" y2="185" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+
+  <!-- Decision: Còn hàng? -->
+  <polygon points="330,185 385,200 330,215 275,200" fill="#fff9db" stroke="#cc0000" stroke-width="0.9" />
+  <text x="330" y="203" font-family="Arial, sans-serif" font-size="8" font-weight="bold" text-anchor="middle" fill="#990000">Còn khả dụng?</text>
+
+  <!-- Đã bán -->
+  <text x="235" y="196" font-family="Arial, sans-serif" font-size="8" fill="#cc0000">[Đã bán]</text>
+  <path d="M 275 200 L 175 200" fill="none" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+  <rect x="65" y="185" width="110" height="34" rx="6" fill="#ffffff" stroke="#333333" stroke-width="0.9" filter="url(#shadow)" />
+  <text x="120" y="200" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#000000">
+    <tspan x="120" dy="0">Báo hàng đã bán,</tspan>
+    <tspan x="120" dy="10">đưa về giỏ hàng</tspan>
+  </text>
+
+  <!-- Còn hàng -> Tạo đơn pending & URL VNPay -->
+  <text x="335" y="230" font-family="Arial, sans-serif" font-size="8" fill="#008800">[Còn]</text>
+  <line x1="330" y1="215" x2="330" y2="245" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+  <rect x="260" y="245" width="140" height="34" rx="6" fill="#ffffff" stroke="#333333" stroke-width="0.9" filter="url(#shadow)" />
+  <text x="330" y="260" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#000000">
+    <tspan x="330" dy="0">Tạo Order 'pending' &amp;</tspan>
+    <tspan x="330" dy="10">tạo URL thanh toán VNPay</tspan>
+  </text>
+
+  <line x1="400" y1="262" x2="480" y2="262" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+
+  <!-- Sang Cổng VNPay -->
+  <rect x="480" y="245" width="120" height="34" rx="6" fill="#ffffff" stroke="#333333" stroke-width="0.9" filter="url(#shadow)" />
+  <text x="540" y="265" font-family="Arial, sans-serif" font-size="8.5" text-anchor="middle" fill="#000000">Hiển thị Cổng VNPay</text>
+
+  <line x1="540" y1="279" x2="540" y2="305" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+
+  <!-- Khách quét QR / nhập thẻ -->
+  <rect x="475" y="305" width="130" height="34" rx="6" fill="#ffffff" stroke="#333333" stroke-width="0.9" filter="url(#shadow)" />
+  <text x="540" y="325" font-family="Arial, sans-serif" font-size="8.5" text-anchor="middle" fill="#000000">Khách quét QR / nhập thẻ</text>
+
+  <line x1="540" y1="339" x2="540" y2="368" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+
+  <!-- Decision: Kết quả thanh toán -->
+  <polygon points="540,368 595,385 540,402 485,385" fill="#fff9db" stroke="#cc0000" stroke-width="0.9" />
+  <text x="540" y="388" font-family="Arial, sans-serif" font-size="8" font-weight="bold" text-anchor="middle" fill="#990000">VNPay phản hồi?</text>
+
+  <!-- Thất bại / Hủy -->
+  <text x="600" y="382" font-family="Arial, sans-serif" font-size="8" fill="#cc0000">[Hủy/Lỗi]</text>
+  <path d="M 595 385 L 625 385 L 625 435 L 400 435" fill="none" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+  <rect x="260" y="420" width="140" height="34" rx="6" fill="#ffffff" stroke="#333333" stroke-width="0.9" filter="url(#shadow)" />
+  <text x="330" y="435" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#000000">
+    <tspan x="330" dy="0">Hủy đơn 'cancelled' &amp;</tspan>
+    <tspan x="330" dy="10">mở khóa lại sản phẩm</tspan>
+  </text>
+
+  <path d="M 260 437 L 175 437" fill="none" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+  <rect x="65" y="420" width="110" height="34" rx="6" fill="#ffffff" stroke="#333333" stroke-width="0.9" filter="url(#shadow)" />
+  <text x="120" y="440" font-family="Arial, sans-serif" font-size="8.5" text-anchor="middle" fill="#000000">Báo thanh toán thất bại</text>
+
+  <!-- Thành công -->
+  <text x="545" y="425" font-family="Arial, sans-serif" font-size="8" fill="#008800">[Thành công]</text>
+  <path d="M 540 402 L 540 495 L 400 495" fill="none" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+  <rect x="255" y="480" width="150" height="34" rx="6" fill="#ffffff" stroke="#333333" stroke-width="0.9" filter="url(#shadow)" />
+  <text x="330" y="495" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#000000">
+    <tspan x="330" dy="0">Kiểm tra chữ ký số IPN</tspan>
+    <tspan x="330" dy="10">&amp; đổi Order sang 'completed'</tspan>
+  </text>
+
+  <line x1="330" y1="514" x2="330" y2="540" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+
+  <rect x="255" y="540" width="150" height="34" rx="6" fill="#ffffff" stroke="#333333" stroke-width="0.9" filter="url(#shadow)" />
+  <text x="330" y="555" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#000000">
+    <tspan x="330" dy="0">Đổi sản phẩm sang 'sold' &amp;</tspan>
+    <tspan x="330" dy="10">gán dữ liệu số vào đơn hàng</tspan>
+  </text>
+
+  <path d="M 255 557 L 175 557" fill="none" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+  <rect x="65" y="540" width="110" height="34" rx="6" fill="#ffffff" stroke="#333333" stroke-width="0.9" filter="url(#shadow)" />
+  <text x="120" y="555" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#000000">
+    <tspan x="120" dy="0">Trang Đặt hàng</tspan>
+    <tspan x="120" dy="10">thành công &amp; xem mã</tspan>
+  </text>
+
+  <!-- Gộp kết thúc -->
+  <polygon points="120,640 135,649 120,658 105,649" fill="#f8cecc" stroke="#b85450" stroke-width="0.8" />
+  <!-- Nhánh hết hàng chạy dọc bên trái vào góc trái nút gộp -->
+  <path d="M 65 202 L 38 202 L 38 649 L 105 649" fill="none" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+  <!-- Nhánh thanh toán thất bại chạy vòng qua phải vào góc phải của nút gộp -->
+  <path d="M 120 454 L 120 480 L 202 480 L 202 649 L 135 649" fill="none" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+  <!-- Nhánh đặt hàng thành công đi thẳng xuống góc trên nút gộp -->
+  <line x1="120" y1="574" x2="120" y2="640" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+
+  <line x1="120" y1="658" x2="120" y2="700" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+
+  <!-- End Node -->
+  <circle cx="120" cy="710" r="10" fill="none" stroke="#000000" stroke-width="1.5" />
+  <circle cx="120" cy="710" r="6" fill="#000000" />
+</svg>

@@ -24,11 +24,11 @@ export const metadata: Metadata = {
     template: "%s | GameAcc",
   },
   description:
-    "Nền tảng mua bán tài khoản game uy tín số 1 Việt Nam. Giao dịch an toàn với hệ thống Escrow, hỗ trợ 24/7.",
+    "Nền tảng mua bán tài khoản game uy tín số 1 Việt Nam. Thanh toán nhanh qua VNPay, hỗ trợ 24/7.",
   keywords: ["mua bán tài khoản game", "acc game", "shop acc lol", "shop acc valorant", "free fire"],
   openGraph: {
     title: "GameAcc – Mua bán tài khoản game uy tín",
-    description: "Giao dịch an toàn với hệ thống Escrow",
+    description: "Thanh toán nhanh qua VNPay",
     type: "website",
   },
 };

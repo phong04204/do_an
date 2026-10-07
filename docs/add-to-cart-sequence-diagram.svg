@@ -1,0 +1,219 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="100%" height="100%">
+  <!-- Definitions for standard UML arrows and markers in red color matching the EAUT style -->
+  <defs>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#c00000" />
+    </marker>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="2" dy="2" stdDeviation="2" flood-opacity="0.3" />
+    </filter>
+  </defs>
+
+  <rect width="100%" height="100%" fill="white" />
+
+  <!-- LIFELINES HEADERS (UML BCE Icons in Pink/White with subtle Red Border) -->
+  
+  <!-- 1. Actor :User (Stickman) -->
+  <g transform="translate(80, 10)">
+    <circle cx="0" cy="20" r="8" fill="#f8d7da" stroke="#c00000" stroke-width="1.5" />
+    <line x1="0" y1="28" x2="0" y2="45" stroke="#c00000" stroke-width="1.5" />
+    <line x1="-12" y1="35" x2="12" y2="35" stroke="#c00000" stroke-width="1.5" />
+    <line x1="0" y1="45" x2="-8" y2="60" stroke="#c00000" stroke-width="1.5" />
+    <line x1="0" y1="45" x2="8" y2="60" stroke="#c00000" stroke-width="1.5" />
+    <text x="0" y="75" font-family="Arial, sans-serif" font-size="17" text-anchor="middle">:User</text>
+  </g>
+  <line x1="80" y1="90" x2="80" y2="780" stroke="#c00000" stroke-width="1" />
+
+  <!-- 2. Boundary :UI -->
+  <g transform="translate(200, 30)">
+    <circle cx="0" cy="15" r="13" fill="#f8d7da" stroke="#c00000" stroke-width="1.5" />
+    <line x1="-13" y1="-2" x2="-13" y2="32" stroke="#c00000" stroke-width="1.5" />
+    <line x1="-13" y1="15" x2="-2" y2="15" stroke="#c00000" stroke-width="1.5" />
+    <text x="0" y="45" font-family="Arial, sans-serif" font-size="17" text-anchor="middle">:UI</text>
+  </g>
+  <line x1="200" y1="90" x2="200" y2="780" stroke="#c00000" stroke-width="1" />
+  <!-- UI Activation Box -->
+  <rect x="195" y="110" width="10" height="660" fill="white" stroke="black" stroke-width="1" filter="url(#shadow)" />
+
+  <!-- 3. Control :CartController -->
+  <g transform="translate(320, 30)">
+    <circle cx="0" cy="15" r="13" fill="#f8d7da" stroke="#c00000" stroke-width="1.5" />
+    <path d="M -5 -3 A 14 14 0 0 1 8 0" fill="none" stroke="#c00000" stroke-width="1.5" marker-end="url(#arrow-red)" />
+    <text x="0" y="45" font-family="Arial, sans-serif" font-size="17" text-anchor="middle">:CartController</text>
+  </g>
+  <line x1="320" y1="90" x2="320" y2="780" stroke="#c00000" stroke-width="1" />
+  <!-- Controller Activation Box -->
+  <rect x="315" y="135" width="10" height="615" fill="white" stroke="black" stroke-width="1" filter="url(#shadow)" />
+
+  <!-- 4. Entity :ProductModel -->
+  <g transform="translate(440, 30)">
+    <circle cx="0" cy="15" r="13" fill="#f8d7da" stroke="#c00000" stroke-width="1.5" />
+    <line x1="-15" y1="28" x2="15" y2="28" stroke="#c00000" stroke-width="1.5" />
+    <line x1="0" y1="28" x2="0" y2="15" stroke="#c00000" stroke-width="1.5" />
+    <text x="0" y="45" font-family="Arial, sans-serif" font-size="17" text-anchor="middle">:ProductModel</text>
+  </g>
+  <line x1="440" y1="90" x2="440" y2="780" stroke="#c00000" stroke-width="1" />
+  <!-- ProductModel Activation Box -->
+  <rect x="435" y="210" width="10" height="80" fill="white" stroke="black" stroke-width="1" filter="url(#shadow)" />
+
+  <!-- 5. Entity :CartModel -->
+  <g transform="translate(560, 30)">
+    <circle cx="0" cy="15" r="13" fill="#f8d7da" stroke="#c00000" stroke-width="1.5" />
+    <line x1="-15" y1="28" x2="15" y2="28" stroke="#c00000" stroke-width="1.5" />
+    <line x1="0" y1="28" x2="0" y2="15" stroke="#c00000" stroke-width="1.5" />
+    <text x="0" y="45" font-family="Arial, sans-serif" font-size="17" text-anchor="middle">:CartModel</text>
+  </g>
+  <line x1="560" y1="90" x2="560" y2="780" stroke="#c00000" stroke-width="1" />
+  <!-- CartModel Activation Boxes -->
+  <rect x="555" y="405" width="10" height="80" fill="white" stroke="black" stroke-width="1" filter="url(#shadow)" />
+  <rect x="555" y="600" width="10" height="80" fill="white" stroke="black" stroke-width="1" filter="url(#shadow)" />
+
+  <!-- 6. Database :carts / products (Database) -->
+  <g transform="translate(680, 30)">
+    <path d="M -15 5 C -15 0, 15 0, 15 5 L 15 25 C 15 30, -15 30, -15 25 Z" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5" />
+    <path d="M -15 5 C -15 10, 15 10, 15 5" fill="none" stroke="#d6b656" stroke-width="1.5" />
+    <text x="0" y="45" font-family="Arial, sans-serif" font-size="17" text-anchor="middle">Database</text>
+  </g>
+  <line x1="680" y1="90" x2="680" y2="780" stroke="#c00000" stroke-width="1" />
+  <!-- Database Activation Boxes -->
+  <rect x="675" y="235" width="10" height="35" fill="white" stroke="black" stroke-width="1" filter="url(#shadow)" />
+  <rect x="675" y="430" width="10" height="35" fill="white" stroke="black" stroke-width="1" filter="url(#shadow)" />
+  <rect x="675" y="625" width="10" height="35" fill="white" stroke="black" stroke-width="1" filter="url(#shadow)" />
+
+  <!-- TITLE -->
+  <text x="400" y="15" font-family="Arial, sans-serif" font-size="15.5" font-weight="bold" text-anchor="middle">UC13 - Thêm sản phẩm vào giỏ hàng</text>
+
+
+  <!-- ==================== SEPARATOR ==================== -->
+  <g transform="translate(0, 85)">
+    <line x1="40" y1="9" x2="780" y2="9" stroke="gray" stroke-width="1.5" />
+    <rect x="210" y="0" width="280" height="18" fill="white" stroke="black" stroke-width="1" />
+    <text x="350" y="13" font-family="Arial, sans-serif" font-size="17" font-weight="bold" text-anchor="middle">Thêm sản phẩm vào giỏ hàng</text>
+  </g>
+
+  <!-- Flow steps -->
+  <path d="M 80 120 L 195 120" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="137" y="107" font-family="Arial, sans-serif" font-size="11.5" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">
+    <tspan x="137" dy="0">1. Nhấn nút</tspan>
+    <tspan x="137" dy="10">"Thêm vào giỏ hàng"</tspan>
+  </text>
+
+  <path d="M 205 145 L 315 145" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="260" y="132" font-family="Arial, sans-serif" font-size="11.5" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">
+    <tspan x="260" dy="0">2. Gửi yêu cầu</tspan>
+    <tspan x="260" dy="10">thêm vào giỏ hàng</tspan>
+  </text>
+
+
+  <!-- Step 3: Check Product Availability -->
+  <path d="M 325 210 L 435 210" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="380" y="197" font-family="Arial, sans-serif" font-size="11.5" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">
+    <tspan x="380" dy="0">3. Kiểm tra trạng thái</tspan>
+    <tspan x="380" dy="10">sản phẩm</tspan>
+  </text>
+
+  <path d="M 445 235 L 675 235" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="560" y="222" font-family="Arial, sans-serif" font-size="10" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">
+    <tspan x="560" dy="0">SELECT * FROM products</tspan>
+    <tspan x="560" dy="9">WHERE id=?</tspan>
+  </text>
+
+  <path d="M 675 270 L 445 270" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="560" y="262" font-family="Arial, sans-serif" font-size="11.5" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">Kết quả sản phẩm</text>
+
+  <path d="M 435 290 L 325 290" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="380" y="282" font-family="Arial, sans-serif" font-size="11.5" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">Trả về trạng thái sản phẩm</text>
+
+
+  <!-- ALT E1: Sản phẩm không khả dụng -->
+  <g transform="translate(45, 310)" filter="url(#shadow)">
+    <rect width="290" height="75" fill="none" stroke="black" stroke-width="1.1" />
+    <path d="M 0 0 L 180 0 L 170 15 L 0 15 Z" fill="#f0f0f0" stroke="black" stroke-width="0.8" />
+    <text x="5" y="11" font-family="Arial, sans-serif" font-size="11.5" font-weight="bold">alt [E1: Sản phẩm không khả dụng]</text>
+  </g>
+  <path d="M 315 345 L 205 345" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="270" y="333" font-family="Arial, sans-serif" font-size="11" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">
+    <tspan x="270" dy="0">Lỗi: "Sản phẩm</tspan>
+    <tspan x="270" dy="9">không còn khả dụng"</tspan>
+  </text>
+  
+  <path d="M 195 360 L 80 360" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="137" y="347" font-family="Arial, sans-serif" font-size="11.5" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">
+    <tspan x="137" dy="0">Hiển thị thông báo lỗi,</tspan>
+    <tspan x="137" dy="10">dừng luồng</tspan>
+  </text>
+
+
+  <!-- Step 4: Check Cart Duplicate -->
+  <path d="M 325 405 L 555 405" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="440" y="392" font-family="Arial, sans-serif" font-size="11.5" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">
+    <tspan x="440" dy="0">4. Kiểm tra sản phẩm đã có</tspan>
+    <tspan x="440" dy="10">trong giỏ hàng chưa</tspan>
+  </text>
+
+  <path d="M 565 430 L 675 430" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="620" y="417" font-family="Arial, sans-serif" font-size="7" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">
+    <tspan x="620" dy="0">SELECT * FROM carts</tspan>
+    <tspan x="620" dy="9">WHERE user_id=? AND prod_id=?</tspan>
+  </text>
+
+  <path d="M 675 465 L 565 465" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="620" y="457" font-family="Arial, sans-serif" font-size="11.5" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">Kết quả giỏ hàng</text>
+
+  <path d="M 555 485 L 325 485" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="440" y="477" font-family="Arial, sans-serif" font-size="11.5" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">Trả về thông tin trùng lặp</text>
+
+
+  <!-- ALT E2: Sản phẩm đã có trong giỏ hàng -->
+  <g transform="translate(45, 505)" filter="url(#shadow)">
+    <rect width="290" height="75" fill="none" stroke="black" stroke-width="1.1" />
+    <path d="M 0 0 L 205 0 L 195 15 L 0 15 Z" fill="#f0f0f0" stroke="black" stroke-width="0.8" />
+    <text x="5" y="11" font-family="Arial, sans-serif" font-size="11.5" font-weight="bold">alt [E2: Sản phẩm đã có trong giỏ hàng]</text>
+  </g>
+  <path d="M 315 542 L 205 542" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="275" y="530" font-family="Arial, sans-serif" font-size="11" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">
+    <tspan x="275" dy="0">Lỗi: "Sản phẩm đã có</tspan>
+    <tspan x="275" dy="9">trong giỏ hàng"</tspan>
+  </text>
+  
+  <path d="M 195 555 L 80 555" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="137" y="547" font-family="Arial, sans-serif" font-size="11.5" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">
+    <tspan x="137" dy="0">Hiển thị cảnh báo,</tspan>
+    <tspan x="137" dy="10">nhập lại</tspan>
+  </text>
+
+
+  <!-- Step 5: Save Cart -->
+  <path d="M 325 600 L 555 600" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="440" y="587" font-family="Arial, sans-serif" font-size="11.5" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">
+    <tspan x="440" dy="0">5. Tiến hành lưu</tspan>
+    <tspan x="440" dy="10">sản phẩm vào giỏ</tspan>
+  </text>
+
+  <path d="M 565 625 L 675 625" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="620" y="612" font-family="Arial, sans-serif" font-size="10" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">
+    <tspan x="620" dy="0">INSERT INTO carts</tspan>
+    <tspan x="620" dy="9">(user_id, product_id) VALUES (?)</tspan>
+  </text>
+
+  <path d="M 675 660 L 565 660" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="620" y="652" font-family="Arial, sans-serif" font-size="11.5" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">Lưu thành công</text>
+
+  <path d="M 555 680 L 325 680" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="440" y="672" font-family="Arial, sans-serif" font-size="11.5" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">Phản hồi thành công</text>
+
+
+  <!-- Step 6 & 7: Success Return -->
+  <path d="M 315 720 L 205 720" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="260" y="707" font-family="Arial, sans-serif" font-size="11.5" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">
+    <tspan x="260" dy="0">6. Thêm vào giỏ hàng</tspan>
+    <tspan x="260" dy="10">thành công</tspan>
+  </text>
+
+  <path d="M 195 750 L 80 750" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="137" y="737" font-family="Arial, sans-serif" font-size="11.5" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">
+    <tspan x="137" dy="0">7. Hiển thị thông báo &amp;</tspan>
+    <tspan x="137" dy="10">cập nhật badge (+1)</tspan>
+  </text>
+</svg>
+

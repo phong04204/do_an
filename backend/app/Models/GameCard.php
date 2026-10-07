@@ -15,13 +15,15 @@ class GameCard extends Model
         'title',
         'description',
         'price',
+        'images',
         'card_serial',
         'card_code',
         'status',
     ];
 
     protected $casts = [
-        'price' => 'decimal:2',
+        'price'  => 'decimal:2',
+        'images' => 'array',
     ];
 
     // Ẩn mã thẻ khi trả về public API

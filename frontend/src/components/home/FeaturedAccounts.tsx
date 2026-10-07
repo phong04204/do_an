@@ -72,7 +72,6 @@ export default function FeaturedAccounts() {
                     status: "approved",
                     view_count: 100 + i * 50,
                     category: { id: 1, name: "Liên Minh Huyền Thoại", slug: "lol", icon: "lol", filter_schema: [] },
-                    is_favorited: false,
                     created_at: new Date().toISOString(),
                     updated_at: new Date().toISOString(),
                   }}

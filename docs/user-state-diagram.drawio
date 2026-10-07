@@ -1,0 +1,126 @@
+<mxfile host="Electron" modified="2026-05-29T00:00:00.000Z" agent="5.0" version="22.1.2" type="device">
+  <diagram id="user_state_diagram" name="User State Diagram">
+    <mxGraphModel dx="1000" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- START NODE (Solid black circle) -->
+        <mxCell id="start" value="" style="ellipse;fillColor=#000000;strokeColor=#000000;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="20" height="20" as="geometry" />
+        </mxCell>
+        
+        <!-- STATE: Chưa có tài khoản -->
+        <mxCell id="state_no_account" value="Chưa có tài khoản" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;strokeWidth=1.2;fillColor=#ffffff;strokeColor=#000000;fontStyle=0;fontFamily=Arial;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="100" y="60" width="140" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- STATE: Chờ xác minh -->
+        <mxCell id="state_wait_verify" value="Chờ xác minh" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;strokeWidth=1.2;fillColor=#ffffff;strokeColor=#000000;fontStyle=0;fontFamily=Arial;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="330" y="60" width="130" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- STATE: Thông báo chưa xác minh -->
+        <mxCell id="state_unverified_notice" value="Thông báo chưa xác minh" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;strokeWidth=1.2;fillColor=#ffffff;strokeColor=#000000;fontStyle=0;fontFamily=Arial;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="325" y="200" width="150" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- STATE: Hoạt động -->
+        <mxCell id="state_active" value="Hoạt động" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;strokeWidth=1.2;fillColor=#ffffff;strokeColor=#000000;fontStyle=0;fontFamily=Arial;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="600" y="60" width="130" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- STATE: Bị khóa -->
+        <mxCell id="state_banned" value="Bị khóa" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;strokeWidth=1.2;fillColor=#ffffff;strokeColor=#000000;fontStyle=0;fontFamily=Arial;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="500" y="200" width="130" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- STATE: Thông báo bị khóa -->
+        <mxCell id="state_banned_notice" value="Thông báo bị khóa" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;strokeWidth=1.2;fillColor=#ffffff;strokeColor=#000000;fontStyle=0;fontFamily=Arial;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="670" y="280" width="150" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- STATE: Đăng xuất -->
+        <mxCell id="state_logout" value="Đăng xuất" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;strokeWidth=1.2;fillColor=#ffffff;strokeColor=#000000;fontStyle=0;fontFamily=Arial;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="120" y="340" width="130" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- END NODE (Double concentric circle) -->
+        <mxCell id="end" value="" style="ellipse;html=1;shape=endState;fillColor=#000000;strokeColor=#000000;strokeWidth=1.2;" vertex="1" parent="1">
+          <mxGeometry x="770" y="380" width="20" height="20" as="geometry" />
+        </mxCell>
+        
+        <!-- EDGES / TRANSITIONS (Orthogonal arrows with Right-Angle routing) -->
+        <!-- Start -> Chưa có tài khoản -->
+        <mxCell id="edge_start" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1.1;endArrow=block;endFill=1;" edge="1" parent="1" source="start" target="state_no_account">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Chưa có tài khoản -> Chờ xác minh -->
+        <mxCell id="edge_register" value="Đăng ký" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1.1;endArrow=block;endFill=1;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=11;fontColor=#000000;" edge="1" parent="1" source="state_no_account" target="state_wait_verify">
+          <mxGeometry x="-0.1" y="8" relative="1" as="geometry">
+            <mxPoint x="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Chờ xác minh -> Thông báo chưa xác minh -->
+        <mxCell id="edge_login_unverified" value="Đăng nhập" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1.1;endArrow=block;endFill=1;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=11;fontColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="state_wait_verify" target="state_unverified_notice">
+          <mxGeometry x="-0.1" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Chờ xác minh -> Hoạt động -->
+        <mxCell id="edge_verify" value="Xác minh" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1.1;endArrow=block;endFill=1;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=11;fontColor=#000000;" edge="1" parent="1" source="state_wait_verify" target="state_active">
+          <mxGeometry x="-0.1" y="8" relative="1" as="geometry">
+            <mxPoint x="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Hoạt động -> Bị khóa -->
+        <mxCell id="edge_lock" value="Khóa" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1.1;endArrow=block;endFill=1;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=11;fontColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="state_active" target="state_banned">
+          <mxGeometry x="-0.1" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Bị khóa -> Hoạt động (Mở khóa) -->
+        <mxCell id="edge_unlock" value="Mở khóa" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1.1;endArrow=block;endFill=1;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=11;fontColor=#000000;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="state_banned" target="state_active">
+          <mxGeometry x="-0.7" y="-10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Hoạt động -> Đăng xuất -->
+        <mxCell id="edge_logout" value="Đăng xuất" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1.1;endArrow=block;endFill=1;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=11;fontColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="state_active" target="state_logout">
+          <mxGeometry x="-0.3" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Bị khóa -> Thông báo bị khóa -->
+        <mxCell id="edge_login_banned" value="Đăng nhập" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1.1;endArrow=block;endFill=1;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=11;fontColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="state_banned" target="state_banned_notice">
+          <mxGeometry x="-0.1" y="-8" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Thông báo chưa xác minh -> End -->
+        <mxCell id="edge_unverified_end" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1.1;endArrow=block;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="state_unverified_notice" target="end">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Thông báo bị khóa -> End -->
+        <mxCell id="edge_banned_end" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1.1;endArrow=block;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="state_banned_notice" target="end">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Đăng xuất -> End -->
+        <mxCell id="edge_logout_end" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1.1;endArrow=block;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="state_logout" target="end">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

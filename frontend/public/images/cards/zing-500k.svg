@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad_zing" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f97316"/>
+      <stop offset="100%" stop-color="#c2410c"/>
+    </linearGradient>
+    <linearGradient id="chipGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffd700"/>
+      <stop offset="50%" stop-color="#fff275"/>
+      <stop offset="100%" stop-color="#cca010"/>
+    </linearGradient>
+  </defs>
+  <rect x="10" y="10" width="580" height="360" rx="24" fill="url(#bgGrad_zing)" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+  <circle cx="520" cy="60" r="160" fill="white" fill-opacity="0.06"/>
+  <circle cx="80" cy="320" r="120" fill="white" fill-opacity="0.04"/>
+  <g transform="translate(45, 45)">
+    <text font-family="'Inter', sans-serif" font-weight="900" font-size="34" fill="#ffffff" letter-spacing="1">Zing Card VNG</text>
+    <text y="28" font-family="'Inter', sans-serif" font-weight="600" font-size="13" fill="#ffffff" fill-opacity="0.8" letter-spacing="3">GAME RECHARGE CARD</text>
+  </g>
+  <g transform="translate(45, 125)">
+    <rect width="68" height="52" rx="8" fill="url(#chipGrad)" stroke="#aa8008" stroke-width="1.5"/>
+    <line x1="0" y1="26" x2="68" y2="26" stroke="#aa8008" stroke-width="1.5"/>
+    <line x1="24" y1="0" x2="24" y2="52" stroke="#aa8008" stroke-width="1.5"/>
+    <line x1="44" y1="0" x2="44" y2="52" stroke="#aa8008" stroke-width="1.5"/>
+    <circle cx="34" cy="26" r="8" fill="#ffd700" stroke="#aa8008" stroke-width="1.5"/>
+  </g>
+  <g transform="translate(45, 230)">
+    <text font-family="'Inter', sans-serif" font-weight="600" font-size="15" fill="#ffffff" fill-opacity="0.75">MỆNH GIÁ THẺ</text>
+    <text y="50" font-family="'Inter', sans-serif" font-weight="900" font-size="52" fill="#ffffff">500.000đ</text>
+  </g>
+  <g transform="translate(410, 275)">
+    <rect width="145" height="42" rx="21" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+    <circle cx="22" cy="21" r="6" fill="#00ff88"/>
+    <text x="38" y="27" font-family="'Inter', sans-serif" font-weight="700" font-size="14" fill="#ffffff">GIAO NGAY</text>
+  </g>
+</svg>

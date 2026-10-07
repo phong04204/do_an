@@ -21,6 +21,9 @@ class User extends Authenticatable
         'password',
         'role',
         'status',
+        'phone',
+        'google_id',
+        'avatar',
     ];
 
     /**
@@ -79,8 +82,4 @@ class User extends Authenticatable
         return $this->role === 'admin';
     }
 
-    public function isSeller(): bool
-    {
-        return $this->role === 'seller';
-    }
 }

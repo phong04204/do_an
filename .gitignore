@@ -1,0 +1,13 @@
+# Temporary & debug scripts
+*.ps1
+scratch/
+frontend/admin_ssr.html
+
+# Backend temporary test scripts
+backend/list_all_accounts.php
+backend/update_*.php
+
+# Environment & local settings
+.claude/
+.env
+*.local

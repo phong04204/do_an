@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1080" width="100%" height="100%">
+  <defs>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 1 L10 5 L0 9 z" fill="#c00000"/>
+    </marker>
+    <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="3" dy="3" stdDeviation="2" flood-opacity="0.25"/>
+    </filter>
+    <style>
+      text { font-family: Arial, sans-serif; fill: #111; }
+      .title { font-size: 19px; text-anchor: middle; font-weight: 700; }
+      .head { font-size: 17px; text-anchor: middle; font-weight: 700; }
+      .msg { font-size: 14px; fill: #c00000; text-anchor: middle; }
+      .sql { font-size: 14px; fill: #111; text-anchor: middle; }
+      .life { stroke: #c00000; stroke-width: 1; stroke-dasharray: 3 3; }
+      .call { stroke: #c00000; stroke-width: 1.5; fill: none; marker-end: url(#arrow-red); }
+      .ret { stroke: #c00000; stroke-width: 1.2; stroke-dasharray: 4 3; fill: none; marker-end: url(#arrow-red); }
+      .act { fill: #fff; stroke: #111; stroke-width: 1.2; filter: url(#shadow); }
+      .bar { fill: #fff; stroke: #111; stroke-width: 1.8; filter: url(#shadow); }
+      .frame { fill: none; stroke: #111; stroke-width: 1.2; }
+    </style>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#fff"/>
+  <text x="450" y="26" class="title">Biểu đồ tuần tự Sửa thông tin khách hàng</text>
+
+  <g transform="translate(75,55)">
+    <circle cx="0" cy="18" r="9" fill="#fff" stroke="#c00000" stroke-width="2"/>
+    <line x1="0" y1="27" x2="0" y2="55" stroke="#c00000" stroke-width="2"/>
+    <line x1="-15" y1="39" x2="15" y2="39" stroke="#c00000" stroke-width="2"/>
+    <line x1="0" y1="55" x2="-14" y2="78" stroke="#c00000" stroke-width="2"/>
+    <line x1="0" y1="55" x2="14" y2="78" stroke="#c00000" stroke-width="2"/>
+    <text x="0" y="100" class="head">:Admin</text>
+  </g>
+
+  <g transform="translate(230,70)">
+    <line x1="-24" y1="10" x2="-6" y2="10" stroke="#c00000" stroke-width="2"/>
+    <line x1="-24" y1="-10" x2="-24" y2="30" stroke="#c00000" stroke-width="2"/>
+    <circle cx="8" cy="10" r="15" fill="#fff" stroke="#c00000" stroke-width="2"/>
+    <text x="0" y="60" class="head">:AdminDashboard</text>
+  </g>
+
+  <g transform="translate(410,70)">
+    <circle cx="0" cy="10" r="15" fill="#fff" stroke="#c00000" stroke-width="2"/>
+    <path d="M-5 -6 A13 13 0 0 1 8 -3" fill="none" stroke="#c00000" stroke-width="2" marker-end="url(#arrow-red)"/>
+    <text x="0" y="60" class="head">:AdminController</text>
+  </g>
+
+  <g transform="translate(590,70)">
+    <circle cx="0" cy="10" r="15" fill="#fff" stroke="#c00000" stroke-width="2"/>
+    <line x1="-14" y1="25" x2="14" y2="25" stroke="#c00000" stroke-width="2"/>
+    <text x="0" y="60" class="head">:UserModel</text>
+  </g>
+
+  <g transform="translate(760,55)">
+    <path d="M-24 9 C-24 0,24 0,24 9 L24 46 C24 55,-24 55,-24 46 Z" fill="#fff9c4" stroke="#111" stroke-width="1.8" filter="url(#shadow)"/>
+    <path d="M-24 9 C-24 18,24 18,24 9" fill="none" stroke="#111" stroke-width="1.8"/>
+    <text x="0" y="82" class="head">:users</text>
+  </g>
+
+  <line x1="75" y1="155" x2="75" y2="1035" class="life"/>
+  <line x1="230" y1="155" x2="230" y2="1035" class="life"/>
+  <line x1="410" y1="155" x2="410" y2="1035" class="life"/>
+  <line x1="590" y1="155" x2="590" y2="1035" class="life"/>
+  <line x1="760" y1="155" x2="760" y2="1035" class="life"/>
+
+  <line x1="25" y1="170" x2="875" y2="170" stroke="#777" stroke-width="2"/>
+  <rect x="315" y="152" width="270" height="34" class="bar"/>
+  <text x="450" y="174" font-size="17" font-weight="700" text-anchor="middle">Sửa thông tin khách hàng</text>
+
+  <rect x="223" y="220" width="14" height="835" class="act"/>
+  <rect x="403" y="270" width="14" height="760" class="act"/>
+  <rect x="583" y="320" width="14" height="690" class="act"/>
+  <rect x="753" y="355" width="14" height="65" class="act"/>
+  <rect x="753" y="935" width="14" height="50" class="act"/>
+
+  <path d="M75 220 L223 220" class="call"/>
+  <text x="149" y="205" class="msg">1. Chọn khách hàng</text>
+  <text x="149" y="219" class="msg">cần sửa</text>
+
+  <path d="M237 270 L403 270" class="call"/>
+  <text x="320" y="255" class="msg">2. Yêu cầu thông tin</text>
+  <text x="320" y="269" class="msg">khách hàng</text>
+
+  <path d="M417 320 L583 320" class="call"/>
+  <text x="500" y="305" class="msg">3. Lấy thông tin</text>
+  <text x="500" y="319" class="msg">khách hàng</text>
+
+  <path d="M597 365 L753 365" class="call"/>
+  <text x="675" y="349" class="sql">SELECT FROM</text>
+  <text x="675" y="363" class="sql">users WHERE id</text>
+
+  <path d="M753 420 L597 420" class="ret"/>
+  <text x="675" y="413" class="msg">Dữ liệu khách hàng</text>
+
+  <path d="M583 455 L417 455" class="ret"/>
+  <text x="500" y="439" class="msg">Đối tượng</text>
+  <text x="500" y="453" class="msg">khách hàng</text>
+
+  <path d="M403 490 L237 490" class="ret"/>
+  <text x="320" y="474" class="msg">Trả về thông tin</text>
+  <text x="320" y="488" class="msg">hiện tại</text>
+
+  <path d="M223 525 L75 525" class="ret"/>
+  <text x="149" y="509" class="msg">Hiển thị form</text>
+  <text x="149" y="523" class="msg">chỉnh sửa</text>
+
+  <path d="M75 575 L223 575" class="call"/>
+  <text x="149" y="559" class="msg">4. Cập nhật thông tin</text>
+  <text x="149" y="573" class="msg">khách hàng</text>
+
+  <path d="M75 625 L223 625" class="call"/>
+  <text x="149" y="609" class="msg">5. Nhấn nút</text>
+  <text x="149" y="623" class="msg">"Lưu"</text>
+
+  <path d="M237 675 L403 675" class="call"/>
+  <text x="320" y="659" class="msg">6. PUT /admin/</text>
+  <text x="320" y="673" class="msg">users/{id}</text>
+
+  <path d="M417 725 L475 725 Q490 725 490 740 L490 745 Q490 760 475 760 L417 760" class="call"/>
+  <text x="475" y="699" class="msg">7. Kiểm tra</text>
+  <text x="475" y="713" class="msg">dữ liệu hợp lệ</text>
+
+  <rect x="45" y="785" width="380" height="105" class="frame"/>
+  <text x="85" y="805" font-size="11" font-weight="700">alt [Dữ liệu không hợp lệ]</text>
+  <path d="M403 835 L237 835" class="ret"/>
+  <text x="320" y="819" class="msg">Thông tin khách hàng</text>
+  <text x="320" y="833" class="msg">không hợp lệ</text>
+  <path d="M223 865 L75 865" class="ret"/>
+  <text x="149" y="849" class="msg">Hiển thị lỗi,</text>
+  <text x="149" y="863" class="msg">yêu cầu nhập lại</text>
+
+  <path d="M417 910 L583 910" class="call"/>
+  <text x="500" y="894" class="msg">8. Cập nhật</text>
+  <text x="500" y="908" class="msg">khách hàng</text>
+
+  <path d="M597 940 L753 940" class="call"/>
+  <text x="675" y="924" class="sql">UPDATE</text>
+  <text x="675" y="938" class="sql">users</text>
+
+  <path d="M753 980 L597 980" class="ret"/>
+  <text x="675" y="973" class="msg">Cập nhật thành công</text>
+
+  <path d="M583 1005 L417 1005" class="ret"/>
+  <text x="500" y="989" class="msg">Đối tượng khách hàng</text>
+  <text x="500" y="1003" class="msg">đã cập nhật</text>
+
+  <path d="M403 1025 L237 1025" class="ret"/>
+  <text x="320" y="1009" class="msg">Cập nhật thông tin</text>
+  <text x="320" y="1023" class="msg">khách hàng thành công</text>
+
+  <path d="M223 1050 L75 1050" class="ret"/>
+  <text x="149" y="1034" class="msg">9. Hiển thị</text>
+  <text x="149" y="1048" class="msg">thông báo</text>
+</svg>

@@ -8,10 +8,8 @@ import {
   ArrowLeft,
   ChevronRight,
   CreditCard,
-  Plus,
-  Minus,
 } from "lucide-react";
-import { useCartStore } from "@/store/cart-store";
+import { cartItemKey, useCartStore } from "@/store/cart-store";
 
 function formatPrice(p: number) {
   return p.toLocaleString("vi-VN") + "đ";
@@ -56,55 +54,58 @@ const TYPE_BADGE = {
 export default function CartPage() {
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
-  const [selectedIds, setSelectedIds] = useState<Set<number>>(new Set());
+  const [selectedKeys, setSelectedKeys] = useState<Set<string>>(new Set());
 
-  const { items, addItem, decreaseItem, removeItem, clearCart } = useCartStore();
+  const { items, removeItem, clearCart, setBuyNowItem } = useCartStore();
 
   useEffect(() => {
     Promise.resolve().then(() => setMounted(true));
   }, []);
 
-  // Sync selectedIds when items list changes (new items auto-selected, removed items dropped)
+  // Sync selections when items list changes (new items auto-selected, removed items dropped).
   useEffect(() => {
-    setSelectedIds(prev => {
-      const validIds = new Set(items.map(i => i.id));
-      const next = new Set<number>();
+    setSelectedKeys(prev => {
+      const validKeys = new Set(items.map(cartItemKey));
+      const next = new Set<string>();
       // Keep existing selections that are still valid
-      prev.forEach(id => { if (validIds.has(id)) next.add(id); });
+      prev.forEach(key => { if (validKeys.has(key)) next.add(key); });
       // Auto-select newly added items (ones not in prev)
-      items.forEach(i => { if (!prev.has(i.id) && mounted) next.add(i.id); });
+      items.forEach(i => {
+        const key = cartItemKey(i);
+        if (!prev.has(key) && mounted) next.add(key);
+      });
       return next;
     });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [items]);
 
-  const toggleSelect = (id: number) => {
-    setSelectedIds(prev => {
+  const toggleSelect = (key: string) => {
+    setSelectedKeys(prev => {
       const next = new Set(prev);
-      next.has(id) ? next.delete(id) : next.add(id);
+      next.has(key) ? next.delete(key) : next.add(key);
       return next;
     });
   };
 
-  const allSelected = items.length > 0 && items.every(i => selectedIds.has(i.id));
-  const someSelected = items.some(i => selectedIds.has(i.id));
+  const allSelected = items.length > 0 && items.every(i => selectedKeys.has(cartItemKey(i)));
+  const someSelected = items.some(i => selectedKeys.has(cartItemKey(i)));
 
   const toggleAll = () => {
     if (allSelected) {
-      setSelectedIds(new Set());
+      setSelectedKeys(new Set());
     } else {
-      setSelectedIds(new Set(items.map(i => i.id)));
+      setSelectedKeys(new Set(items.map(cartItemKey)));
     }
   };
 
-  const handleRemove = (id: number) => {
-    removeItem(id);
-    setSelectedIds(prev => { const next = new Set(prev); next.delete(id); return next; });
+  const handleRemove = (key: string) => {
+    removeItem(key);
+    setSelectedKeys(prev => { const next = new Set(prev); next.delete(key); return next; });
   };
 
   const handleClearCart = () => {
     clearCart();
-    setSelectedIds(new Set());
+    setSelectedKeys(new Set());
   };
 
   if (!mounted) {
@@ -118,8 +119,8 @@ export default function CartPage() {
     );
   }
 
-  const selectedItems = items.filter(i => selectedIds.has(i.id));
-  const subtotal = selectedItems.reduce((acc, i) => acc + i.price * i.quantity, 0);
+  const selectedItems = items.filter(i => selectedKeys.has(cartItemKey(i)));
+  const subtotal = selectedItems.reduce((acc, i) => acc + i.price, 0);
   const finalTotal = subtotal;
 
   // ── EMPTY CART ──────────────────────────────────────────────────────
@@ -234,7 +235,7 @@ export default function CartPage() {
                 Chọn tất cả
               </span>
               <span style={{ fontSize: "0.8rem", color: "var(--text-muted)", marginLeft: "auto" }}>
-                Đã chọn <strong style={{ color: "var(--primary)" }}>{selectedIds.size}</strong>/{items.length} sản phẩm
+                Đã chọn <strong style={{ color: "var(--primary)" }}>{selectedKeys.size}</strong>/{items.length} sản phẩm
               </span>
             </div>
 
@@ -242,11 +243,12 @@ export default function CartPage() {
               const pType = (item.product_type) || "account";
               const badge = TYPE_BADGE[pType] ?? TYPE_BADGE.account;
               const isAccount = pType === "account";
-              const isSelected = selectedIds.has(item.id);
+              const itemKey = cartItemKey(item);
+              const isSelected = selectedKeys.has(itemKey);
 
               return (
                 <div
-                  key={item.id}
+                  key={itemKey}
                   className="card"
                   style={{
                     padding: "1.25rem 1.5rem",
@@ -261,7 +263,7 @@ export default function CartPage() {
                 >
                   {/* Checkbox */}
                   <div
-                    onClick={() => toggleSelect(item.id)}
+                    onClick={() => toggleSelect(itemKey)}
                     style={{
                       width: "20px", height: "20px", borderRadius: "6px", flexShrink: 0,
                       background: isSelected ? "var(--primary)" : "transparent",
@@ -316,49 +318,13 @@ export default function CartPage() {
                       <div style={{ fontSize: "0.68rem", color: "var(--text-muted)", fontWeight: 600, marginBottom: "0.35rem", letterSpacing: "0.04em" }}>
                         SỐ LƯỢNG
                       </div>
-                      {isAccount ? (
-                        <div style={{
-                          fontSize: "0.75rem", fontWeight: 700, color: "var(--text-light)",
-                          background: "var(--bg-muted)", padding: "0.3rem 0.75rem",
-                          borderRadius: "6px", whiteSpace: "nowrap",
-                        }}>
-                          Độc nhất
-                        </div>
-                      ) : (
-                        <div style={{
-                          display: "flex", alignItems: "center",
-                          border: "1.5px solid var(--border)", borderRadius: "8px", overflow: "hidden",
-                        }}>
-                          <button
-                            onClick={() => decreaseItem(item.id)}
-                            style={{
-                              width: "30px", height: "30px",
-                              background: "var(--bg-soft)", border: "none",
-                              cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
-                              color: "var(--text-muted)",
-                            }}
-                          >
-                            <Minus style={{ width: "12px", height: "12px" }} />
-                          </button>
-                          <span style={{
-                            minWidth: "34px", textAlign: "center",
-                            fontSize: "0.9rem", fontWeight: 700, color: "var(--text)",
-                          }}>
-                            {item.quantity}
-                          </span>
-                          <button
-                            onClick={() => addItem(item)}
-                            style={{
-                              width: "30px", height: "30px",
-                              background: "var(--bg-soft)", border: "none",
-                              cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
-                              color: "var(--text-muted)",
-                            }}
-                          >
-                            <Plus style={{ width: "12px", height: "12px" }} />
-                          </button>
-                        </div>
-                      )}
+                      <div style={{
+                        fontSize: "0.75rem", fontWeight: 700, color: "var(--text-light)",
+                        background: "var(--bg-muted)", padding: "0.3rem 0.75rem",
+                        borderRadius: "6px", whiteSpace: "nowrap",
+                      }}>
+                        Duy nhất
+                      </div>
                     </div>
 
                     {/* Price */}
@@ -367,13 +333,13 @@ export default function CartPage() {
                         GIÁ TIỀN
                       </div>
                       <div style={{ fontSize: "1.15rem", fontWeight: 800, color: "var(--primary)" }}>
-                        {formatPrice(item.price * item.quantity)}
+                        {formatPrice(item.price)}
                       </div>
                     </div>
 
                     {/* Delete */}
                     <button
-                      onClick={() => handleRemove(item.id)}
+                      onClick={() => handleRemove(itemKey)}
                       title="Xóa khỏi giỏ hàng"
                       style={{
                         width: "34px", height: "34px", borderRadius: "8px",
@@ -400,7 +366,7 @@ export default function CartPage() {
               <div style={{ display: "flex", flexDirection: "column", gap: "0.8rem", marginBottom: "1.25rem" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.875rem" }}>
                   <span style={{ color: "var(--text-muted)" }}>
-                    Tạm tính ({selectedItems.reduce((a, i) => a + i.quantity, 0)} sản phẩm đã chọn)
+                    Tạm tính ({selectedItems.length} sản phẩm đã chọn)
                   </span>
                   <span style={{ fontWeight: 600, color: "var(--text)" }}>{formatPrice(subtotal)}</span>
                 </div>
@@ -424,28 +390,33 @@ export default function CartPage() {
 
               {/* CTA button */}
               <button
-                onClick={() => selectedIds.size > 0 && router.push("/checkout")}
-                disabled={selectedIds.size === 0}
+                onClick={() => {
+                  if (selectedKeys.size > 0) {
+                    setBuyNowItem(null);
+                    router.push("/checkout");
+                  }
+                }}
+                disabled={selectedKeys.size === 0}
                 style={{
                   width: "100%", padding: "1rem 0.5rem",
-                  background: selectedIds.size > 0
+                  background: selectedKeys.size > 0
                     ? "linear-gradient(135deg, #f97316 0%, #ef4444 100%)"
                     : "var(--bg-muted)",
                   border: "none", borderRadius: "12px",
-                  color: selectedIds.size > 0 ? "#fff" : "var(--text-muted)",
+                  color: selectedKeys.size > 0 ? "#fff" : "var(--text-muted)",
                   fontSize: "0.95rem", fontWeight: 800,
-                  cursor: selectedIds.size > 0 ? "pointer" : "not-allowed",
+                  cursor: selectedKeys.size > 0 ? "pointer" : "not-allowed",
                   letterSpacing: "0.05em",
-                  boxShadow: selectedIds.size > 0 ? "0 6px 24px rgba(249, 115, 22, 0.4)" : "none",
+                  boxShadow: selectedKeys.size > 0 ? "0 6px 24px rgba(249, 115, 22, 0.4)" : "none",
                   display: "flex", alignItems: "center", justifyContent: "center", gap: "0.5rem",
                   transition: "opacity 0.2s, transform 0.15s",
                 }}
-                onMouseEnter={e => { if (selectedIds.size > 0) { e.currentTarget.style.opacity = "0.9"; e.currentTarget.style.transform = "translateY(-2px)"; } }}
+                onMouseEnter={e => { if (selectedKeys.size > 0) { e.currentTarget.style.opacity = "0.9"; e.currentTarget.style.transform = "translateY(-2px)"; } }}
                 onMouseLeave={e => { e.currentTarget.style.opacity = "1"; e.currentTarget.style.transform = "translateY(0)"; }}
               >
                 <CreditCard style={{ width: "19px", height: "19px" }} />
-                {selectedIds.size > 0 ? "TIẾN HÀNH THANH TOÁN NGAY" : "Chưa chọn sản phẩm"}
-                {selectedIds.size > 0 && <ChevronRight style={{ width: "17px", height: "17px" }} />}
+                {selectedKeys.size > 0 ? "TIẾN HÀNH THANH TOÁN NGAY" : "Chưa chọn sản phẩm"}
+                {selectedKeys.size > 0 && <ChevronRight style={{ width: "17px", height: "17px" }} />}
               </button>
             </div>
 

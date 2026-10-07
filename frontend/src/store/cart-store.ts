@@ -2,7 +2,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-interface CartItem {
+export interface CartItem {
   id: number;
   name: string;
   image: string;
@@ -13,50 +13,58 @@ interface CartItem {
 
 interface CartState {
   items: CartItem[];
+  buyNowItem: CartItem | null;
   addItem: (item: CartItem) => void;
-  decreaseItem: (id: number) => void;
-  removeItem: (id: number) => void;
+  setBuyNowItem: (item: CartItem | null) => void;
+  removeItem: (key: string) => void;
   clearCart: () => void;
   totalItems: () => number;
   totalPrice: () => number;
 }
 
+export const cartItemKey = (item: Pick<CartItem, "id" | "product_type">) =>
+  `${item.product_type ?? "account"}-${item.id}`;
+
 export const useCartStore = create<CartState>()(
   persist(
     (set, get) => ({
       items: [],
+      buyNowItem: null,
       addItem: (newItem) => {
         const { items } = get();
-        const existing = items.find((i) => i.id === newItem.id);
-        if (existing) {
-          set({
-            items: items.map((i) =>
-              i.id === newItem.id ? { ...i, quantity: i.quantity + 1 } : i
-            ),
-          });
-        } else {
-          set({ items: [...items, newItem] });
+        const normalizedItem = { ...newItem, quantity: 1 };
+        if (items.some((item) => cartItemKey(item) === cartItemKey(normalizedItem))) {
+          return;
         }
+        set({ items: [...items, normalizedItem] });
       },
-      decreaseItem: (id) => {
-        const { items } = get();
-        const item = items.find((i) => i.id === id);
-        if (!item) return;
-        if (item.quantity <= 1) {
-          set({ items: items.filter((i) => i.id !== id) });
-        } else {
-          set({ items: items.map((i) => i.id === id ? { ...i, quantity: i.quantity - 1 } : i) });
-        }
+      setBuyNowItem: (item) => {
+        set({ buyNowItem: item ? { ...item, quantity: 1 } : null });
       },
-      removeItem: (id) => {
-        set({ items: get().items.filter((i) => i.id !== id) });
+      removeItem: (key) => {
+        set({ items: get().items.filter((item) => cartItemKey(item) !== key) });
       },
       clearCart: () => set({ items: [] }),
-      totalItems: () => get().items.reduce((acc, item) => acc + item.quantity, 0),
-      totalPrice: () => get().items.reduce((acc, item) => acc + item.price * item.quantity, 0),
+      totalItems: () => get().items.length,
+      totalPrice: () => get().items.reduce((acc, item) => acc + item.price, 0),
     }),
     {
       name: "cart-storage",
+      merge: (persistedState, currentState) => {
+        const persisted = persistedState as Partial<CartState>;
+        const persistedItems = persisted?.items ?? [];
+        const uniqueItems = new Map<string, CartItem>();
+        persistedItems.forEach((item) => {
+          uniqueItems.set(cartItemKey(item), { ...item, quantity: 1 });
+        });
+
+        return {
+          ...currentState,
+          ...persisted,
+          items: Array.from(uniqueItems.values()),
+          buyNowItem: persisted?.buyNowItem ?? null,
+        };
+      },
     }
   )
 );

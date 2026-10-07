@@ -4,8 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\GameAccountController;
-use App\Http\Controllers\FavoriteController;
-use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\UploadController;
 use App\Models\GameCard;
 use App\Models\GameGiftcode;
 use Illuminate\Http\Request;
@@ -23,6 +22,8 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('auth')->group(function () {
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/login', [AuthController::class, 'login']);
+    Route::get('/google/redirect', [AuthController::class, 'redirectToGoogle']);
+    Route::get('/google/callback', [AuthController::class, 'handleGoogleCallback']);
 });
 
 // Categories
@@ -70,6 +71,11 @@ Route::get('/game-giftcodes/{id}', function ($id) {
     return response()->json(['success' => true, 'data' => $gc]);
 });
 
+// VNPay Callback (Public redirect from VNPay Sandbox)
+Route::get('/orders/vnpay-callback', [\App\Http\Controllers\OrderController::class, 'vnpayCallback']);
+Route::get('/orders/{id}/simulate-vnpay-success', [\App\Http\Controllers\OrderController::class, 'simulateVnpaySuccess']);
+
+
 
 // ==================== PROTECTED ROUTES (SANCTUM) ====================
 Route::middleware('auth:sanctum')->group(function () {
@@ -78,6 +84,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('auth')->group(function () {
         Route::post('/logout', [AuthController::class, 'logout']);
         Route::get('/me', [AuthController::class, 'me']);
+        Route::put('/profile', [AuthController::class, 'updateProfile']);
     });
 
     // Game Accounts (Protected operations)
@@ -86,27 +93,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/game-accounts/{id}', [GameAccountController::class, 'update']); // Using POST to allow form data containing files/patch if needed, or update
     Route::delete('/game-accounts/{id}', [GameAccountController::class, 'destroy']);
 
-    // Favorites
-    Route::prefix('favorites')->group(function () {
-        Route::get('/', [FavoriteController::class, 'index']);
-        Route::post('/', [FavoriteController::class, 'store']);
-        Route::delete('/{id}', [FavoriteController::class, 'destroy']);
-    });
-
-    // Transactions (Escrow System)
-    Route::prefix('transactions')->group(function () {
-        Route::get('/', [TransactionController::class, 'index']);
-        Route::post('/', [TransactionController::class, 'store']);
-        Route::post('/process-payment', [TransactionController::class, 'processPayment']); // deposit
-        Route::get('/{id}', [TransactionController::class, 'show']);
-        Route::patch('/{id}/confirm', [TransactionController::class, 'confirm']);
-        Route::patch('/{id}/cancel', [TransactionController::class, 'cancel']);
-        
-        // Hooks-aligned routes
-        Route::patch('/{id}/confirm-delivery', [TransactionController::class, 'confirmDelivery']);
-        Route::patch('/{id}/complete', [TransactionController::class, 'confirm']);
-        Route::post('/{id}/dispute', [TransactionController::class, 'dispute']);
-    });
+    // Orders
+    Route::post('/orders', [\App\Http\Controllers\OrderController::class, 'store']);
+    Route::get('/orders', [\App\Http\Controllers\OrderController::class, 'index']);
+    Route::get('/orders/{id}', [\App\Http\Controllers\OrderController::class, 'show']);
 
     // ── Admin routes (role=admin only, checked inside controller) ──
     Route::prefix('admin')->group(function () {
@@ -133,5 +123,9 @@ Route::middleware('auth:sanctum')->group(function () {
 
         Route::get('/orders',                 [AdminController::class, 'orders']);
         Route::put('/orders/{id}',            [AdminController::class, 'updateOrder']);
+
+        Route::post('/upload',                [UploadController::class, 'upload']);
     });
+
+    Route::post('/upload', [UploadController::class, 'upload']);
 });

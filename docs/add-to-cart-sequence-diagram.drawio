@@ -1,0 +1,324 @@
+<mxfile host="Electron" modified="2026-05-29T00:00:00.000Z" agent="5.0" version="22.1.2" type="device">
+  <diagram id="add_to_cart_sequence_diagram" name="Add to Cart Sequence Diagram">
+    <mxGraphModel dx="1000" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- TITLE -->
+        <mxCell id="title" value="UC13 - Thêm sản phẩm vào giỏ hàng" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="270" y="5" width="280" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- 1. USER ACTOR -->
+        <mxCell id="actor_user" value=":User" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;strokeColor=#c00000;strokeWidth=1.5;fillColor=#f8d7da;fontFamily=Arial;fontSize=11;fontStyle=0;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="65" y="10" width="30" height="60" as="geometry" />
+        </mxCell>
+        <!-- User Dotted Lifeline -->
+        <mxCell id="lifeline_user" value="" style="endArrow=none;html=1;rounded=0;strokeColor=#c00000;strokeWidth=1;" edge="1" parent="1" source="actor_user" target="line_user_bottom">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="80" y="90" as="sourcePoint" />
+            <mxPoint x="80" y="780" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="line_user_bottom" value="" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="65" y="770" width="30" height="20" as="geometry" />
+        </mxCell>
+        
+        <!-- 2. BOUNDARY :UI -->
+        <mxCell id="header_ui" value=":UI" style="shape=umlBoundary;whiteSpace=wrap;html=1;strokeColor=#c00000;strokeWidth=1.5;fillColor=#f8d7da;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;fontFamily=Arial;fontSize=11;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="185" y="25" width="30" height="40" as="geometry" />
+        </mxCell>
+        <!-- UI Lifeline -->
+        <mxCell id="lifeline_ui" value="" style="endArrow=none;html=1;rounded=0;strokeColor=#c00000;strokeWidth=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="header_ui" target="line_ui_bottom">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="200" y="90" as="sourcePoint" />
+            <mxPoint x="200" y="780" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="line_ui_bottom" value="" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="185" y="770" width="30" height="20" as="geometry" />
+        </mxCell>
+        <!-- UI Activation box -->
+        <mxCell id="act_ui" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="195" y="110" width="10" height="660" as="geometry" />
+        </mxCell>
+        
+        <!-- 3. CONTROL :CartController -->
+        <mxCell id="header_controller" value=":CartController" style="shape=umlControl;whiteSpace=wrap;html=1;strokeColor=#c00000;strokeWidth=1.5;fillColor=#f8d7da;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;fontFamily=Arial;fontSize=11;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="305" y="25" width="30" height="40" as="geometry" />
+        </mxCell>
+        <!-- Controller Lifeline -->
+        <mxCell id="lifeline_controller" value="" style="endArrow=none;html=1;rounded=0;strokeColor=#c00000;strokeWidth=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="header_controller" target="line_controller_bottom">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="320" y="90" as="sourcePoint" />
+            <mxPoint x="320" y="780" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="line_controller_bottom" value="" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="305" y="770" width="30" height="20" as="geometry" />
+        </mxCell>
+        <!-- Controller Activation box -->
+        <mxCell id="act_controller" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="315" y="135" width="10" height="615" as="geometry" />
+        </mxCell>
+        
+        <!-- 4. ENTITY :ProductModel -->
+        <mxCell id="header_product" value=":ProductModel" style="shape=umlEntity;whiteSpace=wrap;html=1;strokeColor=#c00000;strokeWidth=1.5;fillColor=#f8d7da;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;fontFamily=Arial;fontSize=11;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="425" y="25" width="30" height="40" as="geometry" />
+        </mxCell>
+        <!-- ProductModel Lifeline -->
+        <mxCell id="lifeline_product" value="" style="endArrow=none;html=1;rounded=0;strokeColor=#c00000;strokeWidth=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="header_product" target="line_product_bottom">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="440" y="90" as="sourcePoint" />
+            <mxPoint x="440" y="780" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="line_product_bottom" value="" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="425" y="770" width="30" height="20" as="geometry" />
+        </mxCell>
+        <!-- ProductModel Activation box -->
+        <mxCell id="act_product" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="435" y="210" width="10" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- 5. ENTITY :CartModel -->
+        <mxCell id="header_cart" value=":CartModel" style="shape=umlEntity;whiteSpace=wrap;html=1;strokeColor=#c00000;strokeWidth=1.5;fillColor=#f8d7da;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;fontFamily=Arial;fontSize=11;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="545" y="25" width="30" height="40" as="geometry" />
+        </mxCell>
+        <!-- CartModel Lifeline -->
+        <mxCell id="lifeline_cart" value="" style="endArrow=none;html=1;rounded=0;strokeColor=#c00000;strokeWidth=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="header_cart" target="line_cart_bottom">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="560" y="90" as="sourcePoint" />
+            <mxPoint x="560" y="780" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="line_cart_bottom" value="" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="545" y="770" width="30" height="20" as="geometry" />
+        </mxCell>
+        <!-- CartModel Activation boxes -->
+        <mxCell id="act_cart_check" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="555" y="405" width="10" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="act_cart_insert" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="555" y="600" width="10" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- 6. DATABASE :carts / products (Database) -->
+        <mxCell id="header_users" value="Database" style="shape=datastore;whiteSpace=wrap;html=1;strokeColor=#d6b656;strokeWidth=1.5;fillColor=#fff2cc;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;fontFamily=Arial;fontSize=11;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="665" y="25" width="30" height="40" as="geometry" />
+        </mxCell>
+        <!-- users Lifeline -->
+        <mxCell id="lifeline_users" value="" style="endArrow=none;html=1;rounded=0;strokeColor=#c00000;strokeWidth=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="header_users" target="line_users_bottom">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="680" y="90" as="sourcePoint" />
+            <mxPoint x="680" y="780" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="line_users_bottom" value="" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="665" y="770" width="30" height="20" as="geometry" />
+        </mxCell>
+        <!-- Database Activation Boxes -->
+        <mxCell id="act_users_select" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="675" y="235" width="10" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="act_users_check" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="675" y="430" width="10" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="act_users_insert" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="675" y="625" width="10" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== SEPARATOR ==================== -->
+        <mxCell id="sep_1" value="Thêm sản phẩm vào giỏ hàng" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#ffffff;strokeColor=#000000;fontFamily=Arial;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="85" width="280" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="sep_1_line" value="" style="endArrow=none;html=1;rounded=0;strokeColor=#888888;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="40" y="94" as="sourcePoint" />
+            <mxPoint x="780" y="94" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Step 1 & 2 -->
+        <mxCell id="gmsg_1" value="1. Nhấn nút&lt;br&gt;&quot;Thêm vào giỏ hàng&quot;" style="endArrow=block;html=1;rounded=0;strokeColor=#c00000;strokeWidth=1.1;endFill=1;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=9;fontColor=#c00000;whiteSpace=wrap;" edge="1" parent="1">
+          <mxGeometry x="-0.1" y="8" relative="1" as="geometry">
+            <mxPoint x="80" y="120" as="sourcePoint" />
+            <mxPoint x="195" y="120" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="gmsg_2" value="2. Gửi yêu cầu&lt;br&gt;thêm vào giỏ hàng" style="endArrow=block;html=1;rounded=0;strokeColor=#c00000;strokeWidth=1.1;endFill=1;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=9;fontColor=#c00000;whiteSpace=wrap;" edge="1" parent="1">
+          <mxGeometry x="-0.1" y="8" relative="1" as="geometry">
+            <mxPoint x="205" y="145" as="sourcePoint" />
+            <mxPoint x="315" y="145" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Step 3: Check Product Availability -->
+        <mxCell id="gmsg_check" value="3. Kiểm tra trạng thái&lt;br&gt;sản phẩm" style="endArrow=block;html=1;rounded=0;strokeColor=#c00000;strokeWidth=1.1;endFill=1;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=9;fontColor=#c00000;whiteSpace=wrap;" edge="1" parent="1" source="act_controller" target="act_product">
+          <mxGeometry x="-0.1" y="8" relative="1" as="geometry">
+            <mxPoint x="325" y="210" as="sourcePoint" />
+            <mxPoint x="435" y="210" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="gmsg_sql" value="SELECT * FROM products&lt;br&gt;WHERE id=?" style="endArrow=block;html=1;rounded=0;strokeColor=#c00000;strokeWidth=1.1;endFill=1;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=7.5;fontColor=#c00000;whiteSpace=wrap;" edge="1" parent="1" source="act_product" target="act_users_select">
+          <mxGeometry x="-0.1" y="8" relative="1" as="geometry">
+            <mxPoint x="545" y="235" as="sourcePoint" />
+            <mxPoint x="675" y="235" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="gmsg_sql_ret" value="Kết quả sản phẩm" style="endArrow=block;html=1;rounded=0;strokeColor=#c00000;strokeWidth=1.1;endFill=1;dashed=1;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=8.5;fontColor=#c00000;whiteSpace=wrap;" edge="1" parent="1" source="act_users_select" target="act_product">
+          <mxGeometry x="-0.1" y="8" relative="1" as="geometry">
+            <mxPoint x="675" y="270" as="sourcePoint" />
+            <mxPoint x="545" y="270" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="gmsg_check_ret" value="Trả về trạng thái sản phẩm" style="endArrow=block;html=1;rounded=0;strokeColor=#c00000;strokeWidth=1.1;endFill=1;dashed=1;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=9;fontColor=#c00000;whiteSpace=wrap;" edge="1" parent="1" source="act_product" target="act_controller">
+          <mxGeometry x="0.1" y="8" relative="1" as="geometry">
+            <mxPoint x="435" y="290" as="sourcePoint" />
+            <mxPoint x="325" y="290" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ALT E1: Sản phẩm không khả dụng -->
+        <mxCell id="galt_err" value="alt [E1: Sản phẩm không khả dụng]" style="shape=frame;whiteSpace=wrap;html=1;width=180;height=15;fillColor=none;strokeColor=#000000;strokeWidth=1.1;fontFamily=Arial;fontSize=8.5;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="45" y="310" width="290" height="75" as="geometry" />
+        </mxCell>
+
+        <mxCell id="gmsg_fail" value="Lỗi: &quot;Sản phẩm&lt;br&gt;không còn khả dụng&quot;" style="endArrow=block;html=1;rounded=0;strokeColor=#c00000;strokeWidth=1.1;endFill=1;dashed=1;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=9;fontColor=#c00000;whiteSpace=wrap;" edge="1" parent="1">
+          <mxGeometry x="-0.2" y="12" relative="1" as="geometry">
+            <mxPoint x="315" y="345" as="sourcePoint" />
+            <mxPoint x="195" y="345" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="gmsg_back" value="Hiển thị thông báo lỗi,&lt;br&gt;dừng luồng" style="endArrow=block;html=1;rounded=0;strokeColor=#c00000;strokeWidth=1.1;endFill=1;dashed=1;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=9;fontColor=#c00000;whiteSpace=wrap;" edge="1" parent="1">
+          <mxGeometry x="-0.1" y="8" relative="1" as="geometry">
+            <mxPoint x="195" y="360" as="sourcePoint" />
+            <mxPoint x="80" y="360" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+
+        <!-- Step 4: Check Duplicate -->
+        <mxCell id="gmsg_check_dup" value="4. Kiểm tra sản phẩm đã có&lt;br&gt;trong giỏ hàng chưa" style="endArrow=block;html=1;rounded=0;strokeColor=#c00000;strokeWidth=1.1;endFill=1;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=9;fontColor=#c00000;whiteSpace=wrap;" edge="1" parent="1" source="act_controller" target="act_cart_check">
+          <mxGeometry x="-0.1" y="8" relative="1" as="geometry">
+            <mxPoint x="325" y="405" as="sourcePoint" />
+            <mxPoint x="555" y="405" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="gmsg_sql_dup" value="SELECT * FROM carts&lt;br&gt;WHERE user_id=? AND product_id=?" style="endArrow=block;html=1;rounded=0;strokeColor=#c00000;strokeWidth=1.1;endFill=1;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=7.5;fontColor=#c00000;whiteSpace=wrap;" edge="1" parent="1" source="act_cart_check" target="act_users_check">
+          <mxGeometry x="-0.1" y="8" relative="1" as="geometry">
+            <mxPoint x="565" y="430" as="sourcePoint" />
+            <mxPoint x="675" y="430" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="gmsg_sql_dup_ret" value="Kết quả giỏ hàng" style="endArrow=block;html=1;rounded=0;strokeColor=#c00000;strokeWidth=1.1;endFill=1;dashed=1;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=8.5;fontColor=#c00000;whiteSpace=wrap;" edge="1" parent="1" source="act_users_check" target="act_cart_check">
+          <mxGeometry x="-0.1" y="8" relative="1" as="geometry">
+            <mxPoint x="675" y="465" as="sourcePoint" />
+            <mxPoint x="565" y="465" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="gmsg_check_dup_ret" value="Trả về thông tin trùng lặp" style="endArrow=block;html=1;rounded=0;strokeColor=#c00000;strokeWidth=1.1;endFill=1;dashed=1;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=9;fontColor=#c00000;whiteSpace=wrap;" edge="1" parent="1" source="act_cart_check" target="act_controller">
+          <mxGeometry x="0.1" y="8" relative="1" as="geometry">
+            <mxPoint x="555" y="485" as="sourcePoint" />
+            <mxPoint x="325" y="485" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ALT E2: Sản phẩm đã có trong giỏ hàng -->
+        <mxCell id="galt_dup_err" value="alt [E2: Sản phẩm đã có trong giỏ hàng]" style="shape=frame;whiteSpace=wrap;html=1;width=205;height=15;fillColor=none;strokeColor=#000000;strokeWidth=1.1;fontFamily=Arial;fontSize=8.5;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="45" y="505" width="290" height="75" as="geometry" />
+        </mxCell>
+
+        <mxCell id="gmsg_dup_fail" value="Lỗi: &quot;Sản phẩm đã có&lt;br&gt;trong giỏ hàng&quot;" style="endArrow=block;html=1;rounded=0;strokeColor=#c00000;strokeWidth=1.1;endFill=1;dashed=1;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=9;fontColor=#c00000;whiteSpace=wrap;" edge="1" parent="1">
+          <mxGeometry x="-0.25" y="12" relative="1" as="geometry">
+            <mxPoint x="315" y="542" as="sourcePoint" />
+            <mxPoint x="195" y="542" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="gmsg_dup_back" value="Hiển thị cảnh báo,&lt;br&gt;nhập lại" style="endArrow=block;html=1;rounded=0;strokeColor=#c00000;strokeWidth=1.1;endFill=1;dashed=1;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=9;fontColor=#c00000;whiteSpace=wrap;" edge="1" parent="1">
+          <mxGeometry x="-0.1" y="8" relative="1" as="geometry">
+            <mxPoint x="195" y="555" as="sourcePoint" />
+            <mxPoint x="80" y="555" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+
+        <!-- Step 5: Save Cart -->
+        <mxCell id="gmsg_save" value="5. Tiến hành lưu&lt;br&gt;sản phẩm vào giỏ" style="endArrow=block;html=1;rounded=0;strokeColor=#c00000;strokeWidth=1.1;endFill=1;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=9;fontColor=#c00000;whiteSpace=wrap;" edge="1" parent="1" source="act_controller" target="act_cart_insert">
+          <mxGeometry x="-0.1" y="8" relative="1" as="geometry">
+            <mxPoint x="325" y="600" as="sourcePoint" />
+            <mxPoint x="555" y="600" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="gmsg_sql_save" value="INSERT INTO carts&lt;br&gt;(user_id, product_id) VALUES (?)" style="endArrow=block;html=1;rounded=0;strokeColor=#c00000;strokeWidth=1.1;endFill=1;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=7.5;fontColor=#c00000;whiteSpace=wrap;" edge="1" parent="1" source="act_cart_insert" target="act_users_insert">
+          <mxGeometry x="-0.1" y="8" relative="1" as="geometry">
+            <mxPoint x="565" y="625" as="sourcePoint" />
+            <mxPoint x="675" y="625" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="gmsg_sql_save_ret" value="Lưu thành công" style="endArrow=block;html=1;rounded=0;strokeColor=#c00000;strokeWidth=1.1;endFill=1;dashed=1;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=8.5;fontColor=#c00000;whiteSpace=wrap;" edge="1" parent="1" source="act_users_insert" target="act_cart_insert">
+          <mxGeometry x="-0.1" y="8" relative="1" as="geometry">
+            <mxPoint x="675" y="660" as="sourcePoint" />
+            <mxPoint x="565" y="660" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="gmsg_save_ret" value="Phản hồi thành công" style="endArrow=block;html=1;rounded=0;strokeColor=#c00000;strokeWidth=1.1;endFill=1;dashed=1;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=9;fontColor=#c00000;whiteSpace=wrap;" edge="1" parent="1" source="act_cart_insert" target="act_controller">
+          <mxGeometry x="0.1" y="8" relative="1" as="geometry">
+            <mxPoint x="555" y="680" as="sourcePoint" />
+            <mxPoint x="325" y="680" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+
+        <!-- Step 6 & 7: Success -->
+        <mxCell id="gmsg_success" value="6. Thêm vào giỏ hàng&lt;br&gt;thành công" style="endArrow=block;html=1;rounded=0;strokeColor=#c00000;strokeWidth=1.1;endFill=1;dashed=1;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=9;fontColor=#c00000;whiteSpace=wrap;" edge="1" parent="1">
+          <mxGeometry x="0.1" y="8" relative="1" as="geometry">
+            <mxPoint x="315" y="720" as="sourcePoint" />
+            <mxPoint x="205" y="720" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="gmsg_redirect" value="7. Hiển thị thông báo &amp;amp;&lt;br&gt;cập nhật badge (+1)" style="endArrow=block;html=1;rounded=0;strokeColor=#c00000;strokeWidth=1.1;endFill=1;dashed=1;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=8.5;fontColor=#c00000;whiteSpace=wrap;" edge="1" parent="1">
+          <mxGeometry x="0.1" y="8" relative="1" as="geometry">
+            <mxPoint x="195" y="750" as="sourcePoint" />
+            <mxPoint x="80" y="750" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

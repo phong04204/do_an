@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 940" width="100%" height="100%">
+  <defs>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 1 L10 5 L0 9 z" fill="#c00000"/>
+    </marker>
+    <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="3" dy="3" stdDeviation="2" flood-opacity="0.28"/>
+    </filter>
+    <style>
+      text { font-family: Arial, sans-serif; fill: #111; }
+      .title { font-size: 19px; text-anchor: middle; }
+      .head { font-size: 19px; text-anchor: middle; }
+      .msgText { font-size: 14px; fill: #c00000; text-anchor: middle; }
+      .sqlText { font-size: 14px; fill: #111; text-anchor: middle; }
+      .life { stroke: #c00000; stroke-width: 1; }
+      .call { stroke: #c00000; stroke-width: 1.5; fill: none; marker-end: url(#arrow-red); }
+      .ret { stroke: #c00000; stroke-width: 1.2; stroke-dasharray: 3 3; fill: none; marker-end: url(#arrow-red); }
+      .act { fill: #fff; stroke: #111; stroke-width: 1.2; filter: url(#shadow); }
+      .bar { fill: #fff; stroke: #111; stroke-width: 1.8; filter: url(#shadow); }
+      .frame { fill: none; stroke: #111; stroke-width: 1.2; }
+    </style>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#fff"/>
+  <text x="430" y="25" class="title">UC - Xóa sản phẩm</text>
+
+  <g transform="translate(75,55)">
+    <circle cx="0" cy="18" r="9" fill="#fff" stroke="#c00000" stroke-width="2"/>
+    <line x1="0" y1="27" x2="0" y2="55" stroke="#c00000" stroke-width="2"/>
+    <line x1="-15" y1="39" x2="15" y2="39" stroke="#c00000" stroke-width="2"/>
+    <line x1="0" y1="55" x2="-14" y2="78" stroke="#c00000" stroke-width="2"/>
+    <line x1="0" y1="55" x2="14" y2="78" stroke="#c00000" stroke-width="2"/>
+    <text x="0" y="100" class="head">:Admin</text>
+  </g>
+
+  <g transform="translate(220,70)">
+    <line x1="-24" y1="10" x2="-6" y2="10" stroke="#c00000" stroke-width="2"/>
+    <line x1="-24" y1="-10" x2="-24" y2="30" stroke="#c00000" stroke-width="2"/>
+    <circle cx="8" cy="10" r="15" fill="#fff" stroke="#c00000" stroke-width="2"/>
+    <text x="0" y="60" class="head">:UI</text>
+  </g>
+
+  <g transform="translate(390,70)">
+    <circle cx="0" cy="10" r="15" fill="#fff" stroke="#c00000" stroke-width="2"/>
+    <path d="M-5 -6 A13 13 0 0 1 8 -3" fill="none" stroke="#c00000" stroke-width="2" marker-end="url(#arrow-red)"/>
+    <text x="0" y="60" class="head">:AdminController</text>
+  </g>
+
+  <g transform="translate(560,70)">
+    <circle cx="0" cy="10" r="15" fill="#fff" stroke="#c00000" stroke-width="2"/>
+    <line x1="-14" y1="25" x2="14" y2="25" stroke="#c00000" stroke-width="2"/>
+    <text x="0" y="60" class="head">:ProductModel</text>
+  </g>
+
+  <g transform="translate(725,55)">
+    <path d="M-24 9 C-24 0,24 0,24 9 L24 46 C24 55,-24 55,-24 46 Z" fill="#fff9c4" stroke="#111" stroke-width="1.8" filter="url(#shadow)"/>
+    <path d="M-24 9 C-24 18,24 18,24 9" fill="none" stroke="#111" stroke-width="1.8"/>
+    <text x="0" y="82" class="head">:products</text>
+  </g>
+
+  <line x1="75" y1="155" x2="75" y2="900" class="life"/>
+  <line x1="220" y1="155" x2="220" y2="900" class="life"/>
+  <line x1="390" y1="155" x2="390" y2="900" class="life"/>
+  <line x1="560" y1="155" x2="560" y2="900" class="life"/>
+  <line x1="725" y1="155" x2="725" y2="900" class="life"/>
+
+  <line x1="25" y1="168" x2="835" y2="168" stroke="#777" stroke-width="2"/>
+  <line x1="25" y1="173" x2="835" y2="173" stroke="#bbb" stroke-width="2"/>
+  <rect x="300" y="150" width="260" height="34" class="bar"/>
+  <text x="430" y="172" font-size="17" font-weight="700" text-anchor="middle">Xóa sản phẩm</text>
+
+  <rect x="213" y="220" width="14" height="660" class="act"/>
+  <rect x="383" y="380" width="14" height="470" class="act"/>
+  <rect x="553" y="720" width="14" height="105" class="act"/>
+  <rect x="718" y="760" width="14" height="45" class="act"/>
+
+  <path d="M75 220 L213 220" class="call"/>
+  <text x="143" y="205" class="msgText">1. Chọn sản phẩm</text>
+  <text x="143" y="219" class="msgText">cần xóa</text>
+
+  <path d="M213 280 L75 280" class="ret"/>
+  <text x="143" y="258" class="msgText">2. Hiển thị hộp thoại</text>
+  <text x="143" y="272" class="msgText">xác nhận</text>
+
+  <path d="M75 340 L213 340" class="call"/>
+  <text x="143" y="325" class="msgText">3. Xác nhận</text>
+  <text x="143" y="339" class="msgText">xóa sản phẩm</text>
+
+  <path d="M227 410 L383 410" class="call"/>
+  <text x="305" y="395" class="msgText">4. Gửi yêu cầu</text>
+  <text x="305" y="409" class="msgText">xóa sản phẩm</text>
+
+  <path d="M397 480 L455 480 Q470 480 470 495 L470 500 Q470 515 455 515 L397 515" class="call"/>
+  <text x="455" y="454" class="msgText">5. Kiểm tra</text>
+  <text x="455" y="468" class="msgText">sản phẩm tồn tại</text>
+
+  <rect x="45" y="570" width="360" height="125" class="frame"/>
+  <text x="85" y="590" font-size="11" font-weight="700">alt [Sản phẩm không tồn tại]</text>
+  <path d="M383 630 L227 630" class="ret"/>
+  <text x="305" y="623" class="msgText">"Không tìm thấy sản phẩm"</text>
+  <path d="M213 670 L75 670" class="ret"/>
+  <text x="143" y="655" class="msgText">Hiển thị</text>
+  <text x="143" y="669" class="msgText">thông báo lỗi</text>
+
+  <path d="M397 720 L553 720" class="call"/>
+  <text x="475" y="712" class="msgText">6. Thực hiện xóa</text>
+
+  <path d="M567 760 L718 760" class="call"/>
+  <text x="642" y="724" class="sqlText">DELETE FROM</text>
+  <text x="642" y="738" class="sqlText">game_accounts/cards/</text>
+  <text x="642" y="752" class="sqlText">giftcodes</text>
+
+  <path d="M718 805 L567 805" class="ret"/>
+  <text x="642" y="798" class="msgText">Xóa thành công</text>
+
+  <path d="M553 825 L397 825" class="ret"/>
+  <text x="475" y="811" class="msgText">
+    <tspan x="475" dy="0">Kết quả xóa</tspan>
+    <tspan x="475" dy="14">sản phẩm</tspan>
+  </text>
+
+  <path d="M383 850 L227 850" class="ret"/>
+  <text x="305" y="836" class="msgText">
+    <tspan x="305" dy="0">"Xóa sản phẩm</tspan>
+    <tspan x="305" dy="14">thành công"</tspan>
+  </text>
+
+  <path d="M213 880 L75 880" class="ret"/>
+  <text x="143" y="858" class="msgText">7. Hiển thị</text>
+  <text x="143" y="872" class="msgText">thông báo</text>
+</svg>

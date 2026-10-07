@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import { MessageCircle } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -112,11 +111,6 @@ export default function Footer() {
 
         </div>
       </footer>
-
-      {/* Zalo float button */}
-      <a href="https://zalo.me" target="_blank" className="float-chat" title="Chat Zalo">
-        <MessageCircle style={{ width: "26px", height: "26px" }} />
-      </a>
     </>
   );
 }

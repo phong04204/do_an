@@ -1,0 +1,350 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 1310" width="100%" height="100%">
+  <!-- Definitions for standard UML arrows and markers in red color matching the EAUT style -->
+  <defs>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#c00000" />
+    </marker>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="2" dy="2" stdDeviation="2" flood-opacity="0.3" />
+    </filter>
+  </defs>
+
+  <rect width="100%" height="100%" fill="white" />
+
+  <!-- LIFELINES HEADERS (UML BCE Icons in Pink/White with subtle Red Border) -->
+  
+  <!-- 1. Actor :User (Stickman) -->
+  <g transform="translate(80, 10)">
+    <circle cx="0" cy="20" r="8" fill="#f8d7da" stroke="#c00000" stroke-width="1.5" />
+    <line x1="0" y1="28" x2="0" y2="45" stroke="#c00000" stroke-width="1.5" />
+    <line x1="-12" y1="35" x2="12" y2="35" stroke="#c00000" stroke-width="1.5" />
+    <line x1="0" y1="45" x2="-8" y2="60" stroke="#c00000" stroke-width="1.5" />
+    <line x1="0" y1="45" x2="8" y2="60" stroke="#c00000" stroke-width="1.5" />
+    <text x="0" y="75" font-family="Arial, sans-serif" font-size="17" font-weight="bold" text-anchor="middle">:User</text>
+  </g>
+  <line x1="80" y1="90" x2="80" y2="1290" stroke="#c00000" stroke-width="1.5" />
+
+  <!-- 2. Boundary :UI (OrderPage) -->
+  <g transform="translate(200, 30)">
+    <circle cx="0" cy="15" r="13" fill="#f8d7da" stroke="#c00000" stroke-width="1.5" />
+    <line x1="-13" y1="-2" x2="-13" y2="32" stroke="#c00000" stroke-width="1.5" />
+    <line x1="-13" y1="15" x2="-2" y2="15" stroke="#c00000" stroke-width="1.5" />
+    <text x="0" y="45" font-family="Arial, sans-serif" font-size="17" font-weight="bold" text-anchor="middle">:UI (OrderPage)</text>
+  </g>
+  <line x1="200" y1="90" x2="200" y2="1290" stroke="#c00000" stroke-width="1.5" />
+  <!-- UI Activation Boxes -->
+  <rect x="195" y="110" width="10" height="465" fill="white" stroke="black" stroke-width="1" filter="url(#shadow)" />
+  <rect x="195" y="650" width="10" height="280" fill="white" stroke="black" stroke-width="1" filter="url(#shadow)" />
+  <rect x="195" y="1225" width="10" height="40" fill="white" stroke="black" stroke-width="1" filter="url(#shadow)" />
+
+  <!-- 3. Control :OrderController -->
+  <g transform="translate(320, 30)">
+    <circle cx="0" cy="15" r="13" fill="#f8d7da" stroke="#c00000" stroke-width="1.5" />
+    <path d="M -5 -3 A 14 14 0 0 1 8 0" fill="none" stroke="#c00000" stroke-width="1.5" marker-end="url(#arrow-red)" />
+    <text x="0" y="45" font-family="Arial, sans-serif" font-size="17" font-weight="bold" text-anchor="middle">:OrderController</text>
+  </g>
+  <line x1="320" y1="90" x2="320" y2="1290" stroke="#c00000" stroke-width="1.5" />
+  <!-- Controller Activation Boxes -->
+  <rect x="315" y="135" width="10" height="415" fill="white" stroke="black" stroke-width="1" filter="url(#shadow)" />
+  <rect x="315" y="735" width="10" height="500" fill="white" stroke="black" stroke-width="1" filter="url(#shadow)" />
+
+  <!-- 4. Control :VNPayService -->
+  <g transform="translate(440, 30)">
+    <circle cx="0" cy="15" r="13" fill="#f8d7da" stroke="#c00000" stroke-width="1.5" />
+    <path d="M -5 -3 A 14 14 0 0 1 8 0" fill="none" stroke="#c00000" stroke-width="1.5" marker-end="url(#arrow-red)" />
+    <text x="0" y="45" font-family="Arial, sans-serif" font-size="17" font-weight="bold" text-anchor="middle">:VNPayService</text>
+  </g>
+  <line x1="440" y1="90" x2="440" y2="1290" stroke="#c00000" stroke-width="1.5" />
+  <!-- VNPayService Activation Box -->
+  <rect x="435" y="445" width="10" height="75" fill="white" stroke="black" stroke-width="1" filter="url(#shadow)" />
+
+  <!-- 5. Entity :OrderModel / :ProductModel -->
+  <g transform="translate(560, 30)">
+    <circle cx="0" cy="15" r="13" fill="#f8d7da" stroke="#c00000" stroke-width="1.5" />
+    <line x1="-15" y1="28" x2="15" y2="28" stroke="#c00000" stroke-width="1.5" />
+    <line x1="0" y1="28" x2="0" y2="15" stroke="#c00000" stroke-width="1.5" />
+    <text x="0" y="45" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle">:OrderModel / :ProductModel</text>
+  </g>
+  <line x1="560" y1="90" x2="560" y2="1290" stroke="#c00000" stroke-width="1.5" />
+  <!-- Model Activation Boxes -->
+  <rect x="555" y="175" width="10" height="75" fill="white" stroke="black" stroke-width="1" filter="url(#shadow)" />
+  <rect x="555" y="350" width="10" height="70" fill="white" stroke="black" stroke-width="1" filter="url(#shadow)" />
+  <rect x="555" y="825" width="10" height="50" fill="white" stroke="black" stroke-width="1" filter="url(#shadow)" />
+  <rect x="555" y="995" width="10" height="50" fill="white" stroke="black" stroke-width="1" filter="url(#shadow)" />
+  <rect x="555" y="1065" width="10" height="55" fill="white" stroke="black" stroke-width="1" filter="url(#shadow)" />
+  <rect x="555" y="1135" width="10" height="50" fill="white" stroke="black" stroke-width="1" filter="url(#shadow)" />
+
+  <!-- 6. Database (Database) -->
+  <g transform="translate(680, 30)">
+    <path d="M -15 5 C -15 0, 15 0, 15 5 L 15 25 C 15 30, -15 30, -15 25 Z" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5" />
+    <path d="M -15 5 C -15 10, 15 10, 15 5" fill="none" stroke="#d6b656" stroke-width="1.5" />
+    <text x="0" y="45" font-family="Arial, sans-serif" font-size="17" font-weight="bold" text-anchor="middle">Database</text>
+  </g>
+  <line x1="680" y1="90" x2="680" y2="1290" stroke="#c00000" stroke-width="1.5" />
+  <!-- Database Activation Boxes -->
+  <rect x="675" y="195" width="10" height="30" fill="white" stroke="black" stroke-width="1" filter="url(#shadow)" />
+  <rect x="675" y="370" width="10" height="30" fill="white" stroke="black" stroke-width="1" filter="url(#shadow)" />
+  <rect x="675" y="845" width="10" height="25" fill="white" stroke="black" stroke-width="1" filter="url(#shadow)" />
+  <rect x="675" y="1015" width="10" height="25" fill="white" stroke="black" stroke-width="1" filter="url(#shadow)" />
+  <rect x="675" y="1085" width="10" height="30" fill="white" stroke="black" stroke-width="1" filter="url(#shadow)" />
+  <rect x="675" y="1155" width="10" height="25" fill="white" stroke="black" stroke-width="1" filter="url(#shadow)" />
+
+  <!-- 7. Boundary :Cổng VNPay (External Cổng VNPay) -->
+  <g transform="translate(800, 30)">
+    <circle cx="0" cy="15" r="13" fill="#f8d7da" stroke="#c00000" stroke-width="1.5" />
+    <line x1="-13" y1="-2" x2="-13" y2="32" stroke="#c00000" stroke-width="1.5" />
+    <line x1="-13" y1="15" x2="-2" y2="15" stroke="#c00000" stroke-width="1.5" />
+    <text x="0" y="45" font-family="Arial, sans-serif" font-size="17" font-weight="bold" text-anchor="middle">Cổng VNPay</text>
+  </g>
+  <line x1="800" y1="90" x2="800" y2="1290" stroke="#c00000" stroke-width="1.5" />
+  <!-- VNPay Activation Box -->
+  <rect x="795" y="565" width="10" height="185" fill="white" stroke="black" stroke-width="1" filter="url(#shadow)" />
+
+
+  <!-- TITLE -->
+  <text x="450" y="18" font-family="Arial, sans-serif" font-size="16.5" font-weight="bold" text-anchor="middle">UC20 - UC25: Biểu đồ tuần tự Đặt hàng và Thanh toán qua cổng VNPay</text>
+
+  <!-- ==================== SECTION A: KHỞI TẠO ĐƠN HÀNG ==================== -->
+  <g transform="translate(0, 80)">
+    <line x1="40" y1="9" x2="860" y2="9" stroke="gray" stroke-width="1.5" />
+    <rect x="335" y="0" width="250" height="18" fill="white" stroke="black" stroke-width="1" />
+    <text x="460" y="13" font-family="Arial, sans-serif" font-size="17" font-weight="bold" text-anchor="middle">Khởi tạo thanh toán &amp; đặt hàng</text>
+  </g>
+
+  <!-- Step 1 & 2 -->
+  <path d="M 80 120 L 195 120" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="137" y="107" font-family="Arial, sans-serif" font-size="11.5" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">
+    <tspan x="137" dy="0">1. Nhấn nút</tspan>
+    <tspan x="137" dy="10">"Thanh toán"</tspan>
+  </text>
+
+  <path d="M 205 145 L 315 145" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="260" y="132" font-family="Arial, sans-serif" font-size="11.5" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">
+    <tspan x="260" dy="0">2. Gửi yêu cầu đặt hàng</tspan>
+    <tspan x="260" dy="10">(Axios POST)</tspan>
+  </text>
+
+  <!-- Step 3: Check availability -->
+  <path d="M 325 175 L 555 175" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="440" y="162" font-family="Arial, sans-serif" font-size="11.5" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">
+    <tspan x="440" dy="0">3. Kiểm tra sản phẩm</tspan>
+    <tspan x="440" dy="10">còn khả dụng</tspan>
+  </text>
+
+  <path d="M 565 195 L 675 195" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="620" y="183" font-family="Arial, sans-serif" font-size="10" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">
+    <tspan x="620" dy="0">SELECT status FROM products</tspan>
+    <tspan x="620" dy="8.5">WHERE id=?</tspan>
+  </text>
+
+  <path d="M 675 220 L 565 220" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="620" y="212" font-family="Arial, sans-serif" font-size="11.5" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">Kết quả trạng thái (available)</text>
+
+  <path d="M 555 245 L 325 245" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="440" y="237" font-family="Arial, sans-serif" font-size="11.5" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">Trả về trạng thái</text>
+
+  <!-- ALT E1: Sản phẩm không còn khả dụng -->
+  <g transform="translate(45, 260)" filter="url(#shadow)">
+    <rect width="290" height="75" fill="none" stroke="black" stroke-width="1.1" />
+    <path d="M 0 0 L 185 0 L 175 15 L 0 15 Z" fill="#f0f0f0" stroke="black" stroke-width="0.8" />
+    <text x="5" y="11" font-family="Arial, sans-serif" font-size="11" font-weight="bold">alt [E1: Sản phẩm không khả dụng]</text>
+  </g>
+  <path d="M 315 295 L 205 295" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="270" y="283" font-family="Arial, sans-serif" font-size="11" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">
+    <tspan x="270" dy="0">Lỗi: "Sản phẩm không</tspan>
+    <tspan x="270" dy="9">còn khả dụng"</tspan>
+  </text>
+  
+  <path d="M 195 315 L 80 315" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="137" y="304" font-family="Arial, sans-serif" font-size="11.5" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">
+    <tspan x="137" dy="0">Hiển thị lỗi, dừng luồng</tspan>
+  </text>
+
+
+  <!-- Step 4: Create Order pending -->
+  <path d="M 325 350 L 555 350" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="440" y="337" font-family="Arial, sans-serif" font-size="11.5" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">
+    <tspan x="440" dy="0">4. Khởi tạo đơn hàng (pending_payment)</tspan>
+  </text>
+
+  <path d="M 565 370 L 675 370" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="620" y="358" font-family="Arial, sans-serif" font-size="7" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">
+    <tspan x="620" dy="0">INSERT INTO orders (user_id,</tspan>
+    <tspan x="620" dy="8">total, status) VALUES (?,?,'pending_payment')</tspan>
+  </text>
+
+  <path d="M 675 395 L 565 395" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="620" y="387" font-family="Arial, sans-serif" font-size="11.5" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">Lưu đơn hàng thành công</text>
+
+  <path d="M 555 415 L 325 415" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="440" y="407" font-family="Arial, sans-serif" font-size="11.5" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">Đối tượng Order ($order)</text>
+
+  <!-- Step 5: Get VNPay URL -->
+  <path d="M 325 445 L 435 445" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="380" y="432" font-family="Arial, sans-serif" font-size="11.5" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">
+    <tspan x="380" dy="0">5. Yêu cầu tạo URL</tspan>
+    <tspan x="380" dy="10">thanh toán VNPay</tspan>
+  </text>
+
+  <g transform="translate(448, 465)" filter="url(#shadow)">
+    <rect width="180" height="30" fill="#fcf8e3" stroke="#faebcc" stroke-width="1" />
+    <text x="90" y="18" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#8a6d3b" text-anchor="middle">Tạo chữ ký số (vnp_SecureHash)</text>
+  </g>
+
+  <path d="M 435 515 L 325 515" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="380" y="507" font-family="Arial, sans-serif" font-size="11.5" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">Trả về vnpay_url</text>
+
+  <!-- Step 6 & 7 -->
+  <path d="M 315 540 L 205 540" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="260" y="527" font-family="Arial, sans-serif" font-size="11.5" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">
+    <tspan x="260" dy="0">6. Phản hồi vnpay_url thành công</tspan>
+  </text>
+
+  <path d="M 195 565 L 80 565" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="137" y="552" font-family="Arial, sans-serif" font-size="11.5" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">
+    <tspan x="137" dy="0">7. Chuyển hướng sang VNPay</tspan>
+  </text>
+
+
+  <!-- ==================== SECTION B: THANH TOÁN TRÊN SANDBOX ==================== -->
+  <g transform="translate(0, 580)">
+    <line x1="40" y1="9" x2="860" y2="9" stroke="gray" stroke-width="1.5" />
+    <rect x="335" y="0" width="250" height="18" fill="white" stroke="black" stroke-width="1" />
+    <text x="460" y="13" font-family="Arial, sans-serif" font-size="17" font-weight="bold" text-anchor="middle">Xác thực thanh toán giả lập trên Sandbox</text>
+  </g>
+
+  <!-- Step 8 -->
+  <path d="M 80 620 L 795 620" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="440" y="607" font-family="Arial, sans-serif" font-size="11.5" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">
+    <tspan x="440" dy="0">8. Nhập thông tin &amp; xác nhận thanh toán OTP</tspan>
+  </text>
+
+  <path d="M 795 650 L 205 650" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="500" y="637" font-family="Arial, sans-serif" font-size="11.5" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">
+    <tspan x="500" dy="0">Callback: Chuyển hướng người dùng về Next.js (/payment/callback)</tspan>
+  </text>
+
+  <path d="M 195 675 L 80 675" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="137" y="663" font-family="Arial, sans-serif" font-size="11" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">
+    <tspan x="137" dy="0">Hiển thị màn hình chờ</tspan>
+    <tspan x="137" dy="9">xác thực giao dịch...</tspan>
+  </text>
+
+
+  <!-- ==================== SECTION C: XỬ LÝ IPN ==================== -->
+  <g transform="translate(0, 695)">
+    <line x1="40" y1="9" x2="860" y2="9" stroke="gray" stroke-width="1.5" />
+    <rect x="335" y="0" width="250" height="18" fill="white" stroke="black" stroke-width="1" />
+    <text x="460" y="13" font-family="Arial, sans-serif" font-size="17" font-weight="bold" text-anchor="middle">Xử lý giao dịch Server-to-Server IPN</text>
+  </g>
+
+  <!-- Step 9 -->
+  <path d="M 795 735 L 325 735" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="560" y="722" font-family="Arial, sans-serif" font-size="11.5" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">
+    <tspan x="560" dy="0">9. Gửi kết quả giao dịch qua IPN</tspan>
+  </text>
+
+  <g transform="translate(328, 755)" filter="url(#shadow)">
+    <rect width="180" height="30" fill="#fcf8e3" stroke="#faebcc" stroke-width="1" />
+    <text x="90" y="18" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#8a6d3b" text-anchor="middle">Xác thực chữ ký &amp; vnp_ResponseCode</text>
+  </g>
+
+  <!-- ALT E2: Giao dịch thất bại / Chữ ký không hợp lệ -->
+  <g transform="translate(45, 800)" filter="url(#shadow)">
+    <rect width="765" height="135" fill="none" stroke="black" stroke-width="1.1" />
+    <path d="M 0 0 L 250 0 L 240 15 L 0 15 Z" fill="#f0f0f0" stroke="black" stroke-width="0.8" />
+    <text x="5" y="11" font-family="Arial, sans-serif" font-size="11" font-weight="bold">alt [E2: Giao dịch thất bại / Chữ ký không hợp lệ]</text>
+  </g>
+
+  <path d="M 325 825 L 555 825" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="435" y="817" font-family="Arial, sans-serif" font-size="11" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">Cập nhật đơn hàng thất bại</text>
+
+  <path d="M 565 845 L 675 845" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="620" y="833" font-family="Arial, sans-serif" font-size="7" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">
+    <tspan x="620" dy="0">UPDATE orders SET status='failed'</tspan>
+    <tspan x="620" dy="8">WHERE id=?</tspan>
+  </text>
+
+  <path d="M 675 865 L 565 865" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="620" y="857" font-family="Arial, sans-serif" font-size="11" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">Xác nhận cập nhật</text>
+
+  <path d="M 325 885 L 795 885" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="555" y="877" font-family="Arial, sans-serif" font-size="11" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">Phản hồi IPN lỗi giao dịch</text>
+
+  <path d="M 315 905 L 205 905" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="260" y="897" font-family="Arial, sans-serif" font-size="11" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">Đẩy sự kiện: "Giao dịch thất bại"</text>
+
+  <path d="M 195 925 L 80 925" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="137" y="917" font-family="Arial, sans-serif" font-size="10" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">Hiển thị cảnh báo thanh toán không thành công</text>
+
+
+  <!-- ==================== SECTION D: BÀN GIAO TỰ ĐỘNG ==================== -->
+  <g transform="translate(0, 945)">
+    <line x1="40" y1="9" x2="860" y2="9" stroke="gray" stroke-width="1.5" />
+    <rect x="335" y="0" width="250" height="18" fill="white" stroke="black" stroke-width="1" />
+    <text x="460" y="13" font-family="Arial, sans-serif" font-size="17" font-weight="bold" text-anchor="middle">Thành công &amp; Bàn giao tự động</text>
+  </g>
+
+  <!-- Step 10: Update order completed -->
+  <path d="M 325 995 L 555 995" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="440" y="982" font-family="Arial, sans-serif" font-size="11.5" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">
+    <tspan x="440" dy="0">10. Cập nhật trạng thái đơn hàng hoàn tất</tspan>
+  </text>
+
+  <path d="M 565 1015 L 675 1015" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="620" y="1003" font-family="Arial, sans-serif" font-size="7" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">
+    <tspan x="620" dy="0">UPDATE orders SET status='completed'</tspan>
+    <tspan x="620" dy="8">WHERE id=?</tspan>
+  </text>
+
+  <path d="M 675 1035 L 565 1035" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="620" y="1027" font-family="Arial, sans-serif" font-size="11.5" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">Xác nhận thành công</text>
+
+  <!-- Step 11: Query credentials -->
+  <path d="M 325 1065 L 555 1065" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="440" y="1052" font-family="Arial, sans-serif" font-size="11.5" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">
+    <tspan x="440" dy="0">11. Truy vấn thông tin sản phẩm bàn giao</tspan>
+  </text>
+
+  <path d="M 565 1085 L 675 1085" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="620" y="1073" font-family="Arial, sans-serif" font-size="7" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">
+    <tspan x="620" dy="0">SELECT credentials FROM game_accounts</tspan>
+    <tspan x="620" dy="8">WHERE id=?</tspan>
+  </text>
+
+  <path d="M 675 1110 L 565 1110" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="620" y="1102" font-family="Arial, sans-serif" font-size="11.5" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">Trả về tài khoản/mật khẩu/mã thẻ</text>
+
+  <!-- Step 12: Update product sold -->
+  <path d="M 325 1135 L 555 1135" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="440" y="1122" font-family="Arial, sans-serif" font-size="11.5" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">
+    <tspan x="440" dy="0">12. Cập nhật trạng thái sản phẩm đã bán</tspan>
+  </text>
+
+  <path d="M 565 1155 L 675 1155" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="620" y="1143" font-family="Arial, sans-serif" font-size="7" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">
+    <tspan x="620" dy="0">UPDATE products SET status='sold'</tspan>
+    <tspan x="620" dy="8">WHERE id=?</tspan>
+  </text>
+
+  <path d="M 675 1177 L 565 1177" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="620" y="1169" font-family="Arial, sans-serif" font-size="11.5" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">Xác nhận cập nhật</text>
+
+  <!-- Step 13: Confirm & Notify -->
+  <path d="M 325 1200 L 795 1200" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="560" y="1192" font-family="Arial, sans-serif" font-size="11" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">Phản hồi IPN thành công</text>
+
+  <path d="M 315 1225 L 205 1225" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="265" y="1215" font-family="Arial, sans-serif" font-size="11" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">
+    <tspan x="265" dy="0">Đẩy sự kiện: "Thanh toán thành công"</tspan>
+    <tspan x="265" dy="9">+ Data bàn giao</tspan>
+  </text>
+
+  <path d="M 195 1250 L 80 1250" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="137" y="1240" font-family="Arial, sans-serif" font-size="11" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">
+    <tspan x="137" dy="0">13. Hiển thị chúc mừng &amp;</tspan>
+    <tspan x="137" dy="9">bàn giao thông tin sản phẩm</tspan>
+  </text>
+
+</svg>
+

@@ -45,7 +45,7 @@ class GameAccountController extends Controller
     {
         $user = $request->user();
 
-        if (!in_array($user->role, ['seller', 'admin'])) {
+        if ($user->role !== 'admin') {
             return response()->json(['success' => false, 'message' => 'Bạn không có quyền đăng bán tài khoản.'], 403);
         }
 

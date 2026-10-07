@@ -1,0 +1,254 @@
+<mxfile host="Electron" modified="2026-05-29T00:00:00.000Z" agent="5.0" version="22.1.2" type="device">
+  <diagram id="ad_uc2_cart_all" name="AD-UC2 - Thêm &amp; Quản lý giỏ hàng">
+    <mxGraphModel dx="1000" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- TIÊU ĐỀ BIỂU ĐỒ -->
+        <mxCell id="title" value="AD-UC2 - Thêm sản phẩm &amp; Quản lý giỏ hàng" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="250" y="5" width="300" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- ================= PHÂN LÀN (SWIMLANES) ================= -->
+        <!-- Làn 1: Người dùng -->
+        <mxCell id="lane_user" value="Người dùng" style="swimlane;whiteSpace=wrap;html=1;startSize=25;fillColor=none;strokeColor=#999999;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#000000;collapsible=0;" vertex="1" parent="1">
+          <mxGeometry x="30" y="25" width="370" height="780" as="geometry" />
+        </mxCell>
+
+        <!-- Làn 2: Hệ thống -->
+        <mxCell id="lane_system" value="Hệ thống" style="swimlane;whiteSpace=wrap;html=1;startSize=25;fillColor=none;strokeColor=#999999;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#000000;collapsible=0;" vertex="1" parent="1">
+          <mxGeometry x="400" y="25" width="370" height="780" as="geometry" />
+        </mxCell>
+
+        <!-- ================= CÁC NÚT (NODES) ================= -->
+        <!-- Start Node -->
+        <mxCell id="start_node" value="" style="ellipse;fillColor=#000000;strokeColor=#000000;html=1;" vertex="1" parent="1">
+          <mxGeometry x="205" y="55" width="20" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Giao diện trang sản phẩm -->
+        <mxCell id="act_home" value="Giao diện trang sản phẩm" style="rounded=1;whiteSpace=wrap;html=1;arcSize=18;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1;fontFamily=Arial;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="145" y="95" width="140" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Hiển thị danh sách các sản phẩm -->
+        <mxCell id="act_show_products" value="Hiển thị danh sách&#xa;các sản phẩm" style="rounded=1;whiteSpace=wrap;html=1;arcSize=18;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1;fontFamily=Arial;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="495" y="95" width="180" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Decision: Chọn chức năng -->
+        <mxCell id="dec_choose_func" value="Chọn chức năng" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff9db;strokeColor=#cc0000;strokeWidth=1;fontFamily=Arial;fontSize=10;fontColor=#990000;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="150" y="175" width="130" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- ================= NHÁNH 1: THÊM SẢN PHẨM VÀO GIỎ ================= -->
+        <!-- Chọn sản phẩm cần thêm vào giỏ hàng -->
+        <mxCell id="act_select_add" value="Chọn sản phẩm cần&#xa;thêm vào giỏ hàng." style="rounded=1;whiteSpace=wrap;html=1;arcSize=18;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1;fontFamily=Arial;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="45" y="245" width="140" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- Nhấn nút 'Thêm vào giỏ hàng' -->
+        <mxCell id="act_click_add" value="Nhấn nút&#xa;&quot;Thêm vào giỏ hàng&quot;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=18;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1;fontFamily=Arial;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="45" y="320" width="140" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- Thêm sản phẩm vào giỏ hàng thành công -->
+        <mxCell id="act_add_success" value="Thêm sản phẩm vào&#xa;giỏ hàng thành công" style="rounded=1;whiteSpace=wrap;html=1;arcSize=18;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1;fontFamily=Arial;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="495" y="320" width="180" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- ================= NHÁNH 2: SỬA SỐ LƯỢNG / XÓA / XEM GIỎ ================= -->
+        <!-- Giao diện giỏ hàng -->
+        <mxCell id="act_cart_page" value="Giao diện giỏ hàng" style="rounded=1;whiteSpace=wrap;html=1;arcSize=18;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1;fontFamily=Arial;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="245" y="245" width="130" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- Decision: Thao tác trong giỏ -->
+        <mxCell id="dec_cart_action" value="Thao tác?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff9db;strokeColor=#cc0000;strokeWidth=1;fontFamily=Arial;fontSize=10;fontColor=#990000;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="270" y="380" width="80" height="26" as="geometry" />
+        </mxCell>
+
+        <!-- NHÁNH CON 2.1: SỬA SỐ LƯỢNG -->
+        <!-- Nhập số lượng -->
+        <mxCell id="act_input_qty" value="Nhập số lượng" style="rounded=1;whiteSpace=wrap;html=1;arcSize=18;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1;fontFamily=Arial;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="200" y="440" width="95" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Nhấn nút cập nhật -->
+        <mxCell id="act_click_update" value="Nhấn nút cập nhật" style="rounded=1;whiteSpace=wrap;html=1;arcSize=18;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1;fontFamily=Arial;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="195" y="510" width="105" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Sửa số lượng sản phẩm trong giỏ hàng thành công -->
+        <mxCell id="act_update_success" value="Sửa số lượng sản phẩm&#xa;trong giỏ hàng thành công." style="rounded=1;whiteSpace=wrap;html=1;arcSize=18;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1;fontFamily=Arial;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="495" y="507" width="180" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- NHÁNH CON 2.2: XÓA SẢN PHẨM -->
+        <!-- Chọn sản phẩm cần xóa -->
+        <mxCell id="act_select_del" value="Chọn sản phẩm&#xa;cần xóa" style="rounded=1;whiteSpace=wrap;html=1;arcSize=18;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1;fontFamily=Arial;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="305" y="585" width="95" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Nhấn nút 'Xóa' -->
+        <mxCell id="act_click_del" value="Nhấn nút &quot;Xóa&quot;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=18;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1;fontFamily=Arial;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="305" y="655" width="95" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Xóa sản phẩm trong giỏ hàng thành công -->
+        <mxCell id="act_del_success" value="Xóa sản phẩm trong&#xa;giỏ hàng thành công" style="rounded=1;whiteSpace=wrap;html=1;arcSize=18;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1;fontFamily=Arial;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="495" y="652" width="180" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- ================= ĐIỂM GỘP & KẾT THÚC ================= -->
+        <!-- Merge Diamond cho Sửa & Xóa -->
+        <mxCell id="merge_edit_del" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="577" y="725" width="16" height="16" as="geometry" />
+        </mxCell>
+
+        <!-- Merge Diamond cuối cùng -->
+        <mxCell id="merge_final" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="577" y="760" width="16" height="16" as="geometry" />
+        </mxCell>
+
+        <!-- End Node -->
+        <mxCell id="end_node" value="" style="ellipse;html=1;shape=endState;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="575" y="790" width="20" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- ================= CÁC ĐƯỜNG KẾT NỐI (EDGES) ================= -->
+        <!-- Start -> Giao diện trang sản phẩm -->
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;" edge="1" parent="1" source="start_node" target="act_home">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Giao diện trang sản phẩm -> Hiển thị danh sách sản phẩm -->
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;" edge="1" parent="1" source="act_home" target="act_show_products">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Hiển thị sản phẩm -> Chọn chức năng -->
+        <mxCell id="e3" value="[Chọn chức năng]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;fontFamily=Arial;fontSize=9;fontColor=#555555;fontStyle=2;" edge="1" parent="1" source="act_show_products" target="dec_choose_func">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="585" y="150" />
+              <mxPoint x="215" y="150" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Chọn chức năng -> Nhánh 1: Thêm SP vào giỏ -->
+        <mxCell id="e4" value="[Thêm sản phẩm vào giỏ hàng]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;fontFamily=Arial;fontSize=9;fontColor=#333333;" edge="1" parent="1" source="dec_choose_func" target="act_select_add">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="115" y="190" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Chọn sản phẩm -> Nhấn nút Thêm vào giỏ -->
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;" edge="1" parent="1" source="act_select_add" target="act_click_add">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Nhấn nút Thêm -> Hệ thống: Thêm thành công -->
+        <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;" edge="1" parent="1" source="act_click_add" target="act_add_success">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Chọn chức năng -> Nhánh 2: Sửa/Xóa/Xem giỏ hàng -->
+        <mxCell id="e7" value="[Sửa số lượng/Xóa/Xem giỏ hàng]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;fontFamily=Arial;fontSize=9;fontColor=#333333;" edge="1" parent="1" source="dec_choose_func" target="act_cart_page">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="310" y="190" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Giao diện giỏ hàng -> Thao tác? -->
+        <mxCell id="e8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;" edge="1" parent="1" source="act_cart_page" target="dec_cart_action">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Thao tác? -> [Sửa số lượng] -> Nhập số lượng -->
+        <mxCell id="e9" value="[Sửa số lượng]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;fontFamily=Arial;fontSize=9;fontColor=#333333;" edge="1" parent="1" source="dec_cart_action" target="act_input_qty">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="247" y="393" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Nhập số lượng -> Nhấn nút cập nhật -->
+        <mxCell id="e10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;" edge="1" parent="1" source="act_input_qty" target="act_click_update">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Nhấn nút cập nhật -> Sửa thành công -->
+        <mxCell id="e11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;" edge="1" parent="1" source="act_click_update" target="act_update_success">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Thao tác? -> [Xóa] -> Chọn sản phẩm cần xóa -->
+        <mxCell id="e12" value="[Xóa]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;fontFamily=Arial;fontSize=9;fontColor=#333333;" edge="1" parent="1" source="dec_cart_action" target="act_select_del">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="352" y="393" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Chọn SP cần xóa -> Nhấn nút 'Xóa' -->
+        <mxCell id="e13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;" edge="1" parent="1" source="act_select_del" target="act_click_del">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Nhấn nút 'Xóa' -> Xóa thành công -->
+        <mxCell id="e14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;" edge="1" parent="1" source="act_click_del" target="act_del_success">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Sửa thành công -> Merge Diamond -->
+        <mxCell id="e15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;" edge="1" parent="1" source="act_update_success" target="merge_edit_del">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="705" y="530" />
+              <mxPoint x="705" y="733" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Xóa thành công -> Merge Diamond -->
+        <mxCell id="e16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;" edge="1" parent="1" source="act_del_success" target="merge_edit_del">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="705" y="675" />
+              <mxPoint x="705" y="733" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Merge Edit/Del -> Merge Final -->
+        <mxCell id="e17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;" edge="1" parent="1" source="merge_edit_del" target="merge_final">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Thêm thành công -> Merge Final -->
+        <mxCell id="e18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;" edge="1" parent="1" source="act_add_success" target="merge_final">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="735" y="342" />
+              <mxPoint x="735" y="768" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Merge Final -> End Node -->
+        <mxCell id="e19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;" edge="1" parent="1" source="merge_final" target="end_node">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

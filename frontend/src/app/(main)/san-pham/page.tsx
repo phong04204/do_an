@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, X, Search, SlidersHorizontal, ArrowUpDown } from "lucide-react";
 import ProductCard, { Product } from "@/components/products/ProductCard";
 import FilterSidebar from "@/components/products/FilterSidebar";
 import apiClient from "@/lib/api-client";
@@ -13,6 +13,8 @@ function inferAccountCategory(title: string): string {
   if (t.includes("valorant")) return "VALORANT";
   if (t.includes("free fire")) return "Free Fire";
   if (t.includes("genshin")) return "Genshin Impact";
+  if (t.includes("fc online") || t.includes("fo4")) return "FC Online";
+  if (t.includes("roblox") || t.includes("blox fruit")) return "Roblox";
   if (t.includes("liên quân") || t.includes("aov")) return "Liên Quân";
   if (t.includes("pubg")) return "PUBG Mobile";
   return "Khác";
@@ -24,6 +26,9 @@ function inferCardCategory(title: string): string {
   if (t.includes("zing") || t.includes("vng")) return "Thẻ Zing VNG";
   if (t.includes("vcoin")) return "Thẻ Vcoin";
   if (t.includes("gate")) return "Thẻ Gate";
+  if (t.includes("viettel")) return "Thẻ Viettel";
+  if (t.includes("mobifone") || t.includes("mobi")) return "Thẻ Mobifone";
+  if (t.includes("vinaphone") || t.includes("vina")) return "Thẻ VinaPhone";
   return "Thẻ Game";
 }
 
@@ -32,6 +37,8 @@ function inferGCCategory(title: string): string {
   if (t.includes("valorant")) return "VALORANT";
   if (t.includes("free fire")) return "Free Fire";
   if (t.includes("genshin")) return "Genshin Impact";
+  if (t.includes("liên quân")) return "Liên Quân";
+  if (t.includes("pubg")) return "PUBG Mobile";
   return "Khác";
 }
 
@@ -68,7 +75,7 @@ function mapCards(data: any[]): Product[] {
   return data.map(c => ({
     id: c.id,
     name: c.title,
-    image: IMG_CARD,
+    image: Array.isArray(c.images) && c.images.length > 0 ? c.images[0] : IMG_CARD,
     price: Number(c.price),
     category: inferCardCategory(c.title),
     type: inferCardType(Number(c.price)),
@@ -80,7 +87,7 @@ function mapGiftcodes(data: any[]): Product[] {
   return data.map(g => ({
     id: g.id,
     name: g.title,
-    image: IMG_GC,
+    image: Array.isArray(g.images) && g.images.length > 0 ? g.images[0] : IMG_GC,
     price: Number(g.price),
     category: inferGCCategory(g.title),
     type: "Giftcode game",
@@ -91,14 +98,14 @@ function mapGiftcodes(data: any[]): Product[] {
 // ── Static constants ──────────────────────────────────────────────────────
 const PRODUCT_TYPES = [
   { id: "account",  label: "🎮 Tài khoản Game" },
-  { id: "card",     label: "💳 Thẻ Cào Game" },
+  { id: "card",     label: "💳 Thẻ Cào Chiết Khấu" },
   { id: "giftcode", label: "🎁 Vật phẩm & Giftcode" },
 ];
 
 const PRODUCT_CATEGORIES: Record<string, string[]> = {
-  account:  ["Tất Cả", "Liên Minh", "VALORANT", "Free Fire", "Genshin Impact", "Liên Quân", "PUBG Mobile"],
-  card:     ["Tất Cả", "Thẻ Garena", "Thẻ Zing VNG", "Thẻ Vcoin", "Thẻ Gate"],
-  giftcode: ["Tất Cả", "VALORANT", "Free Fire", "Genshin Impact"],
+  account:  ["Tất Cả", "Liên Minh", "VALORANT", "Free Fire", "Genshin Impact", "Liên Quân", "PUBG Mobile", "FC Online", "Roblox"],
+  card:     ["Tất Cả", "Thẻ Garena", "Thẻ Zing VNG", "Thẻ Vcoin", "Thẻ Gate", "Thẻ Viettel", "Thẻ Mobifone", "Thẻ VinaPhone"],
+  giftcode: ["Tất Cả", "VALORANT", "Free Fire", "Genshin Impact", "Liên Quân", "PUBG Mobile"],
 };
 
 const PRODUCT_TYPE_FILTERS: Record<string, string[]> = {
@@ -112,26 +119,33 @@ const CAT_MAPPING: Record<string, string> = {
   valorant:  "VALORANT",
   freefire:  "Free Fire",
   genshin:   "Genshin Impact",
+  fconline:  "FC Online",
+  roblox:    "Roblox",
   lienquan:  "Liên Quân",
   pubg:      "PUBG Mobile",
 };
 
-const SORT_OPTIONS = ["Mặc định", "Giá thấp đến cao", "Giá cao đến thấp"];
-const PRICE_FILTERS = [
-  { label: "Dưới 100k",    min: 0,       max: 100000 },
-  { label: "100k - 500k",  min: 100000,  max: 500000 },
-  { label: "500k - 1tr",   min: 500000,  max: 1000000 },
-  { label: "Trên 1tr",     min: 1000000, max: 999999999 },
+const SORT_OPTIONS = [
+  { label: "Mặc định", value: "default" },
+  { label: "Giá: Thấp đến Cao", value: "price_asc" },
+  { label: "Giá: Cao đến Thấp", value: "price_desc" },
 ];
 
-const PAGE_SIZE = 9;
+const PRICE_FILTERS = [
+  { label: "Dưới 100.000đ",    min: 0,       max: 100000 },
+  { label: "100.000đ - 500.000đ",  min: 100000,  max: 500000 },
+  { label: "500.000đ - 1.000.000đ",   min: 500000,  max: 1000000 },
+  { label: "Trên 1.000.000đ",     min: 1000000, max: 999999999 },
+];
+
+const PAGE_SIZE = 12;
 
 function ProductListingContent() {
   const searchParams = useSearchParams();
 
   const [activeProductType, setActiveProductType] = useState<"account" | "card" | "giftcode">("account");
   const [activeCat, setActiveCat]       = useState("Tất Cả");
-  const [sort, setSort]                 = useState("Mặc định");
+  const [sort, setSort]                 = useState("default");
   const [search, setSearch]             = useState("");
   const [page, setPage]                 = useState(1);
   const [priceRange, setPriceRange]     = useState<{ min: number; max: number } | null>(null);
@@ -158,7 +172,7 @@ function ProductListingContent() {
           ...mapGiftcodes(gcRes.data),
         ]);
       } catch {
-        setError("Không thể tải sản phẩm. Vui lòng thử lại.");
+        setError("Không thể tải sản phẩm. Vui lòng thử lại sau.");
       } finally {
         setLoading(false);
       }
@@ -171,17 +185,25 @@ function ProductListingContent() {
     Promise.resolve().then(() => {
       const typeParam = searchParams.get("type");
       const catParam  = searchParams.get("cat");
+      const qParam    = searchParams.get("q");
+
       let targetType: "account" | "card" | "giftcode" = "account";
       if (typeParam === "card" || typeParam === "giftcode" || typeParam === "account") {
         targetType = typeParam;
       }
       setActiveProductType(targetType);
+
       if (catParam && CAT_MAPPING[catParam]) {
         setActiveProductType("account");
         setActiveCat(CAT_MAPPING[catParam]);
       } else {
         setActiveCat("Tất Cả");
       }
+
+      if (qParam) {
+        setSearch(qParam);
+      }
+
       setPriceRange(null);
       setSelectedTypes([]);
       setPage(1);
@@ -190,19 +212,22 @@ function ProductListingContent() {
 
   // Filter
   let filtered = allProducts.filter(p => {
-    const matchType   = p.product_type === activeProductType;
-    const matchCat    = activeCat === "Tất Cả" || p.category === activeCat;
-    const matchSearch = !search || p.name.toLowerCase().includes(search.toLowerCase());
-    const matchPrice  = !priceRange || (p.price >= priceRange.min && p.price <= priceRange.max);
+    const matchType    = p.product_type === activeProductType;
+    const matchCat     = activeCat === "Tất Cả" || p.category === activeCat;
+    const matchSearch  = !search.trim() || p.name.toLowerCase().includes(search.trim().toLowerCase());
+    const matchPrice   = !priceRange || (p.price >= priceRange.min && p.price <= priceRange.max);
     const matchSubType = selectedTypes.length === 0 || selectedTypes.includes(p.type ?? "");
     return matchType && matchCat && matchSearch && matchPrice && matchSubType;
   });
 
   // Sort
-  if (sort === "Giá thấp đến cao") filtered = [...filtered].sort((a, b) => a.price - b.price);
-  else if (sort === "Giá cao đến thấp") filtered = [...filtered].sort((a, b) => b.price - a.price);
+  if (sort === "price_asc") {
+    filtered = [...filtered].sort((a, b) => a.price - b.price);
+  } else if (sort === "price_desc") {
+    filtered = [...filtered].sort((a, b) => b.price - a.price);
+  }
 
-  const totalPages = Math.ceil(filtered.length / PAGE_SIZE);
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   const paged      = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
   const toggleType = (t: string) => {
@@ -215,54 +240,108 @@ function ProductListingContent() {
     setSearch("");
     setPriceRange(null);
     setSelectedTypes([]);
+    setSort("default");
     setPage(1);
   };
 
   const getHeaderInfo = () => {
     switch (activeProductType) {
-      case "card":     return { title: "Mua Thẻ Game Chiết Khấu Cao",     subtitle: "Kho thẻ Garena, Zing VNG, Vcoin, Gate nạp trực tiếp chiết khấu cao tốt nhất" };
-      case "giftcode": return { title: "Vật Phẩm & Giftcode Game VIP",    subtitle: "Sở hữu rương súng, kim cương, nguyên thạch nạp giftcode nhận ngay sau 10 giây" };
-      default:         return { title: "Cửa Hàng Tài Khoản Game",         subtitle: "Hệ thống mua bán acc game tự động, an toàn và bảo hành trọn đời 100%" };
+      case "card":
+        return {
+          title: "Kho Thẻ Cào Game Chiết Khấu Cao",
+          subtitle: "Thẻ Garena, Zing VNG, Vcoin, Gate, Viettel nạp tự động, chiết khấu lên đến 5%."
+        };
+      case "giftcode":
+        return {
+          title: "Vật Phẩm & Giftcode Độc Quyền",
+          subtitle: "Giftcode skin hiếm, nguyên thạch, quân huy, kim cương kích hoạt tức thì sau 3 giây."
+        };
+      default:
+        return {
+          title: "Kho Sản Phẩm Tài Khoản Game",
+          subtitle: "Kho acc Liên Quân, VALORANT, LMHT, Genshin Impact bảo mật mail trắng, bảo hành trọn đời."
+        };
     }
   };
 
   const { title: headerTitle, subtitle: headerSubtitle } = getHeaderInfo();
+  const hasActiveFilters = Boolean(search.trim() || activeCat !== "Tất Cả" || priceRange || selectedTypes.length > 0);
 
   return (
-    <div style={{ background: "var(--bg)", minHeight: "100vh" }}>
-      {/* Header */}
-      <div style={{ background: "var(--footer-bg)", padding: "2.5rem 0 2.5rem", textAlign: "center", borderBottom: "1px solid var(--border-light)" }}>
-        <div className="container-main">
-          <h1 style={{ fontSize: "2rem", fontWeight: 900, color: "var(--text)", marginBottom: "0.5rem", letterSpacing: "-0.5px" }}>
+    <div style={{ background: "var(--bg)", minHeight: "100vh", paddingBottom: "4rem" }}>
+      {/* ── Top Header Banner ─────────────────────────────────── */}
+      <div style={{
+        background: "linear-gradient(180deg, var(--footer-bg) 0%, var(--bg) 100%)",
+        borderBottom: "1px solid var(--border-light)",
+        padding: "3rem 1rem 2.25rem",
+        textAlign: "center"
+      }}>
+        <div className="container-main" style={{ maxWidth: 1000 }}>
+          <h1 style={{
+            fontSize: "2.1rem", fontWeight: 900, color: "var(--text)",
+            marginBottom: "0.5rem", letterSpacing: "-0.02em"
+          }}>
             {headerTitle}
           </h1>
-          <p style={{ color: "var(--text-muted)", fontSize: "0.9rem", marginBottom: "1.75rem" }}>
+          <p style={{
+            color: "var(--text-muted)", fontSize: "0.95rem",
+            maxWidth: 620, margin: "0 auto 2rem", lineHeight: 1.6
+          }}>
             {headerSubtitle}
           </p>
 
-          {/* Type tabs */}
-          <div style={{ display: "flex", justifyContent: "center", gap: "0.75rem", flexWrap: "wrap" }}>
+          {/* 3 Main Product Type Tabs */}
+          <div style={{
+            display: "inline-flex",
+            background: "var(--bg-card)",
+            padding: "5px",
+            borderRadius: "16px",
+            border: "1.5px solid var(--border-light)",
+            boxShadow: "0 4px 20px rgba(0,0,0,0.04)",
+            gap: "6px",
+            flexWrap: "wrap",
+            justifyContent: "center"
+          }}>
             {PRODUCT_TYPES.map(t => {
               const active = activeProductType === t.id;
+              const count = allProducts.filter(p => p.product_type === t.id).length;
               return (
                 <button
                   key={t.id}
-                  onClick={() => { setActiveProductType(t.id as any); setActiveCat("Tất Cả"); setPriceRange(null); setSelectedTypes([]); setPage(1); }}
+                  onClick={() => {
+                    setActiveProductType(t.id as any);
+                    setActiveCat("Tất Cả");
+                    setPriceRange(null);
+                    setSelectedTypes([]);
+                    setPage(1);
+                  }}
                   style={{
-                    padding: "0.7rem 1.4rem", borderRadius: "14px", border: "2px solid",
-                    borderColor: active ? "var(--primary)" : "var(--border-light)",
-                    background: active ? "rgba(124, 58, 237, 0.08)" : "var(--bg-soft)",
-                    color: active ? "var(--text)" : "var(--text-muted)",
-                    fontWeight: 750, fontSize: "0.9rem", cursor: "pointer",
-                    transition: "all 0.25s cubic-bezier(0.4, 0, 0.2, 1)",
-                    boxShadow: active ? "0 0 25px rgba(124, 58, 237, 0.2)" : "none",
-                    display: "flex", alignItems: "center", gap: "0.5rem",
+                    padding: "0.65rem 1.4rem",
+                    borderRadius: "12px",
+                    border: "none",
+                    background: active ? "var(--primary)" : "transparent",
+                    color: active ? "#fff" : "var(--text)",
+                    fontWeight: 750,
+                    fontSize: "0.88rem",
+                    cursor: "pointer",
+                    transition: "all 0.2s ease",
+                    boxShadow: active ? "0 4px 15px rgba(124, 58, 237, 0.35)" : "none",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "8px"
                   }}
                 >
-                  {t.label}
+                  <span>{t.label}</span>
                   {!loading && (
-                    <span style={{ fontSize: "0.75rem", background: active ? "rgba(124,58,237,0.15)" : "rgba(0,0,0,0.06)", borderRadius: 99, padding: "1px 7px" }}>
-                      {allProducts.filter(p => p.product_type === t.id).length}
+                    <span style={{
+                      fontSize: "0.72rem",
+                      background: active ? "rgba(255,255,255,0.25)" : "var(--bg-soft)",
+                      color: active ? "#fff" : "var(--text-muted)",
+                      borderRadius: 999,
+                      padding: "1px 8px",
+                      fontWeight: 700
+                    }}>
+                      {count}
                     </span>
                   )}
                 </button>
@@ -272,20 +351,37 @@ function ProductListingContent() {
         </div>
       </div>
 
-      <div className="container-main" style={{ padding: "2.5rem 1rem" }}>
-        {/* Error state */}
+      {/* ── Main Store Body ──────────────────────────────────── */}
+      <div className="container-main" style={{ maxWidth: 1280, padding: "2rem 1rem 0" }}>
         {error && (
-          <div style={{ textAlign: "center", padding: "4rem 0", color: "var(--text-muted)" }}>
-            <div style={{ fontSize: "3rem", marginBottom: "1rem" }}>⚠️</div>
-            <p style={{ fontWeight: 600, marginBottom: "1rem" }}>{error}</p>
-            <button onClick={() => window.location.reload()} style={{ color: "var(--primary)", fontWeight: 700, background: "none", border: "none", cursor: "pointer" }}>
-              Thử lại
+          <div style={{ textAlign: "center", padding: "5rem 0", color: "var(--text-muted)" }}>
+            <div style={{ fontSize: "3.5rem", marginBottom: "1rem" }}>⚠️</div>
+            <p style={{ fontWeight: 600, fontSize: "1.1rem", marginBottom: "1.25rem" }}>{error}</p>
+            <button
+              onClick={() => window.location.reload()}
+              style={{
+                padding: "0.65rem 1.5rem",
+                borderRadius: "10px",
+                background: "var(--primary)",
+                color: "#fff",
+                border: "none",
+                fontWeight: 700,
+                cursor: "pointer"
+              }}
+            >
+              Thử lại ngay
             </button>
           </div>
         )}
 
         {!error && (
-          <div style={{ display: "grid", gridTemplateColumns: "260px 1fr", gap: "2.5rem", alignItems: "start" }}>
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "270px 1fr",
+            gap: "2rem",
+            alignItems: "start"
+          }}>
+            {/* ── Left Sidebar Filter ── */}
             <FilterSidebar
               priceFilters={PRICE_FILTERS}
               typeFilters={PRODUCT_TYPE_FILTERS[activeProductType]}
@@ -297,81 +393,321 @@ function ProductListingContent() {
               activeProductType={activeProductType}
             />
 
+            {/* ── Right Content Area ── */}
             <div>
-              {/* Category pills */}
-              <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", marginBottom: "1.25rem" }}>
-                {PRODUCT_CATEGORIES[activeProductType].map(cat => (
-                  <button
-                    key={cat}
-                    className={`cat-tab${activeCat === cat ? " active" : ""}`}
-                    onClick={() => { setActiveCat(cat); setPage(1); }}
-                  >
-                    {cat}
-                  </button>
-                ))}
+              {/* Category Pills Header */}
+              <div style={{
+                background: "var(--bg-card)",
+                border: "1px solid var(--border-light)",
+                borderRadius: "18px",
+                padding: "1rem 1.25rem",
+                marginBottom: "1.25rem",
+                boxShadow: "0 2px 10px rgba(0,0,0,0.02)"
+              }}>
+                <div style={{
+                  fontSize: "0.78rem", fontWeight: 750, color: "var(--text-muted)",
+                  textTransform: "uppercase", letterSpacing: "0.04em", marginBottom: "0.65rem"
+                }}>
+                  Danh Mục Game & Thẻ
+                </div>
+                <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
+                  {PRODUCT_CATEGORIES[activeProductType].map(cat => {
+                    const isSelected = activeCat === cat;
+                    return (
+                      <button
+                        key={cat}
+                        onClick={() => { setActiveCat(cat); setPage(1); }}
+                        style={{
+                          padding: "0.45rem 0.95rem",
+                          borderRadius: "999px",
+                          fontSize: "0.82rem",
+                          fontWeight: isSelected ? 700 : 550,
+                          cursor: "pointer",
+                          transition: "all 0.15s ease",
+                          border: "1.5px solid",
+                          borderColor: isSelected ? "var(--primary)" : "var(--border-light)",
+                          background: isSelected ? "rgba(124, 58, 237, 0.1)" : "var(--bg-soft)",
+                          color: isSelected ? "var(--primary)" : "var(--text)"
+                        }}
+                      >
+                        {cat}
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
 
+              {/* In-Store Search & Sort Toolbar */}
+              <div style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                gap: "1rem",
+                flexWrap: "wrap",
+                marginBottom: "1.25rem",
+                background: "var(--bg-card)",
+                border: "1px solid var(--border-light)",
+                borderRadius: "16px",
+                padding: "0.75rem 1rem",
+                boxShadow: "0 2px 10px rgba(0,0,0,0.02)"
+              }}>
+                {/* Search in Store */}
+                <div style={{ position: "relative", flex: 1, minWidth: "220px", maxWidth: "420px" }}>
+                  <Search style={{
+                    position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)",
+                    width: "16px", height: "16px", color: "var(--text-muted)"
+                  }} />
+                  <input
+                    type="text"
+                    value={search}
+                    onChange={(e) => { setSearch(e.target.value); setPage(1); }}
+                    placeholder="Tìm theo tên sản phẩm, rank, mã..."
+                    style={{
+                      width: "100%",
+                      padding: "0.55rem 2rem 0.55rem 2.2rem",
+                      borderRadius: "10px",
+                      border: "1px solid var(--border-light)",
+                      background: "var(--bg-soft)",
+                      color: "var(--text)",
+                      fontSize: "0.84rem",
+                      outline: "none",
+                      boxSizing: "border-box",
+                      transition: "border-color 0.2s"
+                    }}
+                    onFocus={e => e.currentTarget.style.borderColor = "var(--primary)"}
+                    onBlur={e => e.currentTarget.style.borderColor = "var(--border-light)"}
+                  />
+                  {search && (
+                    <button
+                      onClick={() => setSearch("")}
+                      style={{
+                        position: "absolute", right: "8px", top: "50%", transform: "translateY(-50%)",
+                        background: "none", border: "none", color: "var(--text-muted)", cursor: "pointer",
+                        padding: "2px", display: "flex", alignItems: "center"
+                      }}
+                    >
+                      <X style={{ width: 14, height: 14 }} />
+                    </button>
+                  )}
+                </div>
 
-              {/* Active filter chips */}
-              {(priceRange || selectedTypes.length > 0) && (
-                <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", marginBottom: "1.5rem" }}>
-                  {priceRange && (
-                    <div style={{ padding: "0.3rem 0.75rem", borderRadius: "8px", background: "rgba(124,58,237,0.1)", color: "var(--primary)", fontSize: "0.8rem", fontWeight: 600, display: "flex", alignItems: "center", gap: "0.4rem" }}>
-                      {PRICE_FILTERS.find(f => f.min === priceRange.min && f.max === priceRange.max)?.label}
-                      <X style={{ width: 14, height: 14, cursor: "pointer" }} onClick={() => setPriceRange(null)} />
+                {/* Right controls: Sort Dropdown & Count */}
+                <div style={{ display: "flex", alignItems: "center", gap: "0.85rem" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                    <ArrowUpDown style={{ width: "14px", height: "14px", color: "var(--text-muted)" }} />
+                    <select
+                      value={sort}
+                      onChange={(e) => { setSort(e.target.value); setPage(1); }}
+                      style={{
+                        padding: "0.5rem 0.85rem",
+                        borderRadius: "10px",
+                        border: "1px solid var(--border-light)",
+                        background: "var(--bg-soft)",
+                        color: "var(--text)",
+                        fontSize: "0.82rem",
+                        fontWeight: 600,
+                        outline: "none",
+                        cursor: "pointer"
+                      }}
+                    >
+                      {SORT_OPTIONS.map(o => (
+                        <option key={o.value} value={o.value}>{o.label}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <span style={{
+                    fontSize: "0.8rem",
+                    color: "var(--text-muted)",
+                    background: "var(--bg-soft)",
+                    padding: "0.45rem 0.75rem",
+                    borderRadius: "8px",
+                    fontWeight: 600,
+                    whiteSpace: "nowrap"
+                  }}>
+                    {filtered.length} sản phẩm
+                  </span>
+                </div>
+              </div>
+
+              {/* Active Filter Badges */}
+              {hasActiveFilters && (
+                <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", flexWrap: "wrap", marginBottom: "1.25rem" }}>
+                  <span style={{ fontSize: "0.78rem", color: "var(--text-muted)", fontWeight: 650 }}>Đang lọc:</span>
+
+                  {search && (
+                    <div style={{
+                      padding: "0.25rem 0.65rem", borderRadius: "8px",
+                      background: "rgba(124, 58, 237, 0.09)", color: "var(--primary)",
+                      fontSize: "0.78rem", fontWeight: 650, display: "flex", alignItems: "center", gap: "5px"
+                    }}>
+                      Từ khóa: "{search}"
+                      <X style={{ width: 13, height: 13, cursor: "pointer" }} onClick={() => setSearch("")} />
                     </div>
                   )}
+
+                  {activeCat !== "Tất Cả" && (
+                    <div style={{
+                      padding: "0.25rem 0.65rem", borderRadius: "8px",
+                      background: "rgba(124, 58, 237, 0.09)", color: "var(--primary)",
+                      fontSize: "0.78rem", fontWeight: 650, display: "flex", alignItems: "center", gap: "5px"
+                    }}>
+                      {activeCat}
+                      <X style={{ width: 13, height: 13, cursor: "pointer" }} onClick={() => setActiveCat("Tất Cả")} />
+                    </div>
+                  )}
+
+                  {priceRange && (
+                    <div style={{
+                      padding: "0.25rem 0.65rem", borderRadius: "8px",
+                      background: "rgba(124, 58, 237, 0.09)", color: "var(--primary)",
+                      fontSize: "0.78rem", fontWeight: 650, display: "flex", alignItems: "center", gap: "5px"
+                    }}>
+                      {PRICE_FILTERS.find(f => f.min === priceRange.min && f.max === priceRange.max)?.label}
+                      <X style={{ width: 13, height: 13, cursor: "pointer" }} onClick={() => setPriceRange(null)} />
+                    </div>
+                  )}
+
                   {selectedTypes.map(t => (
-                    <div key={t} style={{ padding: "0.3rem 0.75rem", borderRadius: "8px", background: "rgba(124,58,237,0.1)", color: "var(--primary)", fontSize: "0.8rem", fontWeight: 600, display: "flex", alignItems: "center", gap: "0.4rem" }}>
-                      {t} <X style={{ width: 14, height: 14, cursor: "pointer" }} onClick={() => toggleType(t)} />
+                    <div key={t} style={{
+                      padding: "0.25rem 0.65rem", borderRadius: "8px",
+                      background: "rgba(124, 58, 237, 0.09)", color: "var(--primary)",
+                      fontSize: "0.78rem", fontWeight: 650, display: "flex", alignItems: "center", gap: "5px"
+                    }}>
+                      {t}
+                      <X style={{ width: 13, height: 13, cursor: "pointer" }} onClick={() => toggleType(t)} />
                     </div>
                   ))}
+
+                  <button
+                    onClick={clearFilters}
+                    style={{
+                      background: "none", border: "none", color: "#EF4444",
+                      fontSize: "0.78rem", fontWeight: 700, cursor: "pointer",
+                      padding: "0.25rem 0.5rem", borderRadius: "6px"
+                    }}
+                  >
+                    Xóa tất cả
+                  </button>
                 </div>
               )}
 
-              {/* Loading skeleton */}
+              {/* ── Product Grid or Empty State ── */}
               {loading ? (
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: "1.5rem" }}>
-                  {Array.from({ length: 6 }).map((_, i) => (
-                    <div key={i} style={{ borderRadius: 16, overflow: "hidden", background: "var(--bg-soft)", border: "1px solid var(--border-light)" }}>
-                      <div style={{ height: 200, background: "var(--border-light)", animation: "pulse 1.5s ease-in-out infinite" }} />
+                <div style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
+                  gap: "1.25rem"
+                }}>
+                  {Array.from({ length: 8 }).map((_, i) => (
+                    <div
+                      key={i}
+                      style={{
+                        borderRadius: 18,
+                        overflow: "hidden",
+                        background: "var(--bg-card)",
+                        border: "1px solid var(--border-light)",
+                        height: 310
+                      }}
+                    >
+                      <div style={{ height: 170, background: "var(--border-light)", animation: "pulse 1.5s ease-in-out infinite" }} />
                       <div style={{ padding: "1rem" }}>
-                        <div style={{ height: 14, borderRadius: 6, background: "var(--border-light)", marginBottom: 8 }} />
-                        <div style={{ height: 14, borderRadius: 6, background: "var(--border-light)", width: "60%" }} />
+                        <div style={{ height: 16, borderRadius: 6, background: "var(--border-light)", marginBottom: 10 }} />
+                        <div style={{ height: 14, borderRadius: 6, background: "var(--border-light)", width: "50%", marginBottom: 16 }} />
+                        <div style={{ height: 20, borderRadius: 6, background: "var(--border-light)", width: "70%" }} />
                       </div>
                     </div>
                   ))}
-                  <style>{`@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.5} }`}</style>
+                  <style>{`@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.45} }`}</style>
                 </div>
               ) : paged.length === 0 ? (
-                <div style={{ textAlign: "center", padding: "5rem 0", color: "var(--text-light)" }}>
-                  <div style={{ fontSize: "4rem", marginBottom: "1rem" }}>🎮</div>
-                  <p style={{ fontSize: "1.1rem", fontWeight: 600 }}>Không tìm thấy sản phẩm phù hợp</p>
-                  <button onClick={clearFilters} style={{ marginTop: "1rem", color: "var(--primary)", fontWeight: 700, background: "none", border: "none", cursor: "pointer" }}>
-                    Xóa bộ lọc
+                <div style={{
+                  textAlign: "center",
+                  padding: "5rem 1.5rem",
+                  background: "var(--bg-card)",
+                  border: "1px solid var(--border-light)",
+                  borderRadius: "20px"
+                }}>
+                  <div style={{ fontSize: "3.5rem", marginBottom: "1rem" }}>🔍</div>
+                  <h3 style={{ fontSize: "1.2rem", fontWeight: 800, color: "var(--text)", marginBottom: "0.4rem" }}>
+                    Không tìm thấy sản phẩm phù hợp
+                  </h3>
+                  <p style={{ color: "var(--text-muted)", fontSize: "0.9rem", maxWidth: 450, margin: "0 auto 1.5rem" }}>
+                    Hãy thử đổi từ khóa tìm kiếm hoặc bấm nút bên dưới để xem lại toàn bộ kho sản phẩm.
+                  </p>
+                  <button
+                    onClick={clearFilters}
+                    style={{
+                      padding: "0.65rem 1.6rem",
+                      borderRadius: "10px",
+                      background: "var(--primary)",
+                      color: "#fff",
+                      border: "none",
+                      fontWeight: 700,
+                      fontSize: "0.88rem",
+                      cursor: "pointer",
+                      boxShadow: "0 4px 15px rgba(124, 58, 237, 0.3)"
+                    }}
+                  >
+                    Đặt lại bộ lọc
                   </button>
                 </div>
               ) : (
-                <>
-                  <div style={{ marginBottom: "1rem", fontSize: "0.85rem", color: "var(--text-muted)" }}>
-                    Hiển thị {paged.length} / {filtered.length} sản phẩm
-                  </div>
-                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: "1.5rem", marginBottom: "3rem" }}>
-                    {paged.map(p => <ProductCard key={`${p.product_type}-${p.id}`} product={p} />)}
-                  </div>
-                </>
+                <div style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
+                  gap: "1.25rem",
+                  marginBottom: "2.5rem"
+                }}>
+                  {paged.map(p => (
+                    <ProductCard key={`${p.product_type}-${p.id}`} product={p} />
+                  ))}
+                </div>
               )}
 
-              {/* Pagination */}
+              {/* ── Pagination ── */}
               {!loading && totalPages > 1 && (
-                <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "0.75rem", paddingBottom: "3rem" }}>
-                  <button className="page-btn" onClick={() => setPage(p => Math.max(1, p - 1))} disabled={page === 1}>
+                <div style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  gap: "0.5rem",
+                  marginTop: "1.5rem"
+                }}>
+                  <button
+                    className="page-btn"
+                    onClick={() => setPage(p => Math.max(1, p - 1))}
+                    disabled={page === 1}
+                    style={{ opacity: page === 1 ? 0.4 : 1, cursor: page === 1 ? "not-allowed" : "pointer" }}
+                  >
                     <ChevronLeft style={{ width: 18, height: 18 }} />
                   </button>
+
                   {Array.from({ length: totalPages }, (_, i) => i + 1).map(p => (
-                    <button key={p} className={`page-btn${p === page ? " active" : ""}`} onClick={() => setPage(p)}>{p}</button>
+                    <button
+                      key={p}
+                      className={`page-btn${p === page ? " active" : ""}`}
+                      onClick={() => setPage(p)}
+                      style={{
+                        width: "38px", height: "38px", borderRadius: "10px",
+                        border: "1px solid",
+                        borderColor: p === page ? "var(--primary)" : "var(--border-light)",
+                        background: p === page ? "var(--primary)" : "var(--bg-card)",
+                        color: p === page ? "#fff" : "var(--text)",
+                        fontWeight: 700, fontSize: "0.88rem", cursor: "pointer",
+                        boxShadow: p === page ? "0 4px 12px rgba(124, 58, 237, 0.3)" : "none"
+                      }}
+                    >
+                      {p}
+                    </button>
                   ))}
-                  <button className="page-btn" onClick={() => setPage(p => Math.min(totalPages, p + 1))} disabled={page === totalPages}>
+
+                  <button
+                    className="page-btn"
+                    onClick={() => setPage(p => Math.min(totalPages, p + 1))}
+                    disabled={page === totalPages}
+                    style={{ opacity: page === totalPages ? 0.4 : 1, cursor: page === totalPages ? "not-allowed" : "pointer" }}
+                  >
                     <ChevronRight style={{ width: 18, height: 18 }} />
                   </button>
                 </div>
@@ -386,7 +722,17 @@ function ProductListingContent() {
 
 export default function SanPhamPage() {
   return (
-    <Suspense fallback={<div style={{ padding: "10rem 0", textAlign: "center", color: "var(--text-light)" }}>Đang tải cửa hàng...</div>}>
+    <Suspense fallback={
+      <div style={{ padding: "10rem 0", textAlign: "center", color: "var(--text-muted)" }}>
+        <div style={{
+          width: 44, height: 44, borderRadius: "50%",
+          border: "3px solid rgba(124,58,237,0.2)", borderTopColor: "var(--primary)",
+          animation: "spin 1s linear infinite", margin: "0 auto 1.25rem"
+        }} />
+        <style>{`@keyframes spin{to{transform:rotate(360deg)}}`}</style>
+        <div style={{ fontSize: "1rem", fontWeight: 600 }}>Đang tải sản phẩm...</div>
+      </div>
+    }>
       <ProductListingContent />
     </Suspense>
   );

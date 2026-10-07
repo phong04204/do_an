@@ -134,6 +134,8 @@ class AdminController extends Controller
             'title'       => 'required|string|max:255',
             'description' => 'nullable|string',
             'price'       => 'required|numeric|min:0',
+            'images'      => 'nullable|array',
+            'images.*'    => 'string',
             'card_serial' => 'required|string',
             'card_code'   => 'required|string',
             'status'      => 'in:available,sold,hidden',
@@ -152,7 +154,7 @@ class AdminController extends Controller
     {
         $this->requireAdmin($request);
         $card = GameCard::findOrFail($id);
-        $card->update($request->only(['title', 'description', 'price', 'card_serial', 'card_code', 'status']));
+        $card->update($request->only(['title', 'description', 'price', 'card_serial', 'card_code', 'status', 'images']));
         return response()->json($card->makeVisible(['card_serial', 'card_code']));
     }
 
@@ -187,6 +189,8 @@ class AdminController extends Controller
             'title'           => 'required|string|max:255',
             'description'     => 'nullable|string',
             'price'           => 'required|numeric|min:0',
+            'images'          => 'nullable|array',
+            'images.*'        => 'string',
             'giftcode_string' => 'required|string',
             'status'          => 'in:available,sold,hidden',
             'seller_id'       => 'required|exists:users,id',
@@ -204,7 +208,7 @@ class AdminController extends Controller
     {
         $this->requireAdmin($request);
         $gc = GameGiftcode::findOrFail($id);
-        $gc->update($request->only(['title', 'description', 'price', 'giftcode_string', 'status']));
+        $gc->update($request->only(['title', 'description', 'price', 'giftcode_string', 'status', 'images']));
         return response()->json($gc->makeVisible(['giftcode_string']));
     }
 

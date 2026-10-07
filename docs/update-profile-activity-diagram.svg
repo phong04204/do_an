@@ -1,0 +1,178 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 750" width="100%" height="100%">
+  <defs>
+    <!-- Mũi tên kết nối chuẩn UML -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#333333" />
+    </marker>
+    <!-- Hiệu ứng đổ bóng các khối thao tác -->
+    <filter id="shadow" x="-4%" y="-4%" width="110%" height="112%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="1" dy="1.5" stdDeviation="1.5" flood-color="#000000" flood-opacity="0.18" />
+    </filter>
+  </defs>
+
+  <!-- Nền canvas trắng -->
+  <rect width="100%" height="100%" fill="#ffffff" />
+
+  <!-- TIÊU ĐỀ BIỂU ĐỒ -->
+  <text x="325" y="16" font-family="Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle" fill="#000000">
+    AD-UC1.3 - Cập nhật thông tin cá nhân &amp; Đổi mật khẩu
+  </text>
+
+  <!-- ================= PHÂN LÀN (SWIMLANES) ================= -->
+  <!-- Đường biên phân làn -->
+  <line x1="25" y1="22" x2="25" y2="730" stroke="#999999" stroke-width="1" />
+  <line x1="270" y1="22" x2="270" y2="730" stroke="#999999" stroke-width="1" />
+  <line x1="625" y1="22" x2="625" y2="730" stroke="#999999" stroke-width="1" />
+
+  <!-- Tiêu đề từng làn -->
+  <text x="145" y="34" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#000000">Người dùng</text>
+  <text x="450" y="34" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#000000">Hệ thống</text>
+
+  <!-- ================= TIẾN TRÌNH THỰC HIỆN ================= -->
+
+  <!-- 1. Điểm bắt đầu (Start Node) -->
+  <circle cx="145" cy="52" r="6.5" fill="#000000" />
+
+  <!-- Mũi tên từ Start xuống Mở trang thông tin -->
+  <line x1="145" y1="58.5" x2="145" y2="72" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+
+  <!-- Khối: Mở trang thông tin -->
+  <rect x="115" y="72" width="60" height="36" rx="8" ry="8" fill="#ffffff" stroke="#333333" stroke-width="0.9" filter="url(#shadow)" />
+  <text x="145" y="86" font-family="Arial, sans-serif" font-size="8.5" text-anchor="middle" fill="#000000">Mở trang</text>
+  <text x="145" y="99" font-family="Arial, sans-serif" font-size="8.5" text-anchor="middle" fill="#000000">thông tin</text>
+
+  <!-- Mũi tên sang Hiển thị form cập nhật (Hệ thống) -->
+  <polyline points="175,90 410,90" fill="none" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+
+  <!-- Khối: Hiển thị form cập nhật -->
+  <rect x="410" y="72" width="70" height="36" rx="8" ry="8" fill="#ffffff" stroke="#333333" stroke-width="0.9" filter="url(#shadow)" />
+  <text x="445" y="86" font-family="Arial, sans-serif" font-size="8.5" text-anchor="middle" fill="#000000">Hiển thị form</text>
+  <text x="445" y="99" font-family="Arial, sans-serif" font-size="8.5" text-anchor="middle" fill="#000000">cập nhật</text>
+
+  <!-- Mũi tên quay về Người dùng -> Decision Thao tác? -->
+  <polyline points="445,108 445,124 145,124 145,135" fill="none" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+
+  <!-- Decision: Thao tác thực hiện? -->
+  <polygon points="145,135 200,145 145,155 90,145" fill="#fff9db" stroke="#cc0000" stroke-width="0.9" />
+  <text x="145" y="148" font-family="Arial, sans-serif" font-size="7.5" font-weight="bold" text-anchor="middle" fill="#990000">Thao tác?</text>
+
+  <!-- Labels nhánh Thông tin & Mật khẩu -->
+  <text x="68" y="141" font-family="Arial, sans-serif" font-size="7.5" text-anchor="middle" fill="#000000">Sửa thông tin</text>
+  <text x="228" y="141" font-family="Arial, sans-serif" font-size="7.5" text-anchor="middle" fill="#000000">Đổi mật khẩu</text>
+
+  <!-- ================= LUỒNG BÊN TRÁI: SỬA THÔNG TIN CÁ NHÂN ================= -->
+  <!-- Đường từ Thao tác? sang Nhập thông tin -->
+  <polyline points="90,145 75,145 75,170" fill="none" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+
+  <!-- Khối: Nhập họ tên, email, SĐT -->
+  <rect x="38" y="170" width="74" height="42" rx="8" ry="8" fill="#ffffff" stroke="#333333" stroke-width="0.9" filter="url(#shadow)" />
+  <text x="75" y="186" font-family="Arial, sans-serif" font-size="8.5" text-anchor="middle" fill="#000000">Nhập tên,</text>
+  <text x="75" y="199" font-family="Arial, sans-serif" font-size="8.5" text-anchor="middle" fill="#000000">email và SĐT</text>
+
+  <!-- Đường nối xuống Nhấn "Lưu thay đổi" -->
+  <line x1="75" y1="212" x2="75" y2="235" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+
+  <!-- Khối: Nhấn "Lưu thay đổi" -->
+  <rect x="38" y="235" width="74" height="38" rx="8" ry="8" fill="#ffffff" stroke="#333333" stroke-width="0.9" filter="url(#shadow)" />
+  <text x="75" y="250" font-family="Arial, sans-serif" font-size="8.5" text-anchor="middle" fill="#000000">Nhấn</text>
+  <text x="75" y="263" font-family="Arial, sans-serif" font-size="8.5" text-anchor="middle" fill="#000000">"Lưu thay đổi"</text>
+
+  <!-- Đường sang Kiểm tra thông tin (Hệ thống) -->
+  <polyline points="75,273 75,296 445,296 445,308" fill="none" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+
+  <!-- Khối: Kiểm tra định dạng & trùng lặp -->
+  <rect x="405" y="308" width="80" height="38" rx="8" ry="8" fill="#ffffff" stroke="#333333" stroke-width="0.9" filter="url(#shadow)" />
+  <text x="445" y="322" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#000000">Kiểm tra định dạng</text>
+  <text x="445" y="334" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#000000">&amp; trùng lặp</text>
+
+  <!-- ================= LUỒNG BÊN PHẢI: ĐỔI MẬT KHẨU ================= -->
+  <!-- Đường từ Thao tác? sang Nhập mật khẩu mới -->
+  <polyline points="200,145 540,145 540,170" fill="none" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+
+  <!-- Khối: Nhập mật khẩu mới và xác nhận -->
+  <rect x="495" y="170" width="90" height="42" rx="8" ry="8" fill="#ffffff" stroke="#333333" stroke-width="0.9" filter="url(#shadow)" />
+  <text x="540" y="186" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#000000">Nhập mật khẩu mới</text>
+  <text x="540" y="199" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#000000">và xác nhận</text>
+
+  <!-- Đường xuống Nhấn "Đổi mật khẩu" -->
+  <line x1="540" y1="212" x2="540" y2="235" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+
+  <!-- Khối: Nhấn "Đổi mật khẩu" -->
+  <rect x="502" y="235" width="76" height="38" rx="8" ry="8" fill="#ffffff" stroke="#333333" stroke-width="0.9" filter="url(#shadow)" />
+  <text x="540" y="250" font-family="Arial, sans-serif" font-size="8.5" text-anchor="middle" fill="#000000">Nhấn</text>
+  <text x="540" y="263" font-family="Arial, sans-serif" font-size="8.5" text-anchor="middle" fill="#000000">"Đổi mật khẩu"</text>
+
+  <!-- Đường xuống Kiểm tra mật khẩu -->
+  <line x1="540" y1="273" x2="540" y2="290" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+
+  <!-- Khối: Kiểm tra độ dài & khớp mật khẩu -->
+  <rect x="498" y="290" width="84" height="38" rx="8" ry="8" fill="#ffffff" stroke="#333333" stroke-width="0.9" filter="url(#shadow)" />
+  <text x="540" y="304" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#000000">Kiểm tra độ dài</text>
+  <text x="540" y="316" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#000000">&amp; khớp mật khẩu</text>
+
+  <!-- ================= MERGE 1: GỘP 2 LUỒNG TRƯỚC KHI KIỂM TRA ================= -->
+  <!-- Merge Diamond 1 tại x = 205, y = 356 -->
+  <polygon points="205,350 213,356 205,362 197,356" fill="#f8cecc" stroke="#b85450" stroke-width="0.8" />
+
+  <!-- Đường từ Kiểm tra thông tin vào Merge 1 -->
+  <polyline points="445,346 445,356 213,356" fill="none" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+
+  <!-- Đường từ Kiểm tra mật khẩu vào Merge 1 -->
+  <polyline points="540,328 540,344 180,344 180,356 197,356" fill="none" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+
+  <!-- Đường từ Merge 1 sang Decision Hợp lệ? -->
+  <polyline points="205,362 205,372 450,372 450,385" fill="none" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+
+  <!-- Decision: Hợp lệ? -->
+  <polygon points="450,385 490,397 450,409 410,397" fill="#fff9db" stroke="#cc0000" stroke-width="0.9" />
+  <text x="450" y="400" font-family="Arial, sans-serif" font-size="7.5" font-weight="bold" text-anchor="middle" fill="#990000">Hợp lệ?</text>
+
+  <!-- Labels Không & Có -->
+  <text x="385" y="394" font-family="Arial, sans-serif" font-size="7.5" text-anchor="middle" fill="#000000">Không</text>
+  <text x="512" y="394" font-family="Arial, sans-serif" font-size="7.5" text-anchor="middle" fill="#000000">Có</text>
+
+  <!-- ================= KẾT QUẢ: KHÔNG (THÔNG BÁO LỖI) ================= -->
+  <polyline points="410,397 375,397 375,420" fill="none" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+  <rect x="345" y="420" width="60" height="38" rx="8" ry="8" fill="#ffffff" stroke="#333333" stroke-width="0.9" filter="url(#shadow)" />
+  <text x="375" y="435" font-family="Arial, sans-serif" font-size="8.5" text-anchor="middle" fill="#000000">Thông báo</text>
+  <text x="375" y="447" font-family="Arial, sans-serif" font-size="8.5" text-anchor="middle" fill="#000000">lỗi</text>
+
+  <!-- Đường từ Thông báo lỗi xuống Merge cuối -->
+  <polyline points="375,458 375,565 419,565" fill="none" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+
+  <!-- ================= KẾT QUẢ: CÓ (LƯU CSDL & THÔNG BÁO THÀNH CÔNG) ================= -->
+  <polyline points="490,397 530,397 530,420" fill="none" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+  <rect x="490" y="420" width="80" height="38" rx="8" ry="8" fill="#ffffff" stroke="#333333" stroke-width="0.9" filter="url(#shadow)" />
+  <text x="530" y="434" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#000000">Cập nhật CSDL</text>
+  <text x="530" y="446" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#000000">(Mã hóa Bcrypt)</text>
+
+  <!-- Đường từ Cập nhật CSDL sang Thông báo thành công -->
+  <polyline points="530,458 530,475 220,475 220,488" fill="none" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+
+  <!-- Khối: Thông báo thành công & Hiển thị thông tin -->
+  <rect x="180" y="488" width="80" height="38" rx="8" ry="8" fill="#ffffff" stroke="#333333" stroke-width="0.9" filter="url(#shadow)" />
+  <text x="220" y="502" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#000000">Thông báo</text>
+  <text x="220" y="514" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#000000">thành công</text>
+
+  <!-- ================= MERGE 2: GỘP KẾT THÚC ================= -->
+  <!-- Merge Diamond 2 tại x = 425, y = 565 -->
+  <polygon points="425,559 433,565 425,571 417,565" fill="#f8cecc" stroke="#b85450" stroke-width="0.8" />
+
+  <!-- Đường từ Thông báo thành công sang Merge 2 -->
+  <polyline points="220,526 220,555 445,555 445,565 433,565" fill="none" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+
+  <!-- Đường từ Merge 2 sang Kết thúc cập nhật (Người dùng) -->
+  <polyline points="425,571 425,585 145,585 145,602" fill="none" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+
+  <!-- Khối: Kết thúc cập nhật -->
+  <rect x="115" y="602" width="60" height="38" rx="8" ry="8" fill="#ffffff" stroke="#333333" stroke-width="0.9" filter="url(#shadow)" />
+  <text x="145" y="617" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#000000">Kết thúc</text>
+  <text x="145" y="630" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#000000">cập nhật</text>
+
+  <!-- Mũi tên xuống End Node -->
+  <line x1="145" y1="640" x2="145" y2="665" stroke="#333333" stroke-width="0.9" marker-end="url(#arrow)" />
+
+  <!-- Điểm kết thúc (End Node: Bullseye) -->
+  <circle cx="145" cy="672" r="7" fill="none" stroke="#000000" stroke-width="1.2" />
+  <circle cx="145" cy="672" r="4.2" fill="#000000" />
+</svg>

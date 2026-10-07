@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-05-25T00:00:00.000Z" agent="Codex" version="24.7.17" type="device">
+  <diagram name="Usecase quản lý giỏ hàng" id="use-case-cart-management">
+    <mxGraphModel dx="1300" dy="780" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1300" pageHeight="780" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="system" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#111111;fillColor=none;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="245" y="55" width="860" height="620" as="geometry"/>
+        </mxCell>
+        <mxCell id="system-label" value="Hệ thống" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontFamily=Times New Roman;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="75" width="120" height="30" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="actor-user" value="Người dùng" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontFamily=Times New Roman;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="75" y="320" width="80" height="120" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="uc-main" value="UC03: Quản lý&lt;br&gt;giỏ hàng" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111111;fillColor=#D5E8D4;fontFamily=Times New Roman;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="300" width="220" height="95" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="uc-add" value="UC03.1: Thêm sản phẩm&lt;br&gt;vào giỏ hàng" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111111;fillColor=#FFF2CC;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="715" y="105" width="245" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc-view" value="UC03.2: Xem&lt;br&gt;giỏ hàng" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111111;fillColor=#FFF2CC;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="715" y="205" width="245" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc-select" value="UC03.3: Chọn sản phẩm&lt;br&gt;cần thanh toán" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111111;fillColor=#FFF2CC;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="715" y="305" width="245" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc-remove" value="UC03.5: Xóa sản phẩm&lt;br&gt;khỏi giỏ hàng" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111111;fillColor=#FFF2CC;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="715" y="405" width="245" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc-clear" value="UC03.6: Xóa toàn bộ&lt;br&gt;giỏ hàng" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111111;fillColor=#FFF2CC;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="715" y="505" width="245" height="82" as="geometry"/>
+        </mxCell>
+        <mxCell id="uc-total" value="UC03.7: Tính tổng tiền&lt;br&gt;giỏ hàng" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111111;fillColor=#FFF2CC;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="715" y="605" width="245" height="82" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="edge-user-main" value="" style="endArrow=none;html=1;rounded=0;strokeColor=#111111;strokeWidth=2.5;" edge="1" parent="1" source="actor-user" target="uc-main">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="extend-add-main" value="&lt;&lt;extend&gt;&gt;" style="endArrow=open;html=1;rounded=0;strokeColor=#111111;dashed=1;fontFamily=Times New Roman;fontSize=12;" edge="1" parent="1" source="uc-add" target="uc-main">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="include-view" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;html=1;rounded=0;strokeColor=#111111;dashed=1;fontFamily=Times New Roman;fontSize=12;" edge="1" parent="1" source="uc-main" target="uc-view">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="extend-select-view" value="&lt;&lt;extend&gt;&gt;" style="endArrow=open;html=1;rounded=0;strokeColor=#111111;dashed=1;fontFamily=Times New Roman;fontSize=12;" edge="1" parent="1" source="uc-select" target="uc-view">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="extend-remove-view" value="&lt;&lt;extend&gt;&gt;" style="endArrow=open;html=1;rounded=0;strokeColor=#111111;dashed=1;fontFamily=Times New Roman;fontSize=12;" edge="1" parent="1" source="uc-remove" target="uc-view">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="extend-clear-view" value="&lt;&lt;extend&gt;&gt;" style="endArrow=open;html=1;rounded=0;strokeColor=#111111;dashed=1;fontFamily=Times New Roman;fontSize=12;" edge="1" parent="1" source="uc-clear" target="uc-view">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="include-view-total" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;html=1;rounded=0;strokeColor=#111111;dashed=1;fontFamily=Times New Roman;fontSize=12;" edge="1" parent="1" source="uc-view" target="uc-total">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="include-select-total" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;html=1;rounded=0;strokeColor=#111111;dashed=1;fontFamily=Times New Roman;fontSize=12;" edge="1" parent="1" source="uc-select" target="uc-total">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="note" value="Theo yêu cầu: UC03 gồm UC03.1, UC03.2, UC03.3, UC03.5, UC03.6, UC03.7" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#999999;fillColor=#ffffff;fontFamily=Times New Roman;fontSize=12;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="330" y="615" width="330" height="42" as="geometry"/>
+        </mxCell>
+        <mxCell id="caption" value="Hình 3.5: Usecase quản lý giỏ hàng" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontFamily=Times New Roman;fontSize=20;" vertex="1" parent="1">
+          <mxGeometry x="400" y="720" width="500" height="40" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

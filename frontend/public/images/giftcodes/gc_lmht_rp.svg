@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" width="100%" height="100%">
+  <defs>
+    <linearGradient id="gcBg_LMHT" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="50%" stop-color="#1e1b4b"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+    <linearGradient id="accentGrad_LMHT" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#ff007a"/>
+    </linearGradient>
+    <filter id="glow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#f59e0b" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <!-- Card Background -->
+  <rect x="10" y="10" width="580" height="360" rx="24" fill="url(#gcBg_LMHT)" stroke="#f59e0b" stroke-width="2.5" stroke-opacity="0.6"/>
+  
+  <!-- Glowing borders and accents -->
+  <rect x="25" y="25" width="550" height="330" rx="16" fill="none" stroke="white" stroke-opacity="0.05" stroke-dasharray="8 8"/>
+  <circle cx="500" cy="90" r="140" fill="#f59e0b" fill-opacity="0.12" filter="blur(40px)"/>
+  <circle cx="100" cy="300" r="110" fill="#a855f7" fill-opacity="0.1" filter="blur(30px)"/>
+
+  <!-- Top Header -->
+  <g transform="translate(45, 55)">
+    <!-- Game Tag -->
+    <rect width="130" height="32" rx="16" fill="#f59e0b" fill-opacity="0.25" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="65" y="21" text-anchor="middle" font-family="'Inter', sans-serif" font-weight="800" font-size="13" fill="#ffffff" letter-spacing="1">
+      LMHT
+    </text>
+    
+    <!-- Code Type -->
+    <text x="145" y="22" font-family="'Inter', sans-serif" font-weight="600" font-size="14" fill="#94a3b8" letter-spacing="2">
+      OFFICIAL GIFTCODE
+    </text>
+  </g>
+
+  <!-- Center Icon / Symbol -->
+  <g transform="translate(460, 160)" filter="url(#glow)">
+    <circle cx="45" cy="45" r="45" fill="#f59e0b" fill-opacity="0.2" stroke="#f59e0b" stroke-width="2"/>
+    <text x="45" y="58" text-anchor="middle" font-size="38" fill="#ffffff">🪙</text>
+  </g>
+
+  <!-- Title & Description -->
+  <g transform="translate(45, 140)">
+    <text font-family="'Inter', sans-serif" font-weight="900" font-size="28" fill="#ffffff" width="380">
+      10.000 Riot Points
+    </text>
+    <text y="38" font-family="'Inter', sans-serif" font-weight="600" font-size="18" fill="#f59e0b">
+      Gói Điểm RP Siêu Cấp
+    </text>
+  </g>
+
+  <!-- Scratch Box Preview -->
+  <g transform="translate(45, 235)">
+    <rect width="360" height="58" rx="12" fill="#0f172a" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+    <text x="20" y="36" font-family="'Courier New', monospace" font-weight="bold" font-size="20" fill="#38bdf8" letter-spacing="4">
+      •••• •••• •••• ••••
+    </text>
+    <rect x="235" y="10" width="112" height="38" rx="8" fill="#f59e0b"/>
+    <text x="291" y="34" text-anchor="middle" font-family="'Inter', sans-serif" font-weight="700" font-size="13" fill="#ffffff">
+      10.000 RP
+    </text>
+  </g>
+
+  <!-- Bottom notice -->
+  <text x="45" y="335" font-family="'Inter', sans-serif" font-weight="500" font-size="12" fill="#64748b">
+    * Mã code tự động gửi vào đơn hàng ngay sau khi thanh toán thành công
+  </text>
+</svg>

@@ -1,0 +1,362 @@
+<mxfile host="Electron" modified="2026-05-29T00:00:00.000Z" agent="5.0" version="22.1.2" type="device">
+  <diagram id="ad_uc1_1_register" name="AD-UC1.1 - Đăng ký tài khoản">
+    <mxGraphModel dx="1000" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- TIÊU ĐỀ BIỂU ĐỒ -->
+        <mxCell id="title" value="AD-UC1.1 - Đăng ký tài khoản" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="270" y="5" width="260" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- ================= PHÂN LÀN (SWIMLANES) ================= -->
+        <!-- Làn 1: Khách vãng lai -->
+        <mxCell id="lane_guest" value="Khách vãng lai" style="swimlane;whiteSpace=wrap;html=1;startSize=25;fillColor=none;strokeColor=#999999;fontFamily=Arial;fontSize=12;fontStyle=0;fontColor=#000000;collapsible=0;" vertex="1" parent="1">
+          <mxGeometry x="30" y="25" width="310" height="980" as="geometry" />
+        </mxCell>
+
+        <!-- Làn 2: Hệ thống -->
+        <mxCell id="lane_system" value="Hệ thống" style="swimlane;whiteSpace=wrap;html=1;startSize=25;fillColor=none;strokeColor=#999999;fontFamily=Arial;fontSize=12;fontStyle=0;fontColor=#000000;collapsible=0;" vertex="1" parent="1">
+          <mxGeometry x="340" y="25" width="440" height="980" as="geometry" />
+        </mxCell>
+
+        <!-- ================= CÁC NÚT (NODES) ================= -->
+        <!-- Start Node -->
+        <mxCell id="start_node" value="" style="ellipse;fillColor=#000000;strokeColor=#000000;html=1;" vertex="1" parent="1">
+          <mxGeometry x="175" y="60" width="20" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Mở trang đăng ký -->
+        <mxCell id="act_open_page" value="Mở trang&#xa;đăng ký" style="rounded=1;whiteSpace=wrap;html=1;arcSize=18;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1;fontFamily=Arial;fontSize=11;dropTarget=0;" vertex="1" parent="1">
+          <mxGeometry x="150" y="100" width="70" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- Decision: Đăng ký bằng? -->
+        <mxCell id="dec_choose_method" value="Đăng ký bằng?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff9db;strokeColor=#cc0000;strokeWidth=1;fontFamily=Arial;fontSize=10;fontColor=#990000;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="135" y="170" width="100" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Nhập thông tin đăng ký -->
+        <mxCell id="act_input_info" value="Nhập&#xa;thông tin&#xa;đăng ký" style="rounded=1;whiteSpace=wrap;html=1;arcSize=18;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1;fontFamily=Arial;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="40" y="220" width="70" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- Nhấn "Đăng ký" -->
+        <mxCell id="act_click_submit" value="Nhấn&#xa;&quot;Đăng ký&quot;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=18;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1;fontFamily=Arial;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="40" y="305" width="70" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- Chuyển đến Google -->
+        <mxCell id="act_redirect_google" value="Chuyển đến&#xa;Google" style="rounded=1;whiteSpace=wrap;html=1;arcSize=18;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1;fontFamily=Arial;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="640" y="220" width="80" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- Nhận thông tin Google -->
+        <mxCell id="act_receive_google" value="Nhận thông tin&#xa;Google" style="rounded=1;whiteSpace=wrap;html=1;arcSize=18;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1;fontFamily=Arial;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="635" y="295" width="90" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- Decision: Thành công? (Google) -->
+        <mxCell id="dec_google_success" value="Thành công?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff9db;strokeColor=#cc0000;strokeWidth=1;fontFamily=Arial;fontSize=10;fontColor=#990000;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="635" y="370" width="90" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Thông báo lỗi (Google) -->
+        <mxCell id="act_err_google" value="Thông báo&#xa;lỗi" style="rounded=1;whiteSpace=wrap;html=1;arcSize=18;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1;fontFamily=Arial;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="560" y="415" width="70" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- Tạo hoặc cập nhật tài khoản -->
+        <mxCell id="act_create_update_acc" value="Tạo hoặc&#xa;cập nhật&#xa;tài khoản" style="rounded=1;whiteSpace=wrap;html=1;arcSize=18;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1;fontFamily=Arial;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="695" y="415" width="70" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- Đăng nhập vào hệ thống -->
+        <mxCell id="act_login_system" value="Đăng nhập&#xa;vào hệ thống" style="rounded=1;whiteSpace=wrap;html=1;arcSize=18;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1;fontFamily=Arial;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="685" y="500" width="90" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- Chuyển đến trang chủ -->
+        <mxCell id="act_to_home_page" value="Chuyển đến&#xa;trang chủ" style="rounded=1;whiteSpace=wrap;html=1;arcSize=18;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1;fontFamily=Arial;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="265" y="570" width="85" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- Kiểm tra thông tin -->
+        <mxCell id="act_check_info" value="Kiểm tra&#xa;thông tin" style="rounded=1;whiteSpace=wrap;html=1;arcSize=18;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1;fontFamily=Arial;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="420" y="380" width="70" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- Decision: Hợp lệ? -->
+        <mxCell id="dec_valid" value="Hợp lệ?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff9db;strokeColor=#cc0000;strokeWidth=1;fontFamily=Arial;fontSize=10;fontColor=#990000;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="415" y="450" width="80" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Thông báo lỗi (Email) -->
+        <mxCell id="act_err_email" value="Thông báo&#xa;lỗi" style="rounded=1;whiteSpace=wrap;html=1;arcSize=18;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1;fontFamily=Arial;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="345" y="495" width="70" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- Tạo tài khoản -->
+        <mxCell id="act_create_account" value="Tạo&#xa;tài khoản" style="rounded=1;whiteSpace=wrap;html=1;arcSize=18;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1;fontFamily=Arial;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="495" y="495" width="70" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- Gửi email xác minh -->
+        <mxCell id="act_send_verify_mail" value="Gửi email&#xa;xác minh" style="rounded=1;whiteSpace=wrap;html=1;arcSize=18;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1;fontFamily=Arial;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="495" y="565" width="70" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- Xác minh email -->
+        <mxCell id="act_verify_email" value="Xác minh&#xa;email" style="rounded=1;whiteSpace=wrap;html=1;arcSize=18;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1;fontFamily=Arial;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="105" y="635" width="70" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- Decision: Xác minh? -->
+        <mxCell id="dec_verified" value="Xác minh?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff9db;strokeColor=#cc0000;strokeWidth=1;fontFamily=Arial;fontSize=10;fontColor=#990000;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="495" y="675" width="80" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Thông báo lỗi xác minh -->
+        <mxCell id="act_err_verify" value="Thông báo lỗi&#xa;xác minh" style="rounded=1;whiteSpace=wrap;html=1;arcSize=18;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1;fontFamily=Arial;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="430" y="720" width="85" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- Kích hoạt tài khoản -->
+        <mxCell id="act_activate_acc" value="Kích hoạt&#xa;tài khoản" style="rounded=1;whiteSpace=wrap;html=1;arcSize=18;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1;fontFamily=Arial;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="550" y="720" width="75" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- Chuyển đến trang đăng nhập -->
+        <mxCell id="act_to_login_page" value="Chuyển đến&#xa;trang đăng nhập" style="rounded=1;whiteSpace=wrap;html=1;arcSize=18;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1;fontFamily=Arial;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="135" y="795" width="105" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- Kết thúc đăng ký -->
+        <mxCell id="act_end_reg" value="Kết thúc&#xa;đăng ký" style="rounded=1;whiteSpace=wrap;html=1;arcSize=18;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1;fontFamily=Arial;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="175" y="910" width="65" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- End Node (Double Circle) -->
+        <mxCell id="end_node" value="" style="ellipse;html=1;shape=endState;fillColor=#000000;strokeColor=#000000;strokeWidth=1.2;" vertex="1" parent="1">
+          <mxGeometry x="197.5" y="975" width="20" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- ================= MERGE NODES (DIAMONDS) ================= -->
+        <!-- Merge 1: Google Flow -->
+        <mxCell id="merge_google" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="675" y="605" width="16" height="16" as="geometry" />
+        </mxCell>
+
+        <!-- Merge 2: Verification Flow -->
+        <mxCell id="merge_verify" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="527" y="795" width="16" height="16" as="geometry" />
+        </mxCell>
+
+        <!-- Merge 3: Intermediate Error Merge -->
+        <mxCell id="merge_error" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="445" y="870" width="16" height="16" as="geometry" />
+        </mxCell>
+
+        <!-- Merge 4: Final Main Merge before End -->
+        <mxCell id="merge_final" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="199.5" y="870" width="16" height="16" as="geometry" />
+        </mxCell>
+
+        <!-- ================= EDGES (CONNECTORS) ================= -->
+        <!-- Start -> Mở trang -->
+        <mxCell id="e_start" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=block;endFill=1;" edge="1" parent="1" source="start_node" target="act_open_page">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Mở trang -> Đăng ký bằng? -->
+        <mxCell id="e_to_method" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=block;endFill=1;" edge="1" parent="1" source="act_open_page" target="dec_choose_method">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Đăng ký bằng? -> Nhập thông tin (Email) -->
+        <mxCell id="e_method_email" value="Email" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=block;endFill=1;fontSize=10;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="dec_choose_method" target="act_input_info">
+          <mxGeometry x="-0.3" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Đăng ký bằng? -> Chuyển đến Google (Google) -->
+        <mxCell id="e_method_google" value="Google" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=block;endFill=1;fontSize=10;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="dec_choose_method" target="act_redirect_google">
+          <mxGeometry x="-0.3" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Nhập thông tin -> Nhấn Đăng ký -->
+        <mxCell id="e_to_submit" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=block;endFill=1;" edge="1" parent="1" source="act_input_info" target="act_click_submit">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Nhấn Đăng ký -> Kiểm tra thông tin -->
+        <mxCell id="e_to_check" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=block;endFill=1;" edge="1" parent="1" source="act_click_submit" target="act_check_info">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Kiểm tra thông tin -> Hợp lệ? -->
+        <mxCell id="e_to_valid" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=block;endFill=1;" edge="1" parent="1" source="act_check_info" target="dec_valid">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Hợp lệ? -> Không (Thông báo lỗi) -->
+        <mxCell id="e_valid_no" value="Không" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=block;endFill=1;fontSize=10;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="dec_valid" target="act_err_email">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Hợp lệ? -> Có (Tạo tài khoản) -->
+        <mxCell id="e_valid_yes" value="Có" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=block;endFill=1;fontSize=10;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="dec_valid" target="act_create_account">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Tạo tài khoản -> Gửi email xác minh -->
+        <mxCell id="e_to_send_mail" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=block;endFill=1;" edge="1" parent="1" source="act_create_account" target="act_send_verify_mail">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Gửi email xác minh -> Xác minh email -->
+        <mxCell id="e_to_verify_email" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=block;endFill=1;" edge="1" parent="1" source="act_send_verify_mail" target="act_verify_email">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="530" y="620" />
+              <mxPoint x="140" y="620" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Xác minh email -> Decision: Xác minh? -->
+        <mxCell id="e_to_dec_verified" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=block;endFill=1;" edge="1" parent="1" source="act_verify_email" target="dec_verified">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Xác minh? -> Không (Lỗi xác minh) -->
+        <mxCell id="e_verified_no" value="Không" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=block;endFill=1;fontSize=10;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="dec_verified" target="act_err_verify">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Xác minh? -> Có (Kích hoạt tài khoản) -->
+        <mxCell id="e_verified_yes" value="Có" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=block;endFill=1;fontSize=10;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="dec_verified" target="act_activate_acc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Lỗi xác minh -> Merge Verify -->
+        <mxCell id="e_err_ver_to_merge" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=block;endFill=1;" edge="1" parent="1" source="act_err_verify" target="merge_verify">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Kích hoạt -> Merge Verify -->
+        <mxCell id="e_act_to_merge" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=block;endFill=1;" edge="1" parent="1" source="act_activate_acc" target="merge_verify">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Merge Verify -> Chuyển đến trang đăng nhập -->
+        <mxCell id="e_merge_to_login_page" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=block;endFill=1;" edge="1" parent="1" source="merge_verify" target="act_to_login_page">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Chuyển đến Google -> Nhận thông tin Google -->
+        <mxCell id="e_to_recv_google" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=block;endFill=1;" edge="1" parent="1" source="act_redirect_google" target="act_receive_google">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Nhận thông tin Google -> Thành công? -->
+        <mxCell id="e_to_google_success" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=block;endFill=1;" edge="1" parent="1" source="act_receive_google" target="dec_google_success">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Thành công? -> Không (Thông báo lỗi) -->
+        <mxCell id="e_goog_fail" value="Không" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=block;endFill=1;fontSize=10;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="dec_google_success" target="act_err_google">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Thành công? -> Có (Tạo/cập nhật) -->
+        <mxCell id="e_goog_ok" value="Có" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=block;endFill=1;fontSize=10;fontColor=#000000;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="dec_google_success" target="act_create_update_acc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Tạo/cập nhật -> Đăng nhập hệ thống -->
+        <mxCell id="e_to_login_sys" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=block;endFill=1;" edge="1" parent="1" source="act_create_update_acc" target="act_login_system">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Đăng nhập hệ thống -> Chuyển đến trang chủ -->
+        <mxCell id="e_to_enter_feed" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=block;endFill=1;" edge="1" parent="1" source="act_login_system" target="act_to_home_page">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Lỗi Google -> Merge Google -->
+        <mxCell id="e_err_goog_to_merge" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=block;endFill=1;" edge="1" parent="1" source="act_err_google" target="merge_google">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Đăng nhập hệ thống -> Merge Google -->
+        <mxCell id="e_login_to_merge_goog" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=block;endFill=1;" edge="1" parent="1" source="act_login_system" target="merge_google">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="730" y="580" />
+              <mxPoint x="683" y="580" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Lỗi Email -> Merge Error -->
+        <mxCell id="e_err_email_to_merge" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=block;endFill=1;" edge="1" parent="1" source="act_err_email" target="merge_error">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="380" y="878" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Merge Google -> Merge Error -->
+        <mxCell id="e_merge_goog_to_err" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=block;endFill=1;" edge="1" parent="1" source="merge_google" target="merge_error">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="683" y="878" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Merge Error -> Merge Final -->
+        <mxCell id="e_merge_err_to_final" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=block;endFill=1;" edge="1" parent="1" source="merge_error" target="merge_final">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Trang đăng nhập -> Merge Final -->
+        <mxCell id="e_login_page_to_final" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=block;endFill=1;" edge="1" parent="1" source="act_to_login_page" target="merge_final">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="187" y="860" />
+              <mxPoint x="207" y="860" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Chuyển đến trang chủ -> Merge Final -->
+        <mxCell id="e_feed_to_final" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=block;endFill=1;" edge="1" parent="1" source="act_to_home_page" target="merge_final">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="305" y="850" />
+              <mxPoint x="207" y="850" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Merge Final -> Kết thúc đăng ký -->
+        <mxCell id="e_final_to_end" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=block;endFill=1;" edge="1" parent="1" source="merge_final" target="act_end_reg">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Kết thúc đăng ký -> End Node -->
+        <mxCell id="e_to_end_node" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=block;endFill=1;" edge="1" parent="1" source="act_end_reg" target="end_node">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

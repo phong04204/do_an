@@ -15,12 +15,14 @@ class GameGiftcode extends Model
         'title',
         'description',
         'price',
+        'images',
         'giftcode_string',
         'status',
     ];
 
     protected $casts = [
-        'price' => 'decimal:2',
+        'price'  => 'decimal:2',
+        'images' => 'array',
     ];
 
     // Ẩn mã giftcode khi trả về public API

@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Search, ShoppingCart, Sun, Moon, Menu, X, ChevronDown, User, LogOut, LayoutDashboard } from "lucide-react";
+import { Search, ShoppingCart, Sun, Moon, Menu, X, ChevronDown, User, LogOut, LayoutDashboard, Clock } from "lucide-react";
 import { useAuthStore } from "@/store/auth-store";
 import { useCartStore } from "@/store/cart-store";
 import { useTheme } from "next-themes";
@@ -13,7 +13,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [userOpen, setUserOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const { logout } = useAuthStore();
+  const { logout, fetchMe } = useAuthStore();
   const [currentUser, setCurrentUser] = useState<any>(null);
   const { totalItems } = useCartStore();
   const { theme, setTheme } = useTheme();
@@ -22,7 +22,16 @@ export default function Navbar() {
 
   useEffect(() => {
     setMounted(true);
-    setCurrentUser(useAuthStore.getState().user);
+    const state = useAuthStore.getState();
+    const token = state.token || (typeof window !== "undefined" ? localStorage.getItem("auth_token") : null);
+    if (state.user) {
+      setCurrentUser(state.user);
+    }
+    
+    // Sync with database if logged in or token exists
+    if (token) {
+      fetchMe(token).catch(() => {});
+    }
     
     // Subscribe to store updates to keep the local state completely synchronized
     const unsub = useAuthStore.subscribe((state) => {
@@ -35,18 +44,10 @@ export default function Navbar() {
       unsub();
       window.removeEventListener("scroll", fn);
     };
-  }, []);
+  }, [fetchMe]);
 
   return (
     <>
-      {/* Marquee strip */}
-      <div className="marquee-strip">
-        <div className="marquee-content">
-          &nbsp;&nbsp;🔐 Bảo mật thông tin người dùng &nbsp;|&nbsp; ⚡ Mua hàng nhanh chóng &nbsp;|&nbsp; 🛡️ Bảo hành 1 đổi 1 &nbsp;|&nbsp; 💬 Hỗ trợ nhiệt tình 24/7 &nbsp;|&nbsp; 🎮 Hơn 10,000+ tài khoản game &nbsp;|&nbsp; ✅ Uy tín - An toàn - Chất lượng &nbsp;&nbsp;
-          &nbsp;&nbsp;🔐 Bảo mật thông tin người dùng &nbsp;|&nbsp; ⚡ Mua hàng nhanh chóng &nbsp;|&nbsp; 🛡️ Bảo hành 1 đổi 1 &nbsp;|&nbsp; 💬 Hỗ trợ nhiệt tình 24/7 &nbsp;|&nbsp; 🎮 Hơn 10,000+ tài khoản game &nbsp;|&nbsp; ✅ Uy tín - An toàn - Chất lượng &nbsp;&nbsp;
-        </div>
-      </div>
-
       {/* Main Navbar */}
       <nav
         className="navbar"
@@ -96,7 +97,7 @@ export default function Navbar() {
                 onMouseEnter={e => (e.currentTarget.style.background = "var(--bg-soft)")}
                 onMouseLeave={e => (e.currentTarget.style.background = "transparent")}
               >
-                Cửa Hàng
+                Sản Phẩm
               </Link>
 
               {/* Cart */}
@@ -163,13 +164,15 @@ export default function Navbar() {
                         <div style={{ fontSize: "0.875rem", fontWeight: 700, color: "#1a1a2e" }}>{currentUser.name}</div>
                         <div style={{ fontSize: "0.75rem", color: "#9CA3AF" }}>{currentUser.email}</div>
                       </div>
-                      {(currentUser.role === "admin" || currentUser.role === "seller"
+                      {(currentUser.role === "admin"
                         ? [
-                            { icon: LayoutDashboard, label: "Dashboard", href: "/admin" },
+                            { icon: LayoutDashboard, label: "Thống kê", href: "/admin" },
                             { icon: User, label: "Hồ sơ", href: "/dashboard/profile" },
+                            { icon: Clock, label: "Lịch sử mua hàng", href: "/lich-su-mua-hang" },
                           ]
                         : [
                             { icon: User, label: "Hồ sơ", href: "/dashboard/profile" },
+                            { icon: Clock, label: "Lịch sử mua hàng", href: "/lich-su-mua-hang" },
                           ]
                       ).map(({ icon: Icon, label, href }) => (
                         <a key={href} href={href} onClick={() => setUserOpen(false)} style={{

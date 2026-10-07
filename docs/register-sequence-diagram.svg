@@ -1,0 +1,268 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1420" width="100%" height="100%">
+  <!-- Definitions for standard UML arrows and markers in red color matching the EAUT style -->
+  <defs>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#c00000" />
+    </marker>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="2" dy="2" stdDeviation="2" flood-opacity="0.3" />
+    </filter>
+  </defs>
+
+  <rect width="100%" height="100%" fill="white" />
+
+  <!-- LIFELINES HEADERS (UML BCE Icons in Pink/White with subtle Red Border) -->
+  
+  <!-- 1. Actor :Guest (Stickman) -->
+  <g transform="translate(80, 10)">
+    <circle cx="0" cy="20" r="8" fill="#f8d7da" stroke="#c00000" stroke-width="1.5" />
+    <line x1="0" y1="28" x2="0" y2="45" stroke="#c00000" stroke-width="1.5" />
+    <line x1="-12" y1="35" x2="12" y2="35" stroke="#c00000" stroke-width="1.5" />
+    <line x1="0" y1="45" x2="-8" y2="60" stroke="#c00000" stroke-width="1.5" />
+    <line x1="0" y1="45" x2="8" y2="60" stroke="#c00000" stroke-width="1.5" />
+    <text x="0" y="75" font-family="Arial, sans-serif" font-size="11" text-anchor="middle">:Guest</text>
+  </g>
+  <line x1="80" y1="90" x2="80" y2="1370" stroke="#c00000" stroke-width="1" />
+
+  <!-- 2. Boundary :UI -->
+  <g transform="translate(240, 30)">
+    <circle cx="0" cy="15" r="13" fill="#f8d7da" stroke="#c00000" stroke-width="1.5" />
+    <line x1="-13" y1="-2" x2="-13" y2="32" stroke="#c00000" stroke-width="1.5" />
+    <line x1="-13" y1="15" x2="-2" y2="15" stroke="#c00000" stroke-width="1.5" />
+    <text x="0" y="45" font-family="Arial, sans-serif" font-size="11" text-anchor="middle">:UI</text>
+  </g>
+  <line x1="240" y1="90" x2="240" y2="1370" stroke="#c00000" stroke-width="1" />
+  <!-- UI Activation Box -->
+  <rect x="235" y="110" width="10" height="1220" fill="white" stroke="black" stroke-width="1" filter="url(#shadow)" />
+
+  <!-- 3. Control :AuthController -->
+  <g transform="translate(400, 30)">
+    <circle cx="0" cy="15" r="13" fill="#f8d7da" stroke="#c00000" stroke-width="1.5" />
+    <path d="M -5 -3 A 14 14 0 0 1 8 0" fill="none" stroke="#c00000" stroke-width="1.5" marker-end="url(#arrow-red)" />
+    <text x="0" y="45" font-family="Arial, sans-serif" font-size="11" text-anchor="middle">:AuthController</text>
+  </g>
+  <line x1="400" y1="90" x2="400" y2="1370" stroke="#c00000" stroke-width="1" />
+  <!-- Controller Activation Box -->
+  <rect x="395" y="205" width="10" height="1095" fill="white" stroke="black" stroke-width="1" filter="url(#shadow)" />
+
+  <!-- 4. Boundary :Google -->
+  <g transform="translate(480, 30)">
+    <circle cx="0" cy="15" r="13" fill="#f8d7da" stroke="#c00000" stroke-width="1.5" />
+    <line x1="-13" y1="-2" x2="-13" y2="32" stroke="#c00000" stroke-width="1.5" />
+    <line x1="-13" y1="15" x2="-2" y2="15" stroke="#c00000" stroke-width="1.5" />
+    <text x="0" y="45" font-family="Arial, sans-serif" font-size="11" text-anchor="middle">:Google</text>
+  </g>
+  <line x1="480" y1="90" x2="480" y2="1370" stroke="#c00000" stroke-width="1" />
+
+  <!-- 5. Entity :UserModel -->
+  <g transform="translate(560, 30)">
+    <circle cx="0" cy="15" r="13" fill="#f8d7da" stroke="#c00000" stroke-width="1.5" />
+    <line x1="-15" y1="28" x2="15" y2="28" stroke="#c00000" stroke-width="1.5" />
+    <line x1="0" y1="28" x2="0" y2="15" stroke="#c00000" stroke-width="1.5" />
+    <text x="0" y="45" font-family="Arial, sans-serif" font-size="11" text-anchor="middle">:UserModel</text>
+  </g>
+  <line x1="560" y1="90" x2="560" y2="1370" stroke="#c00000" stroke-width="1" />
+  <!-- UserModel Activation Boxes -->
+  <rect x="555" y="380" width="10" height="100" fill="white" stroke="black" stroke-width="1" filter="url(#shadow)" />
+  <rect x="555" y="580" width="10" height="150" fill="white" stroke="black" stroke-width="1" filter="url(#shadow)" />
+  <rect x="555" y="1050" width="10" height="215" fill="white" stroke="black" stroke-width="1" filter="url(#shadow)" />
+
+  <!-- 6. Database :users -->
+  <g transform="translate(720, 30)">
+    <path d="M -15 5 C -15 0, 15 0, 15 5 L 15 25 C 15 30, -15 30, -15 25 Z" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5" />
+    <path d="M -15 5 C -15 10, 15 10, 15 5" fill="none" stroke="#d6b656" stroke-width="1.5" />
+    <text x="0" y="45" font-family="Arial, sans-serif" font-size="11" text-anchor="middle">:users</text>
+  </g>
+  <line x1="720" y1="90" x2="720" y2="1370" stroke="#c00000" stroke-width="1" />
+  <!-- Database Activation Boxes -->
+  <rect x="715" y="405" width="10" height="50" fill="white" stroke="black" stroke-width="1" filter="url(#shadow)" />
+  <rect x="715" y="605" width="10" height="50" fill="white" stroke="black" stroke-width="1" filter="url(#shadow)" />
+  <rect x="715" y="1095" width="10" height="40" fill="white" stroke="black" stroke-width="1" filter="url(#shadow)" />
+  <rect x="715" y="1200" width="10" height="40" fill="white" stroke="black" stroke-width="1" filter="url(#shadow)" />
+
+  <!-- TITLE -->
+  <text x="400" y="15" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle">UC1.1 - Đăng ký tài khoản</text>
+
+
+  <!-- ==================== SEPARATOR 1 ==================== -->
+  <g transform="translate(0, 85)">
+    <line x1="40" y1="9" x2="780" y2="9" stroke="gray" stroke-width="1.5" />
+    <rect x="230" y="0" width="350" height="18" fill="white" stroke="black" stroke-width="1" />
+    <text x="405" y="13" font-family="Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">A1: Đăng ký bằng email / tên đăng nhập / mật khẩu</text>
+  </g>
+
+  <!-- Step 1 & Return -->
+  <path d="M 80 120 L 235 120" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="157" y="112" font-family="Arial, sans-serif" font-size="10" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">1. Mở trang đăng ký</text>
+
+  <path d="M 235 140 L 80 140" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="157" y="135" font-family="Arial, sans-serif" font-size="10" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">Hiển thị form đăng ký</text>
+
+  <!-- Step 2 -->
+  <path d="M 80 165 L 235 165" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="157" y="157" font-family="Arial, sans-serif" font-size="9" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">2. Nhập name, email, phone, password</text>
+
+  <!-- Step 3 -->
+  <path d="M 80 190 L 235 190" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="157" y="182" font-family="Arial, sans-serif" font-size="10" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">3. Nhấn "Đăng ký"</text>
+
+  <!-- UI to Controller Request -->
+  <path d="M 245 215 L 395 215" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="320" y="207" font-family="Arial, sans-serif" font-size="10" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">Gửi yêu cầu đăng ký</text>
+
+  <!-- Self validation loop -->
+  <path d="M 405 240 L 435 240 L 435 260 L 405 260" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="440" y="254" font-family="Arial, sans-serif" font-size="9" fill="#c00000" text-anchor="start" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">4. Kiểm tra hợp lệ dữ liệu</text>
+
+
+  <!-- ==================== SEPARATOR 2 ==================== -->
+  <g transform="translate(0, 285)">
+    <line x1="40" y1="9" x2="780" y2="9" stroke="gray" stroke-width="1.5" />
+    <rect x="310" y="0" width="200" height="18" fill="white" stroke="black" stroke-width="1" />
+    <text x="410" y="13" font-family="Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">Kiểm tra dữ liệu đầu vào</text>
+  </g>
+
+  <!-- ALT 1: E1: Mật khẩu quá ngắn -->
+  <g transform="translate(45, 310)" filter="url(#shadow)">
+    <rect width="450" height="60" fill="none" stroke="black" stroke-width="1.1" />
+    <path d="M 0 0 L 160 0 L 150 15 L 0 15 Z" fill="#f0f0f0" stroke="black" stroke-width="0.8" />
+    <text x="5" y="11" font-family="Arial, sans-serif" font-size="9" font-weight="bold">alt [E1: Mật khẩu quá ngắn]</text>
+  </g>
+  <path d="M 395 330 L 245 330" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="315" y="323" font-family="Arial, sans-serif" font-size="8" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">"Mật khẩu phải chứa ít nhất 6 ký tự"</text>
+  
+  <path d="M 235 350 L 80 350" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="152" y="343" font-family="Arial, sans-serif" font-size="9" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">Hiển thị lỗi và yêu cầu nhập lại</text>
+
+  <!-- Check Username/Email Existence -->
+  <path d="M 405 390 L 555 390" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="480" y="382" font-family="Arial, sans-serif" font-size="9" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">Kiểm tra tên đăng nhập &amp; email tồn tại</text>
+
+  <path d="M 565 405 L 715 405" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="640" y="397" font-family="Arial, sans-serif" font-size="8" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">SELECT * FROM users WHERE name=? OR email=?</text>
+
+  <path d="M 715 455 L 565 455" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="640" y="448" font-family="Arial, sans-serif" font-size="9" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">Kết quả truy vấn CSDL</text>
+
+  <path d="M 555 465 L 405 465" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="480" y="458" font-family="Arial, sans-serif" font-size="9" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">Trả về kết quả xác thực</text>
+
+  <!-- ALT 2: E2: Tài khoản đã tồn tại -->
+  <g transform="translate(45, 480)" filter="url(#shadow)">
+    <rect width="450" height="60" fill="none" stroke="black" stroke-width="1.1" />
+    <path d="M 0 0 L 220 0 L 210 15 L 0 15 Z" fill="#f0f0f0" stroke="black" stroke-width="0.8" />
+    <text x="5" y="11" font-family="Arial, sans-serif" font-size="9" font-weight="bold">alt [E2: Tài khoản hoặc email đã tồn tại]</text>
+  </g>
+  <path d="M 395 500 L 245 500" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="315" y="493" font-family="Arial, sans-serif" font-size="8" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">"Địa chỉ email đã được sử dụng"</text>
+  
+  <path d="M 235 520 L 80 520" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="152" y="513" font-family="Arial, sans-serif" font-size="9" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">Hiển thị lỗi và yêu cầu nhập lại</text>
+
+
+  <!-- ==================== SEPARATOR 3 ==================== -->
+  <g transform="translate(0, 555)">
+    <line x1="40" y1="9" x2="780" y2="9" stroke="gray" stroke-width="1.5" />
+    <rect x="310" y="0" width="200" height="18" fill="white" stroke="black" stroke-width="1" />
+    <text x="410" y="13" font-family="Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">Tạo tài khoản &amp; Mã xác thực</text>
+  </g>
+
+  <path d="M 405 590 L 555 590" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="480" y="582" font-family="Arial, sans-serif" font-size="9" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">5. Tạo người dùng mới bằng bcrypt</text>
+
+  <path d="M 565 605 L 715 605" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="640" y="597" font-family="Arial, sans-serif" font-size="8" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">INSERT INTO users (role: 'buyer')</text>
+
+  <path d="M 715 655 L 565 655" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="640" y="648" font-family="Arial, sans-serif" font-size="9" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">Xác nhận lưu trữ thành công</text>
+
+  <path d="M 555 665 L 405 665" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="480" y="658" font-family="Arial, sans-serif" font-size="9" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">Trả về thực thể người dùng ($user)</text>
+
+  <path d="M 405 690 L 555 690" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="480" y="682" font-family="Arial, sans-serif" font-size="9" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">6. Khởi tạo mã truy cập (Sanctum Token)</text>
+
+  <path d="M 555 715 L 405 715" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="480" y="708" font-family="Arial, sans-serif" font-size="9" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">Trả về token xác thực (plainTextToken)</text>
+
+  <path d="M 395 740 L 245 740" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="320" y="733" font-family="Arial, sans-serif" font-size="9" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">Phản hồi đăng ký thành công</text>
+
+  <path d="M 235 760 L 80 760" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="157" y="752" font-family="Arial, sans-serif" font-size="8" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">Lưu token, tự đăng nhập &amp; chuyển hướng về trang chủ</text>
+
+
+  <!-- ==================== SEPARATOR 4 (A2) ==================== -->
+  <g transform="translate(0, 800)">
+    <line x1="40" y1="9" x2="780" y2="9" stroke="gray" stroke-width="1.5" />
+    <rect x="210" y="0" width="280" height="18" fill="white" stroke="black" stroke-width="1" />
+    <text x="350" y="13" font-family="Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">A2: Đăng ký bằng Google</text>
+  </g>
+
+  <!-- Google Register Flow Steps -->
+  <path d="M 80 835 L 235 835" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="157" y="827" font-family="Arial, sans-serif" font-size="9" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">1. Nhấn "Đăng ký với Google"</text>
+
+  <path d="M 245 860 L 395 860" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="320" y="852" font-family="Arial, sans-serif" font-size="9" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">2. Gửi yêu cầu đăng ký Google</text>
+
+  <!-- Self redirection on Controller -->
+  <path d="M 405 885 L 435 885 L 435 905 L 405 905" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="440" y="899" font-family="Arial, sans-serif" font-size="9" fill="#c00000" text-anchor="start" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">Chuyển hướng OAuth 2.0</text>
+
+  <path d="M 395 930 L 80 930" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="237" y="922" font-family="Arial, sans-serif" font-size="9" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">3. Chọn tài khoản Google</text>
+
+
+  <!-- ALT E3: Lỗi xác thực Google -->
+  <g transform="translate(45, 955)" filter="url(#shadow)">
+    <rect width="390" height="75" fill="none" stroke="black" stroke-width="1.1" />
+    <path d="M 0 0 L 180 0 L 170 15 L 0 15 Z" fill="#f0f0f0" stroke="black" stroke-width="0.8" />
+    <text x="5" y="11" font-family="Arial, sans-serif" font-size="8.5" font-weight="bold">alt [E3: Từ chối / lỗi xác thực Google]</text>
+  </g>
+  <path d="M 395 975 L 245 975" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="325" y="967" font-family="Arial, sans-serif" font-size="9" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">"Đăng ký Google thất bại"</text>
+  
+  <path d="M 235 1005 L 80 1005" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="157" y="997" font-family="Arial, sans-serif" font-size="9" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">Quay lại trang đăng ký</text>
+
+
+  <!-- Choose account & grant access -->
+  <path d="M 80 1050 L 395 1050" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="237" y="1042" font-family="Arial, sans-serif" font-size="9" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">4. Chọn tài khoản và cấp quyền</text>
+
+  <!-- Step 5: Check Google email exists in DB -->
+  <path d="M 405 1080 L 555 1080" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="480" y="1072" font-family="Arial, sans-serif" font-size="9" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">5. Kiểm tra email Google tồn tại</text>
+
+  <path d="M 565 1100 L 715 1100" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="640" y="1092" font-family="Arial, sans-serif" font-size="7.5" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">SELECT * FROM users WHERE email=?</text>
+
+  <path d="M 715 1130 L 565 1130" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="640" y="1122" font-family="Arial, sans-serif" font-size="8.5" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">Kết quả</text>
+
+  <path d="M 555 1150 L 405 1150" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="480" y="1142" font-family="Arial, sans-serif" font-size="9" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">Trả về kết quả</text>
+
+  <!-- Step 6: Create account, email already verified -->
+  <path d="M 405 1185 L 555 1185" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="475" y="1177" font-family="Arial, sans-serif" font-size="9" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">6. Tạo tài khoản, email đã xác minh</text>
+
+  <path d="M 565 1205 L 715 1205" stroke="#c00000" stroke-width="1.1" fill="none" marker-end="url(#arrow-red)" />
+  <text x="640" y="1197" font-family="Arial, sans-serif" font-size="7.5" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">INSERT INTO users (name, email, google_id, ...) VALUES (?)</text>
+
+  <path d="M 715 1235 L 565 1235" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="640" y="1227" font-family="Arial, sans-serif" font-size="8.5" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">Lưu thành công</text>
+
+  <path d="M 555 1255 L 405 1255" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="475" y="1247" font-family="Arial, sans-serif" font-size="9" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">Trả về thông tin người dùng</text>
+
+  <!-- Step 8 & 9 (Success) -->
+  <path d="M 395 1295 L 245 1295" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="315" y="1287" font-family="Arial, sans-serif" font-size="9" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">8. Đăng ký thành công</text>
+
+  <path d="M 235 1325 L 80 1325" stroke="#c00000" stroke-width="1.1" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-red)" />
+  <text x="157" y="1317" font-family="Arial, sans-serif" font-size="9" fill="#c00000" text-anchor="middle" stroke="white" stroke-width="3" paint-order="stroke" stroke-linejoin="round">9. Hiển thị trang chủ</text>
+
+
+</svg>

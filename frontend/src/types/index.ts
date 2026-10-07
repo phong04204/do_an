@@ -2,17 +2,9 @@
 // Core Types for Game Account Trading Platform
 // ============================================================
 
-export type UserRole = "admin" | "seller" | "buyer";
+export type UserRole = "admin" | "buyer";
 
 export type AccountStatus = "pending" | "approved" | "sold" | "rejected";
-
-export type TransactionStatus =
-  | "pending"
-  | "paid"
-  | "delivered"
-  | "completed"
-  | "disputed"
-  | "refunded";
 
 // ---- User ----
 export interface User {
@@ -22,6 +14,7 @@ export interface User {
   role: UserRole;
   balance: number;
   phone?: string;
+  dob?: string;
   avatar?: string;
   created_at: string;
   updated_at: string;
@@ -65,41 +58,6 @@ export interface GameAccount {
   view_count: number;
   seller?: User;
   category?: Category;
-  is_favorited?: boolean;
-  created_at: string;
-  updated_at: string;
-}
-
-// ---- Transaction ----
-export interface Transaction {
-  id: number;
-  buyer_id: number;
-  seller_id: number;
-  game_account_id: number;
-  amount: number;
-  status: TransactionStatus;
-  note?: string;
-  delivered_at?: string;
-  completed_at?: string;
-  escrow_released_at?: string;
-  buyer?: User;
-  seller?: User;
-  game_account?: GameAccount;
-  created_at: string;
-  updated_at: string;
-}
-
-// ---- Complaint ----
-export type ComplaintStatus = "open" | "investigating" | "resolved" | "rejected";
-export interface Complaint {
-  id: number;
-  transaction_id: number;
-  reporter_id: number;
-  reason: string;
-  status: ComplaintStatus;
-  admin_note?: string;
-  reporter?: User;
-  transaction?: Transaction;
   created_at: string;
   updated_at: string;
 }
