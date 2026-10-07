@@ -1,7 +1,8 @@
 # Documentation & Reports
 docs/
 
-# Temporary & debug scripts
+# Scripts & temporary utilities
+scripts/
 *.ps1
 scratch/
 frontend/admin_ssr.html
